@@ -25,7 +25,7 @@ echo ${src2}
 
 isNoChange=True
 if [ ! -f "$src2" ]; then 
-${isNoChange}=False
+isNoChange=False
 else
 	isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
 	if [[ $isNoChange != False ]] ; then
