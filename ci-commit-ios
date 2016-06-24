@@ -95,6 +95,7 @@ fi
 (npm run serve & echo "start npm run serve")
 
 echo "************************ prepare for uitest ************************"
+cd ${weexPath}
 appPath=${weexPath}"/ios/playground/DerivedData/WeexDemo/Build/Products/Debug-iphonesimulator/WeexUITestDemo.app"
 instruments -s devices > ./_temp.log
 PREFIX="iPhone 6s"
@@ -118,7 +119,7 @@ sleep 5
 echo "安装测试包"
 xcrun simctl install booted ${appPath}
 
-echo "************************ Start Sword Server ************************"
+# echo "************************ Start Sword Server ************************"
 cd ${weexPath}/test/ios/sword.ios.server.start/bin/
 rm -rf instrument*.trace
 (sh start-server &) 
@@ -129,6 +130,8 @@ cd ${weexPath}/test/ios/sword.ios.weex.test/
 mvn install:install-file -Dfile=${weexPath}/test/tools/fastjson-1.1.23.jar -DgroupId=com.alibaba -DartifactId=fastjson -Dversion=1.1.23 -Dpackaging=jar -DgeneratePom=true
 mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.client-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.client -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
 mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.common-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.common -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
+mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.server-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.server -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
+
 
 mkdir ${weexPath}/test/ios/sword.ios.weex.test/target
 picSaveDir=${weexPath}"test/ios/pic-compare/"
