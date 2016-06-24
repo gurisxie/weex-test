@@ -3,6 +3,8 @@ echo "************************ ci-ios start ************************"
 
 weexPath=`pwd`
 toolPath=${weexPath}/test/tools
+resultPath=${weexPath}/result
+mkdir ${resultPath}
 echo "  tested root dir: " ${weexPath}
 
 echo "----------------------------start：run env clear----------------------------"
@@ -15,7 +17,7 @@ cd ${weexPath}/ios/playground
 
 pod update
 
-xcodebuild -scheme WeexUITestDemo -destination "name=iPhone 6" -workspace WeexDemo.xcworkspace -configuration Debug clean build
+xcodebuild -scheme WeexUITestDemo -destination "name=iPhone 6" -workspace WeexDemo.xcworkspace -configuration Debug clean build 
 rc=$?
 if [[ $rc != 0 ]] ; then
     echo "ios run build app: ios run build app failure,break ios running~ " >> ${resultPath}/run-result.log
@@ -34,6 +36,8 @@ if [ ! -f "$src2" ]; then
 	isNoChange=False
 	mkdir ${npmCachePath}
 	mkdir ${npmCachePath}/src
+	mkdir ${npmCachePath}/src/h5-render
+	mkdir ${npmCachePath}/src/js-framework
 	mkdir ${npmCachePath}/bin
 else
 	isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
@@ -68,7 +72,6 @@ fi
 echo "isNoChange:"${isNoChange}
 
 cd ${weexPath}
-#TODO 比较package.json
 ln -s ${npmCachePath}/node_modules ./node_modules
 ln -s ${npmCachePath}/src/js-framework/node_modules/ ./src/js-framework/node_modules
 ln -s ${npmCachePath}/src/h5-render/node_modules/ ./src/h5-render/node_modules
