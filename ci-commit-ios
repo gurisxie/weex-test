@@ -19,7 +19,7 @@ echo "************************ build tested app ************************"
 
 cd ${toolPath}
 src1=${weexPath}/package.json
-src2=$HOME/Documents/weex-npm/package.json
+src2=${HOME}/Documents/weex-npm/package.json
 
 isNoChange=True
 if [ ! -f "$src2" ]; then 
