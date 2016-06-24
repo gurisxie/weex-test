@@ -3,8 +3,8 @@ language: objective-c
 before_script:
 
 script: 
-  - cd ios/playground
-  - pod update
-  - xcodebuild -scheme WeexUITestDemo -destination "name=iPhone 6" -workspace WeexDemo.xcworkspace -configuration Debug clean build
+  - git clone git@github.com:gurisxie/weex-commit-ci.git
+  - cd weex-commit-ci
+  - sh ci-commit-ios
 
 after_script: 
