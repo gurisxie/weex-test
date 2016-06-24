@@ -1,0 +1,10 @@
+language: objective-c
+
+before_script:
+
+script: 
+  - cd ios/playground
+  - pod update
+  - xcodebuild -scheme WeexUITestDemo -destination "name=iPhone 6" -workspace WeexDemo.xcworkspace -configuration Debug clean build
+
+after_script: 
