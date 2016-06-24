@@ -8,14 +8,14 @@ echo "  tested root dir: " ${weexPath}
 echo "************************ build tested app ************************"
 cd ${weexPath}/ios/playground
 
-# pod update
+pod update
 
-# xcodebuild -scheme WeexUITestDemo -destination "name=iPhone 6" -workspace WeexDemo.xcworkspace -configuration Debug clean build
-# rc=$?
-# if [[ $rc != 0 ]] ; then
-#     echo "ios run build app: ios run build app failure,break ios running~ " >> ${resultPath}/run-result.log
-#     exit $rc
-# fi
+xcodebuild -scheme WeexUITestDemo -destination "name=iPhone 6" -workspace WeexDemo.xcworkspace -configuration Debug clean build
+rc=$?
+if [[ $rc != 0 ]] ; then
+    echo "ios run build app: ios run build app failure,break ios running~ " >> ${resultPath}/run-result.log
+    exit $rc
+fi
 
 cd ${toolPath}
 src1=${weexPath}/package.json
@@ -23,37 +23,37 @@ src2=/home/travis/Documents/weex-npm/package.json
 
 echo ${src2}
 
-# isNoChange=True
-# if [ ! -f "$src2" ]; then 
-# ${isNoChange}=False
-# else
-# 	isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
-# 	if [[ $isNoChange != False ]] ; then
-# 	    src1=${weexPath}/src/js-framework/package.json
-# 	    src2=$HOME/Documents/weex-npm/src/js-framework/package.json
-# 	    isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
-# 	    if [[ $isNoChange != False ]] ; then
-# 	        src1=${weexPath}/src/h5-render/package.json
-# 	        src2=$HOME/Documents/weex-npm/src/h5-render/package.json
-# 	        isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
-# 	    fi
-# 	fi 
-# fi
+isNoChange=True
+if [ ! -f "$src2" ]; then 
+${isNoChange}=False
+else
+	isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
+	if [[ $isNoChange != False ]] ; then
+	    src1=${weexPath}/src/js-framework/package.json
+	    src2=$HOME/Documents/weex-npm/src/js-framework/package.json
+	    isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
+	    if [[ $isNoChange != False ]] ; then
+	        src1=${weexPath}/src/h5-render/package.json
+	        src2=$HOME/Documents/weex-npm/src/h5-render/package.json
+	        isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
+	    fi
+	fi 
+fi
 
-# cd ${weexPath}
-# if [[ $isNoChange == False ]] ; then
-#     echo "isNoChange:"${isNoChange}"，will npm install~"
-#     cp package.json $HOME/Documents/weex-npm/package.json
-#     cp src/h5-render/package.json $HOME/Documents/weex-npm/src/h5-render/package.json
-#     cp src/js-framework/package.json $HOME/Documents/weex-npm/src/js-framework/package.json
-#     rm -rf $HOME/Documents/weex-npm/bin
-#     cp -r bin $HOME/Documents/weex-npm/bin
-#     cd $HOME/Documents/weex-npm/
-#     npm install
-#     rc=$?
-#     if [[ $rc != 0 ]] ; then
-#         echo "npm install:npm install failure,break flow running~ " >> ${resultPath}/run-result.log
-#         exit $rc
-#     fi 
-# fi 
-# echo "isNoChange:"${isNoChange}
+cd ${weexPath}
+if [[ $isNoChange == False ]] ; then
+    echo "isNoChange:"${isNoChange}"，will npm install~"
+    cp package.json $HOME/Documents/weex-npm/package.json
+    cp src/h5-render/package.json $HOME/Documents/weex-npm/src/h5-render/package.json
+    cp src/js-framework/package.json $HOME/Documents/weex-npm/src/js-framework/package.json
+    rm -rf $HOME/Documents/weex-npm/bin
+    cp -r bin $HOME/Documents/weex-npm/bin
+    cd $HOME/Documents/weex-npm/
+    npm install
+    rc=$?
+    if [[ $rc != 0 ]] ; then
+        echo "npm install:npm install failure,break flow running~ " >> ${resultPath}/run-result.log
+        exit $rc
+    fi 
+fi 
+echo "isNoChange:"${isNoChange}
