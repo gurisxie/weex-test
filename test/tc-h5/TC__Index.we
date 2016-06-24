@@ -1,0 +1,66 @@
+<template>
+  <div style="flex-direction: column;">
+    <TC_Support_MainTitle title="选择各个Transform版本对应脚本"></TC_Support_MainTitle>
+    <list class="list">
+      <cell repeat="{{list}}" append="tree">
+        <text class="btn border title mrg pad" item-id="{{itemid}}" onclick="clickEvt" >{{txt}}</text>
+      </cell>
+    </list>
+  </div>
+</template>
+
+<style>
+  .list{flex:1; width: 750;border-width: 1;border-color: #eeeeee;flex-direction: column;overflow: hidden;}
+  .btn {
+    width:400;
+    height:50;
+    background-color:#EEEEEE;
+    justify-content: center;
+  }
+
+  .title {
+    font-size:30;
+    text-align: center;
+  }
+  
+  .border {
+    border-width: 1;
+    border-color: #696969;
+    border-style:solid;
+    border-radius:5;
+  }
+  .mrg{
+    margin-left: 20;
+    margin-top: 20;
+  }
+  .pad{
+    padding-top:8;
+  }
+</style>
+ 
+<script>
+  module.exports = {
+    data: {
+      list: [
+        {itemid:"017",txt:"Transform：0.1.7"},
+        {itemid:"018",txt:"Transform：0.1.8"},
+        {itemid:"031",txt:"Transform：0.3.1"}
+      ],
+    },
+    methods: {
+      clickEvt: function (e) {
+        var itemid=e.target.attr.itemId;
+        for (var i = 0; i < this.list.length; i++) {
+          var itemData = this.list[i];
+          if(itemData.itemid==itemid){
+            //跳转到对应的
+            var transferUrl = "http://t.cn?_wx_tpl=http://h5.waptest.taobao.com/app/weextc";
+            transferUrl=transferUrl+itemid+"/build/TC__Home.js";
+            this.$openURL(transferUrl);
+            break;
+          }
+        }
+      },
+    }
+  }
+</script>

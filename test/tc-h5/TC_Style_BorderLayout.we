@@ -1,0 +1,67 @@
+<template>
+  
+   <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Style_BorderLayout"></TC_Support_MainTitle>
+    <div class="panel mar pad">
+    	<div class="cell row mar pad">
+    		<div class="sector mar"></div>
+    		<image class="sector wh mar" src="http://gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_200x200.jpg"></image>
+    		<text class="sector mar font">row in div</text>
+    	</div>
+    	<div class="cell col mar pad">
+    		<div class="sector mar"></div>
+    		<image class="sector wh mar" src="http://gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_200x200.jpg"></image>
+    		<text class="sector mar font">column in div</text>
+    	</div>
+    </div>
+    <list class="panel mar pad">
+    	<cell class="cell row mar pad">
+    		<div class="sector mar"></div>
+    		<image class="sector wh mar" src="http://gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_200x200.jpg"></image>
+    		<text class="sector mar font">row in list</text>
+    	</cell>
+    	<cell class="cell col mar pad">
+    		<div class="sector mar"></div>
+    		<image class="sector wh mar" src="http://gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_200x200.jpg"></image>
+    		<text class="sector mar font">column in list</text>
+    	</cell>
+    </list>
+    <scroller class="panel mar pad">
+    	<div class="cell row mar pad">
+    		<div class="sector mar"></div>
+    		<image class="sector wh mar" src="http://gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_200x200.jpg"></image>
+    		<text class="sector mar font">row in scroller</text>
+    	</div>
+    	<div class="cell col mar pad">
+    		<div class="sector mar"></div>
+    		<image class="sector wh mar" src="http://gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_200x200.jpg"></image>
+    		<text class="sector mar font">column in scroller</text>
+    	</div>
+    </scroller>
+     </TC_Support_Scroller>
+</template>
+
+<style>
+  
+  
+  .panel{flex:1;border-width: 5;border-color: #9400D3;}
+  .cell{height:145;border-width: 5;border-color: #FFD700;}
+  .sector{flex:1;border-width: 5;border-color: #87CEFF;}
+
+  .row{flex-direction:row;}
+  .col{flex-direction:column;}
+  .mar{margin: 5;}
+  .pad{padding: 5;}
+  .wh{width:300;height: 50;}
+  .bg{background-color: #6B6B6B;}
+  .font{font-size: 20;font-family: Times New Roman;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    methods: {
+    }
+  };
+</script>

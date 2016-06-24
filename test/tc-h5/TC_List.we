@@ -1,0 +1,38 @@
+<template>
+  <div style="flex-direction: column;">
+    <TC_Support_MainTitle title="TC_List"></TC_Support_MainTitle>
+    <list class="list">
+      <cell repeat="{{script_list}}" append="tree">
+        <TC_Support_IndexItem text="{{textDesc}}"></TC_Support_IndexItem>
+      </cell>
+    </list>
+  </div>
+</template>
+ 
+<style>
+  .list{width: 750;height:1134; border-width: 1;border-color: #eeeeee;flex-direction: column;overflow: hidden;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      script_list: [],
+      str: "TC_List_AllComponent,TC_List_Contains_Comm_Components,TC_List_Event_AddRemove,TC_List_Event_AppearDisappear,TC_List_Event_Loadmore,TC_List_Fixed_AsGrandson,TC_List_Fixed_Bottom,TC_List_Fixed_Middle,TC_List_Fixed_Top,TC_List_RefreshAndLoading,TC_List_Sticky,TC_List_Style,TC_List_Update",
+    },
+    methods: {
+      ready: function () {
+        var arr = this.str.split(",");
+        var newArr=[];
+        var itemObj = {};
+        arr.forEach(function (itemStr, index){
+           if(itemStr != ''){
+              itemObj.textDesc=itemStr;
+              newArr.push(itemObj);
+              itemObj = {};
+           }
+        }); 
+        this.script_list = newArr;
+      },
+    }
+  }
+</script>

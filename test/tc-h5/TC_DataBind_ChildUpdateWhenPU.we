@@ -1,0 +1,78 @@
+<we-element name="detail">
+  <template>
+    <div>
+      <image class="img" src={{imgUrl}}></image>
+      <text style="color:{{textColor}}">{{title}}</text>
+    </div>
+  </template>
+
+  <style>
+    .img {
+      width: 400;
+      height: 400;
+    }
+  </style>
+
+
+  <script>
+    module.exports = {
+      data: {
+        imgUrl: '...',
+        title: '...',
+        textColor: '#000000',
+      },
+    }
+  </script>
+</we-element>
+
+<template>
+
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_DataBind_ChildUpdateWhenPU"></TC_Support_MainTitle>
+    <TC_Support_SubTitle title="01.Update child data source"></TC_Support_SubTitle>
+    <div style="margin: 10">
+      <TC_Support_Button style="margin:5" flagid="btn-if" title="Toggle" btn-touch="{{toggle}}"></TC_Support_Button>
+      <detail img-url="{{currentData.imgUrl}}" title="{{currentData.title}}" text-color="{{currentData.fontColor}}"></detail>
+    </div>
+  </TC_Support_Scroller>
+</template>
+
+<style>
+  
+  
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      data1: {
+        imgUrl: 'https://gd2.alicdn.com/imgextra/i2/TB1ThbXIVXXXXbNXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg',
+        title: 'Hello Weex!',
+        fontColor: '#FF0000',
+      },
+      data2: {
+        imgUrl: 'https://img.alicdn.com/bao/uploaded/i3/TB1lauIKXXXXXXQXXXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg',
+        title: 'Hello World!',
+        fontColor: '#0000FF',
+      },
+      currentData:'',
+  },
+    
+    methods: {
+      toggle: function () {
+        if (this.currentData === this.data1)
+        {
+          this.currentData = this.data2
+        }
+        else
+        {
+          this.currentData = this.data1
+        }
+      },
+
+      ready: function () {
+        this.currentData = this.data1
+      },
+    },
+  }
+</script>

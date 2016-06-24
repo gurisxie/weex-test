@@ -1,0 +1,62 @@
+<template>
+  
+<TC_Support_Scroller>
+
+    <TC_Support_MainTitle title="TC_DataBind_RemoveComponent"></TC_Support_MainTitle>
+
+    <TC_Support_SubTitle title="01.Remove component by pop"></TC_Support_SubTitle>
+    <div style="margin: 10">
+      <TC_Support_Button style="margin:5" flagid="btn-pop" title="Remove component by pop" btn-touch="{{pop}}"></TC_Support_Button>
+    </div>
+
+    <TC_Support_SubTitle title="01.Remove component by shift"></TC_Support_SubTitle>
+    <div style="margin: 10">
+      <TC_Support_Button style="margin:5" flagid="btn-shift" title="Remove component by shift" btn-touch="{{shift}}"></TC_Support_Button>
+    </div>
+
+    <TC_Support_SubTitle title="Present area"></TC_Support_SubTitle>
+    <div style="margin: 10">
+      <div repeat="{{textList}}">
+          <text class="text font">{{textValue}}</text>
+      </div>
+    </div>
+
+  </TC_Support_Scroller>
+</template>
+
+<style>
+
+
+.font{font-family: Times New Roman;}
+  .text {
+    height:30;
+    border-width: 1;
+    border-style:solid;
+    margin:2;
+    padding-left:5;
+    font-size:20
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      textList:[],
+    },
+    
+    methods: {
+      pop:function() {
+        this.textList.pop()
+      },
+      shift:function() {
+        this.textList.shift()
+      }
+    },
+    
+    created: function() {
+      for(var i=0;i<10;i++) {
+        this.textList.push({textValue:'ListItem-' + this.textList.length})
+      }
+    }
+  }
+</script>

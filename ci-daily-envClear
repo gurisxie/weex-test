@@ -1,0 +1,46 @@
+#!/bin/bash
+mySelfName=$(basename $0)
+
+function killAllPids() {
+    # get WeexServe pid & swordServe pid
+    #weexPid=$(ps x | grep weex | grep -v grep | awk '{print $1}')
+    watchPid=$(ps x | grep watch | grep -v grep | awk '{print $1}')
+    servePid=$(ps x | grep serve | grep -v grep | awk '{print $1}')
+    swordServerPid=$(ps x | grep sword.ios.server | grep -v grep | awk '{print $1}')
+
+    # get npm shell pids
+    mySelfNamePid=$(ps x | grep $mySelfName | grep -v grep |awk '{print $1}')
+
+    ps aux | grep -r startNpm
+
+    allPids=($watchPid $servePid $swordServerPid $mySelfNamePid)
+    echo "allPids"${allPids[@]} 
+
+    echo $(ps x | grep -v grep | awk '{print $1}') 
+
+    #echo "weexPid:${weexPid}"
+
+    echo "watchPid:${watchPid}"
+
+    echo "servePid:${servePid}"
+
+    echo "swordServerPid:${swordServerPid}"
+
+    echo "$mySelfName:${mySelfNamePid[@]}"
+
+    for pid in ${allPids[@]}
+    do
+        if [ $pid != $$ ] ; then
+            kill -9 "$pid" 
+        fi
+    done
+
+    echo "kill all pids end "
+}
+
+echo "begin kill all pids"
+killAllPids
+
+
+
+

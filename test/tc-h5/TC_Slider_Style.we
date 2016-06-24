@@ -1,0 +1,191 @@
+<template>
+
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Slider_Style"></TC_Support_MainTitle>
+    <TC_Support_SubTitle title="01.No width and height"></TC_Support_SubTitle>
+    <div class="size column js-con">
+        <slider class="bg" interval="3000" auto-play="false" onChange="changeListenner">
+            <image class="size" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+        </slider>
+    </div>
+    <TC_Support_SubTitle title="02.No width and height,but has flex"></TC_Support_SubTitle>
+    <div class="size row js-con">
+        <slider class="bg flex" interval="3000" auto-play="false" onChange="changeListenner">
+            <image class="size" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+        </slider>
+    </div>
+    <TC_Support_SubTitle title="03.Margin：all，lt，rb"></TC_Support_SubTitle>
+    <div class="size row js-con">
+      <div class="sub-size">
+        <slider class="origin mg solid" interval="3000" auto-play="false" onChange="changeListenner">
+            <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+        </slider>
+      </div>
+      <div class="sub-size">
+        <slider class="origin mg-lt solid" interval="3000" auto-play="false" onChange="changeListenner">
+            <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+        </slider>
+      </div>
+      <div class="sub-size p-rb">
+        <slider class="origin mg-rb solid" interval="3000" auto-play="false" onChange="changeListenner">
+            <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+        </slider>
+      </div>
+    </div>
+    <TC_Support_SubTitle title="04.Padding：all，lt，rb"></TC_Support_SubTitle>
+    <div class="size row js-con">
+        <slider class="origin pd solid" interval="3000" auto-play="false" onChange="changeListenner">
+            <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+        </slider>
+        <slider class="origin pd-lt solid" interval="3000" auto-play="false" onChange="changeListenner">
+            <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+        </slider>
+        <slider class="origin pd-rb solid" interval="3000" auto-play="false" onChange="changeListenner">
+            <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+        </slider>
+    </div>
+    <TC_Support_SubTitle title="05.Border：solid，dotted，dashed"></TC_Support_SubTitle>
+    <div class="size row js-con">
+        <slider class="origin solid" interval="3000" auto-play="false" onChange="changeListenner">
+            <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+        </slider>
+        <slider class="origin dotted" interval="3000" auto-play="false" onChange="changeListenner">
+            <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+        </slider>
+        <slider class="origin dashed" interval="3000" auto-play="false" onChange="changeListenner">
+            <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+        </slider>
+    </div>
+    <TC_Support_SubTitle title="06.MaxWidth：less；none；more"></TC_Support_SubTitle>
+    <div class="size row js-con">
+       <div class="sub-size">
+            <slider class="origin max-w-less solid" interval="3000" auto-play="false" onChange="changeListenner">
+                <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+            </slider>
+       </div>
+       <div class="sub-size">
+            <slider class="origin solid" interval="3000" auto-play="false" onChange="changeListenner">
+                <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+            </slider>
+       </div>
+       <div class="sub-size">
+            <slider class="origin max-w-more solid" interval="3000" auto-play="false" onChange="changeListenner">
+                <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+            </slider>
+       </div>
+    </div>
+    <TC_Support_SubTitle title="07.MinWidth：less；none；more"></TC_Support_SubTitle>
+    <div class="size row js-con">
+      <div class="sub-size">
+            <slider class="origin min-w-less solid" interval="3000" auto-play="false" onChange="changeListenner">
+                <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+            </slider>
+       </div>
+       <div class="sub-size">
+            <slider class="origin solid" interval="3000" auto-play="false" onChange="changeListenner">
+                <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+            </slider>
+       </div>
+       <div class="sub-size">
+            <slider class="origin min-w-more solid" interval="3000" auto-play="false" onChange="changeListenner">
+                <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+            </slider>
+       </div>
+    </div>
+    <TC_Support_SubTitle title="08.MaxHeight：less；none；more"></TC_Support_SubTitle>
+    <div class="size row js-con">
+      <div class="sub-size">
+            <slider class="origin max-h-less solid" interval="3000" auto-play="false" onChange="changeListenner">
+                <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+            </slider>
+       </div>
+       <div class="sub-size">
+            <slider class="origin solid" interval="3000" auto-play="false" onChange="changeListenner">
+                <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+            </slider>
+       </div>
+       <div class="sub-size">
+            <slider class="origin max-h-more solid" interval="3000" auto-play="false" onChange="changeListenner">
+                <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+            </slider>
+       </div>
+    </div>
+    <TC_Support_SubTitle title="09.MinHeight：less；none；more"></TC_Support_SubTitle>
+    <div class="size row js-con">
+      <div class="sub-size">
+            <slider class="origin min-h-less solid" interval="3000" auto-play="false" onChange="changeListenner">
+                <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+            </slider>
+       </div>
+       <div class="sub-size">
+            <slider class="origin solid" interval="3000" auto-play="false" onChange="changeListenner">
+                <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+            </slider>
+       </div>
+       <div class="sub-size">
+            <slider class="origin min-h-more solid" interval="3000" auto-play="false" onChange="changeListenner">
+                <image class="origin" repeat="{{itemList}}" src="{{pictureUrl}}"></image>
+            </slider>
+       </div>
+    </div>
+  </TC_Support_Scroller>
+</template>
+
+<style>
+  
+
+
+
+  .row{ flex-direction:row;}
+  .column{flex-direction:column;}
+  .size{width: 750;height: 70;}
+  .sub-size{width:250;height:70;background-color: #0000ff;border-width: 1;border-color: #ff0000;}
+  .js-con{justify-content: space-between;}
+
+  .origin{background-color: #FFFFDF;width: 200;height: 50;}
+  .bg{background-color: #FFFFDF;}
+  .flex{flex:1;}
+  .mg{ margin: 5;}
+  .mg-lt{margin-top: 5;margin-left: 10;}
+  .mg-rb{margin-bottom: 5;margin-right: 10;}
+  .p-rb{justify-content:flex-end;align-items:flex-end;}
+
+  .pd{padding: 5;}
+  .pd-lt{padding-top: 5;padding-left: 10;}
+  .pd-rb{padding-bottom: 5;padding-right: 10;}
+
+
+  .solid{ border-style: solid;border-width: 5;border-color:#019858;border-radius:5;}
+  .dotted{ border-style: dotted; border-width: 5;border-color:#019858;border-radius:5;}
+  .dashed{ border-style: dashed; border-width: 5;border-color:#019858;border-radius:5;}
+
+  .max-w-less{max-width: 150;}
+  .max-w-more{max-width: 250;}
+
+  .min-w-less{min-width: 150;}
+  .min-w-more{min-width: 250;}
+
+  .max-h-less{max-height: 20;}
+  .max-h-more{max-height: 70;}
+
+  .min-h-less{min-height: 20;}
+  .min-h-more{min-height: 70;}
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      itemList: [
+        {pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg'},
+        {pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'},
+        {pictureUrl: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg'}
+      ],
+    },
+    methods: {
+      changeListenner:function(e){
+
+      }
+    }
+  }
+</script>

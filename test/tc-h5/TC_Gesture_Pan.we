@@ -1,0 +1,98 @@
+<template>
+  <scroller class="root">
+    <TC_Support_MainTitle title="TC_Gesture_Pan"></TC_Support_MainTitle>
+    <text class="discript">pan: recognize panstart  panmove panend, return coordinate</text>
+    <div>
+      <text class="tc-title">pan test</text>
+    </div>
+    <div style="padding:5px">
+      <text class="console-info" style="font-size:35px" onclick="setPanStart" value="{{showPanStartText}}"></text>
+    </div>
+    <div class="block test-div" onpanstart="onpanstart" onpanmove="onpanmove" onpanend="onpanend">
+      <div style="padding:5px">
+        <text class="console-info" style="font-size:35px;"  value="{{panText}}" ></text>
+      </div>
+    </div>
+
+  </scroller>
+</template>
+
+<style>
+  
+  .discript {color: #000000; font-weight: bold; font-size:30;background-color: #37dd23;font-family: "Open Sans", sans-serif;}
+  .test-div{
+    margin-top: 10;
+    height: 400;
+    background-color:#FAEBD7;
+  }
+
+  .console-info{
+    color: red;
+    font-size: 40;
+  }
+
+
+  .tc-title{
+    font-size: 45;
+    background-color: rgba(255,0,0,1.0);
+    margin-top: 15px
+  }
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      panText:'',
+      showPanStart:true,
+      showPanStartText:'点击设置可以观察panstart',
+    },
+    methods: {
+      setPanStart:function(e){
+        if(this.showPanStart == false){
+          this.showPanStart = true;
+          this.showPanStartText = ' click to stop observering panstart';
+        }else{
+          this.showPanStart = false;
+          this.showPanStartText = 'click to start observer panstart';
+        }
+      },
+      onpanstart:function(e){
+        nativeLog("==weex gesture== onpanstart")
+        if(this.showPanStart){
+          var params = {
+            'message':' start panstart evert',
+            'okTitle':'OK',
+          }
+          //this.$call('modal','alert',params,2);
+        }
+        if(typeof window != 'undefined')
+          this.panText = 'trigger panstart -> {id:'+e.touch.identifier+',pageX:' + e.touch.pageX + ',pageY:' + e.touch.pageY + ',screenX:'+e.touch.screenX + ',screenY:'+e.touch.screenY+'}';
+        else{
+          this.panText = 'trigger panstart -> '+ JSON.stringify(e.changedTouches);
+        }
+        this.gestureConcludeValue = this.panText;
+
+      },
+
+      onpanmove:function(e){
+        nativeLog("==weex gesture== onpanmove")
+        if(typeof window != 'undefined')
+          this.panText = 'trigger panmove -> {id:'+e.touch.identifier+',pageX:' + e.touch.pageX + ',pageY:' + e.touch.pageY + ',screenX:'+e.touch.screenX + ',screenY:'+e.touch.screenY+'}';
+        else
+          this.panText = 'trigger panmove -> ' + JSON.stringify(e.changedTouches);
+        this.gestureConcludeValue = this.panText;
+      },
+
+      onpanend:function(e){
+        nativeLog("==weex gesture== onpanend")
+        if(typeof window != 'undefined')
+          this.panText = 'trigger panend -> {id:'+e.touch.identifier+',pageX:' + e.touch.pageX + ',pageY:' + e.touch.pageY + ',screenX:'+e.touch.screenX + ',screenY:'+e.touch.screenY+'}';
+        else
+          this.panText = 'trigger panend -> ' + JSON.stringify(e.changedTouches);
+        this.gestureConcludeValue = this.panText;
+
+      }
+    }
+  }
+</script>

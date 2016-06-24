@@ -1,0 +1,48 @@
+<template>
+    <TC_Support_Scroller>
+      <TC_Support_MainTitle title="TC_Input_Style_Overflow"></TC_Support_MainTitle>
+      <TC_Support_SubTitle title="01.Font-size:150;height:50"></TC_Support_SubTitle>
+      <div>
+        <input class="input margin height" value="Hello Weex"></input>
+      </div>
+
+      <TC_Support_SubTitle title="02.Overflow hidden"></TC_Support_SubTitle>
+      <div>
+        <input class="input margin height overflow" value="Hello Weex"></input>
+      </div>
+      
+      <TC_Support_SubTitle title="03.Placeholder"></TC_Support_SubTitle>
+      <div>
+        <div class="placediv"></div>
+        <input class="input height" value="Hello Weex"></input>
+        <div class="placediv"></div>
+      </div>
+
+      <TC_Support_SubTitle title="04.Font-size:150;height:0"></TC_Support_SubTitle>
+      <div>
+        <input class="input margin" value="Hello Weex"></input>
+      </div>
+
+      <TC_Support_SubTitle title="05.Overflow hidden;height:0"></TC_Support_SubTitle>
+      <div>
+        <input class="input margin overflow" value="Hello Weex"></input>
+      </div>
+      
+      <TC_Support_SubTitle title="06.Placeholder;height:0"></TC_Support_SubTitle>
+      <div>
+        <div class="placediv"></div>
+        <input class="input" value="Hello Weex"></input>
+        <div class="placediv"></div>
+      </div>
+
+    </TC_Support_Scroller>
+</template>
+
+<style>
+  .container{border-width: 3;border-style: solid;border-color: #FF0000}
+  .placediv{height:30;background-color:#00F5FF;}
+  .input{font-size:70;background-color:#FFDAB9}
+  .height{height: 40;}
+  .margin{margin-top: 50;margin-bottom: 50;}
+  .overflow{overflow: hidden;}
+</style>

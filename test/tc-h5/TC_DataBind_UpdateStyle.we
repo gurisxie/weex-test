@@ -1,0 +1,32 @@
+<template>
+  
+<TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_DataBind_UpdateStyle"></TC_Support_MainTitle>
+    <TC_Support_SubTitle title="01.Update style"></TC_Support_SubTitle>
+    <TC_Support_Button style="margin:5" flagid="btn-change" title="Click to change style" btn-touch="{{change}}"></TC_Support_Button>
+    <div class="size" style="background-color:{{bgc}}"></div>
+  </TC_Support_Scroller>
+</template>
+
+<style>
+
+
+
+  .size {width:400; height:200;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      bgc: '#FF00FF'
+    },
+    methods: {
+      change: function () {
+        if(this.bgc === '#FF00FF')
+          this.bgc = '#00FF00'
+        else
+          this.bgc = '#FF00FF'
+      }
+    }
+  }
+</script>

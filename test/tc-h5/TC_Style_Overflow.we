@@ -1,0 +1,101 @@
+<template>
+  
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Style_Overflow"></TC_Support_MainTitle>
+    <TC_Support_SubTitle title="01.div-text"></TC_Support_SubTitle>
+    <div class="row">
+      <div class="div div-overflow overflow-hidden">
+        <div class="item it-overflow">
+          <text class="txt font">hidden:overstep</text>
+        </div>
+      </div>
+      <div class="div div-overflow overflow-visible">
+        <div class="item it-overflow">
+          <text class="txt font">visible:overstep</text>
+        </div>
+      </div>
+    </div>
+
+    <TC_Support_SubTitle title="02.div-image"></TC_Support_SubTitle>
+    <div class="row">
+      <div class="div div-overflow overflow-hidden">
+        <image class="item it-overflow" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+      </div>
+      <div class="div div-overflow overflow-visible">
+        <image class="item it-overflow" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+      </div>
+    </div>
+
+    <TC_Support_SubTitle title="03.scroller"></TC_Support_SubTitle>
+    <div class="row">
+      <scroller class="div div-overflow overflow-hidden">
+        <div class="item it-overflow">
+          <text class="txt font">hidden:overstep</text>
+        </div>
+      </scroller>
+      <scroller class="div div-overflow overflow-visible">
+        <div class="item it-overflow">
+          <text class="txt font">overstep visible,scroller default hidden</text>
+        </div>
+      </scroller>
+    </div>
+
+    <TC_Support_SubTitle title="04.list"></TC_Support_SubTitle>
+    <div class="row">
+      <list class="div div-overflow overflow-hidden">
+        <cell>
+          <div class="item it-overflow">
+            <text class="txt font">hidden:overstep</text>
+          </div>
+        </cell>
+      </list>
+      <list class="div div-overflow overflow-visible">
+        <cell>
+          <div class="item it-overflow">
+            <text class="txt font" >overstep visible,list default hidden</text>
+          </div>
+        </cell>
+      </list>
+    </div>
+    </TC_Support_Scroller>
+</template>
+
+<style>
+  .scroller {background-color: #F4F3DE;flex-direction: column;}
+  .title-div {background-color: #66CDAA;height: 66;margin-bottom: 5;}
+  .title{font-weight: bold;font-size: 36;margin-top:15;margin-left: 5;}
+  .row{flex-direction:row;}
+  .div {width: 375;flex-direction: row;margin-bottom: 15;padding: 15;border-style: solid;border-color: #FF6666;border-width: 1;}
+  .txt {font-size: 30;color: #FF6666;}
+  .div-overflow {height: 120;margin-bottom: 80;background-color: #7BA3A8;}
+  .overflow-hidden {overflow: hidden;}
+  .overflow-visible {overflow: visible;}
+  .item {width: 150;height: 90;padding-left: 15;color: #eeeeee;font-size: 30;background-color: #BEAD92;}
+  .it-overflow {width: 300;height: 160;}
+  .font{font-family: Times New Roman;}
+
+  
+
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      opacity: []
+    },
+    methods: {
+      ready: function() {
+//        this.$setTitle('Style Cases'); // FIXME why ?
+        var opacity = [];
+        for (var i = 10; i >= 1; --i) {
+          opacity.push({op: 0.1 * i});
+        }
+        this.opacity = opacity;
+      },
+      onclick: function(ev) {
+//        console.log(ev);
+      }
+    }
+  };
+</script> 

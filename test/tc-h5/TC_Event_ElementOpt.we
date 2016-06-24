@@ -1,0 +1,114 @@
+<template>
+  <scroller style="flex-direction: column;background-color: #ffffff;">
+    <TC_Support_MainTitle title="TC_Event_ElementOpt"></TC_Support_MainTitle>
+    <div class="block">
+      
+      <TC_Support_SubTitle title="01.addElement、RemoveElement"></TC_Support_SubTitle>
+      <div repeat="{{AddElementTop}}">
+        <div if={{isShow}} style="padding:10; background-color:#953457;" >
+          <text class="HasHW" item-id="{{itemId}}" value="{{textValue}}" onclick="textTopAddNew"></text>
+        </div>
+      </div>
+      <text class="btn" flag-id="txt-add-top" style="width:500;" value="点击我，在我上方增加一个文本" onclick="addElementTop"></text>
+      <text class="btn" flag-id="txt-add-bottom" style="width:500;" value="点击我，在我下方增加一个文本" onclick="addElementBottom"></text>
+      <div repeat="{{AddElementBottom}}">
+        <div if={{isShow}} style="padding:10; background-color:#953457;">
+          <text class="HasHW" item-id="{{itemId}}" value="{{textValue}}" onclick="textBottomDisAppear"></text>
+        </div>
+      </div>
+    </div> 
+    <div class="block">
+      <TC_Support_SubTitle title="02.moveElement"></TC_Support_SubTitle>
+      <text class="btn" onclick="moveText">{{moveTextValue}}</text>
+    </div> 
+    <div class="block">
+      <TC_Support_SubTitle title="03.addEvent、removeEvent"></TC_Support_SubTitle>
+      <text class="HasHW" flag-id="txt-changeBgColor" value="{{eventTextValue}}" 
+      style="background-color:{{bgColor}}" onclick="changeBgColor"></text>
+      <div style="flex-direction:row;">
+        <text class="btn" flag-id="txt-addEvent" value="点击我，addEvent" onclick="addTextEvent"></text>
+        <text class="btn" flag-id="txt-removeEvent" value="点击我，removeEvent" onclick="removeTextEvent"></text>
+      </div> 
+    </div> 
+    <!-- <div class="block">
+      <text class="title">04.refreshInstance</text>
+      <text class="HasHW"  value="{{eventTextValue}}" 
+      style="background-color:{{bgColor}}" onclick="changeBgColor"></text>
+      <div style="flex-direction:row;">
+        <text class="btn" value="点击我，refreshInstance" onclick="addTextEvent"></text>
+      </div> 
+    </div> -->
+  </scroller>
+</template>
+
+<style>
+  .block {flex-direction: column;border-width:3;border-color:#ffff00;border-style:dotted;margin-bottom:5;overflow:hidden;}
+  .discript {flex: 1; color: #000000; font-weight: bold; font-size:30;background-color: #37dd23;overflow:hidden;font-family: "Open Sans", sans-serif;}
+  .title {flex: 1; color: #000000;font-size:35; font-weight: bold; background-color: #ff0000;overflow: visible;font-family: "Open Sans", sans-serif;}
+  .HasHW {margin:10;background-color: #ffff00;font-size: 30;font-family: "Open Sans", sans-serif;}
+  .btn{ width:300; font-size: 25; border-width: 3; border-color: #cccccc; padding: 5; border-style: solid;border-radius: 3; margin: 5; font-family: "Open Sans", sans-serif;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      maxLength:0,
+      AddElementTop:[],
+      AddElementBottom:[],
+      eventTextValue:"点击我，改变背景颜色",
+      bgColor:"#ffff00",
+      moveTextValue:"点击测试Move方法"
+    },
+    methods: {
+      addElementTop: function (e) {
+        if (this.AddElementTop) {
+          var length = this.AddElementTop.length;
+          this.maxLength++;
+          this.AddElementTop.push({itemId:('a'+this.maxLength),isShow: true, textValue: ('文本'+(length+1)+'，点击我增加控件')})
+        };
+      },
+      addElementBottom: function (e) {
+        if (this.AddElementBottom) {
+          var length = this.AddElementBottom.length;
+          this.maxLength++;
+          this.AddElementBottom.push({itemId:('a'+this.maxLength),isShow: true, textValue: ('文本'+(length+1)+'，点击我自动消失')})
+        };
+      },
+      textTopAddNew: function (e) {
+        if (this.AddElementTop) {
+          var length = this.AddElementTop.length;
+          this.maxLength++;
+          this.AddElementTop.push({itemId:('a'+this.maxLength),isShow: true, textValue: ('文本'+(length+1)+'，点击我增加控件')})
+        };
+      },
+      textBottomDisAppear: function (e) {
+        if (this.AddElementBottom) {
+          var itemId = e.target.attr.itemId;
+          for (var i = 0; i < this.AddElementBottom.length; i++) {
+            var itemData = this.AddElementBottom[i];
+            if(itemData.itemId==itemId){
+              itemData.isShow = false;
+              break;
+            }
+          }
+        };
+      },
+      moveText: function (e) {
+        this.moveTextValue="H5暂不支持moveElement方法";
+      },
+      changeBgColor: function (e) {
+        if(this.bgColor=="#ffff00"){
+          this.bgColor="#00ffff";
+        }else{
+          this.bgColor="#ffff00"
+        }
+      },
+      addTextEvent: function (e) {
+        this.eventTextValue="H5暂不支持addEvent";
+      },
+      removeTextEvent: function (e) {
+        this.eventTextValue="H5暂不支持removeEvent";
+      },
+    }
+  }
+</script>

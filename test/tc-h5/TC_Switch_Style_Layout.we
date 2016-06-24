@@ -1,0 +1,24 @@
+<template>
+  <scroller class="root">
+    <TC_Support_MainTitle title="TC_Switch_Style_Layout"></TC_Support_MainTitle>
+    <list class="list" style="height:900;">
+    	<cell>
+        <div class="list-cell-div">
+          <TC_Support_SubTitle title="don't change and layout when set width and height"></TC_Support_SubTitle>
+          <text style="width:500;font-size:26;text-align:center;">top</text>
+          <div style="flex-direction:row;">
+            <text style="font-size:26;">left</text><switch checked="true" style="width:500;height:100;background-color:#00ffff;"></switch>
+            <text style="font-size:26;">right</text>
+          </div>
+          <text style="width:500;font-size:26;text-align:center;">bottom</text>
+        </div>
+      </cell>
+    </list>
+  </scroller>
+ </template>
+
+<style>
+  
+  .list{width: 750; border-width: 1;border-color: #eeeeee;flex-direction: column;overflow: hidden;}
+  .list-cell-div{flex-direction: column;background-color:#ffffff;justify-content:center;margin-top:15;  margin-bottom:15; }
+</style>

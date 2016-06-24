@@ -1,0 +1,135 @@
+<template>
+  <scroller style="flex-direction: column;">
+    <TC_Support_MainTitle title="TC_BizModule_GetUserInfo"></TC_Support_MainTitle>
+    <div class="block">
+      <text class="discript">User Module测试指标：</text>
+      
+      <text class="discript">
+      /**
+         * 获取用户信息
+         * callback返回参数string：jsonMap
+         * 参数值{'isLogin':'true','userId':'userid','nick':'jb'｝
+         */
+        function getUserInfo(callback:string)
+        </text>
+         
+         <text class="discript">
+        /**
+         * 登录
+         * callback返回参数：string:jsonMap
+         * 参数值：{'status'：'success', 'info'：{'userId':'userId','nick':'jb'}}
+         * 如果登录失败 返回 {'status'：'failed'}
+         */
+        function login(callback:string)
+         </text>
+         
+         <text class="discript">
+        /**
+        * 退出登录
+        * callback返回参数：status：string
+        * {'status':'success'}
+        */
+        function logout(callback:string)
+
+        </text>
+      <text class="discript">测试方法：</text>
+    </div>
+    <div style="margin-top:10;margin-left:10;">
+      <text class= "btn" value = '点击我，申请登录' onclick = "gotoLogin"></text>
+    </div>
+    <div style="margin-top:10;margin-left:10;">
+      <text class= "btn" value = '点击我，获取用户信息' onclick = "getUserInfo"></text>
+    </div>
+    <div style="margin-top:10;margin-left:10;">
+      <text class= "btn" value = '点击我，退出登录' onclick = "loginOut"></text>
+    </div>
+  </scroller>
+</template>
+<style>
+.btn{ width:300; font-size: 25; border-width: 3; border-color: #cccccc; padding: 5; border-style: solid;border-radius: 3; margin: 5;font-family: "Open Sans", sans-serif; }
+
+.title{
+  flex: 1;
+  color: "#ff0000";
+  font-size: 48;
+  font-weight: "bold";
+  background-color: "#eeeeee"
+}
+
+.discript {flex: 1; color: #000000; font-weight: bold; font-size:30;background-color: #37dd23;overflow:hidden;font-family: "Open Sans", sans-serif;}
+  .tc-div{
+    background-color:rgb(255,69,0)
+  }
+  .tc-desc{
+    font-size: 50;
+    font-weight: bold;
+  }
+  .mt15{
+    margin-top: 15;
+  }
+  .change-color{
+    margin-top: 7;
+    font-size: 40
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      hexColorToName:'#0000FF',
+      url:'https://item.taobao.com/item.htm?id=520421163634',
+      param : {
+          'mtlDisplay updateNextProperties': 'updateNextProperties',
+        },
+        global:{
+            title:'title test!!!',
+        }
+
+    },
+    methods: {
+        gotoLogin: function(e){
+            this.$call('user', 'login', function (ret) {
+                    var data = ret && ret.data || {};
+                    var message = "login info : "  +" ret:" + ret;
+                    var okTitle = 'ok';
+                    var params = {
+                      'message': message,
+                      'okTitle': okTitle,
+                    };
+                    this.$call('modal','alert',params, 2);
+
+                }.bind(this));
+        },
+
+        getUserInfo:function(e){
+            this.$call('user', 'getUserInfo', function (ret) {
+                    var data = ret && ret.data || {};
+
+                    var message = "user info:"  +" ret:" + ret;
+                    var okTitle = 'ok';
+                    var params = {
+                      'message': message,
+                      'okTitle': okTitle,
+                    };
+                    this.$call('modal','alert',params, 2);
+
+                }.bind(this));
+        },
+        loginOut:function(e){
+            this.$call('user', 'logout', function (ret) {
+                    var data = ret && ret.data || {};
+
+                    var message = "user info:"  +" ret:" + ret;
+                    var okTitle = 'ok';
+                    var params = {
+                      'message': message,
+                      'okTitle': okTitle,
+                    };
+                    this.$call('modal','alert',params, 2);
+
+                }.bind(this));
+        },
+    }
+  }
+</script>
+

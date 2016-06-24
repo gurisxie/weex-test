@@ -1,0 +1,122 @@
+<template>
+  
+  <TC_Support_MainTitle title="TC_Scroller_RefreshAndLoading"></TC_Support_MainTitle>
+  <div>
+  <scroller class="screen" >
+    <refresh  class = "refresh-view" display="{{refresh_display}}" onrefresh="onrefresh">
+      <text class="refresh-arrow" if="{{(refresh_display==='hide')}}"> ↓ 下拉刷新 </text>
+      <loading-indicator color="red" class="indicator"></loading-indicator>
+    </refresh>
+
+    <div>
+      <div>
+        <text>scroller refresh & loading</text>
+      <text onclick="addData" style ="font-size: 40px;
+      color: red; text-align: center">test data [click add node]</text>
+      </div>
+    </div>
+
+    <div repeat="{{items}}" style="height:100">
+      <text style="font-size: 50">{{name}}</text>
+    </div>
+
+
+    <loading class="loading" display="{{loading_display}}" onloading="onloading">
+      <text class="refresh-arrow" if="{{(loading_display==='hide')}}"> ↑ 上拉刷新 </text>
+      <loading-indicator class="indicator"></loading-indicator>
+    </loading>
+
+  </scroller>
+  </div>
+</div>
+</template>
+
+<style>
+.list {
+    height: 810px;
+    border-width: 2px;
+    border-color: yellow;
+  }
+
+
+
+.font{font-family: Times New Roman;font-size: 30;}
+.refresh-view{
+    width: 750;
+    height: 100;
+    background-color: #33b5e5;
+  }
+.refresh-arrow {
+    font-size: 30;
+    color: yellow;
+    text-align: center;
+  }
+.loading{
+    width: 750;
+    height: 100;
+    background-color: #33b5e5;
+}
+.indicator{
+    flex: 1;
+    color: #889967;
+}
+   </style>
+
+<script>
+  module.exports = {
+    methods: {
+      onrefresh: function(e) {
+        var self = this;
+        self.refresh_display = 'show';
+        self.$call('modal', 'toast', {
+          'message': 'onrefresh'
+        });
+
+        // this.isrequest = 'yes'
+
+        // if (this.isrequest === 'yes') {
+        //           self = this;
+        // this.$call('timer', 'setTimeout', function () {
+        //   self.refresh_display = 'hide'
+          
+        //   self.$call('modal', 'toast', {
+        //   'message': 'tttt'
+        // }); 
+
+        // this.isrequest = 'no'
+        // }, 3000);
+        // };
+
+        // this.isrequest = 'no'
+        self.refresh_display = 'hide';
+      },
+
+      onloading: function() {
+        var self = this;
+        self.loading_display = 'show';
+        self.$call('modal', 'toast', {
+          'message': 'onloading'
+        });
+
+        // if (this.loading_display !== 'hide') {
+        // self = this;
+      //   this.$call('timer', 'setTimeout', function () {
+      //     self.loading_display = 'hide';
+      //   }, 3000);
+      // }
+
+        self.loading_display = 'hide';
+      },
+      addData:function() {
+        this.items.push({name: "jack"})
+      }
+    },
+    data: {
+      isrequest: 'yes',
+      items: [{name: "jyi"}, {name: "jgy"},{name: "jyi"}, {name: "jgy"},{name: "jyi"}, {name: "jgy"},{name: "jyi"}, {name: "jgy"},{name: "jyi"}, {name: "jgy"},{name: "jyi"}, {name: "jgy"}],
+      refresh_display: 'hide',
+      loading_display: 'hide'
+    }
+  }
+   </script>
+

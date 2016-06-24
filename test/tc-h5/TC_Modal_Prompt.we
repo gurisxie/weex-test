@@ -1,0 +1,99 @@
+<template>
+  
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Modal_Prompt"></TC_Support_MainTitle>
+    <div class="block test-div" >
+      <text class="text-click font" onclick="callPrompt" message="okTitle default" canceltitle="cancel">okTitle default</text>
+      <text class="text-click font" onclick="callPrompt" message="cancelTitle default" oktitle="OK">cancelTitle default</text>
+      <text class="text-click font" onclick="callPrompt" message="okTitle blank" oktitle="" canceltitle="Hello-Cancel">okTitle blank</text>
+      <text class="text-click font" onclick="callPrompt" message="cancelTitle blank" oktitle="Hello-OK" canceltitle="">cancelTitle blank</text>
+      <text class="text-click font" onclick="callPrompt" message="This is a long message that we can describe complicated info. however,we just want to test it" oktitle="message long" >message long</text>
+      <text class="text-click font" onclick="callPrompt" message="okTitle long" oktitle="This is a long message that we can describe complicated info. however,we just want to test it" >okTitle long</text>
+      <text class="text-click font" onclick="callPrompt" message="" oktitle="OK">message blank</text>
+    </div>
+    <div class="test-div">
+      <text class="log-text font" style="font-size:20" repeat="{{logList}}">{{logMessage}}</text>
+    </div>
+     </TC_Support_Scroller>
+</template>
+
+<style>
+
+
+
+  .font{font-family: Times New Roman;font-size: 30;}
+  .test-div{
+    margin-top: 5;
+    font-size: 35;
+    background-color:#FAEBD7;
+    padding-bottom: 10;
+  }
+  .log-title{
+    background-color: red;
+    font-size: 30;
+    width:200;
+    height:40;
+    position:fixed;
+    right:20;
+    top:15;
+    text-align: center;
+  }
+  .log-text{
+    font-size: 20;
+    margin-top: 5;
+    margin-left: 5;
+    margin-right: 5;
+  }
+  .test-title{
+    color: red;
+    font-size: 30;
+    font-weight: bold;
+  }
+  .text-click{
+    color:#1E90FF;
+    border-color: #1E90FF;
+    border-width: 3;
+    margin-top: 10;
+    margin-left: 5;
+    margin-right: 5;
+    font-size:30;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      logList: [
+        ]
+    },
+    methods: {
+      callPrompt:function(e){
+        var message = e.target.attr.message;
+        var value = e.target.attr.value;
+        var okTitle = e.target.attr.oktitle;
+        var cancelTitle = e.target.attr.canceltitle;
+        var params = {
+          'message': message,
+          'okTitle': okTitle,
+          'cancelTitle':cancelTitle
+        }
+        var self = this;
+        this.$call('modal','prompt',params,function(e) {
+          if(typeof(e) != 'object')
+          {
+            e=JSON.parse(e);
+          }
+
+          self.logList.push({logMessage:"close prompt,select button: " + e.result});
+          if(e.data != "")
+            self.logList.push({logMessage:"user input: " + e.data});
+          
+        });
+        this.logList.push({logMessage:"click button: " + value});
+      },
+      clearLog:function(){
+        this.logList=[];
+      }
+    }
+  }
+</script>

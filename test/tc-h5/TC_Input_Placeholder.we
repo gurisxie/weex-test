@@ -1,0 +1,51 @@
+<template>
+  
+<TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Input_Placeholder"></TC_Support_MainTitle>
+    <div style="flex-direction: column;">
+      <list class="list" style="height:900;">
+        <cell>
+          <div class="list-cell-div">
+            <text style="font-size:30;" class="font">with no placeholder</text>
+            <input class="list-cell-input font" type="text"></input>
+          </div>
+        </cell>
+        <cell>
+          <div class="list-cell-div">
+            <input class="list-cell-input font" type="text" placeholder="default placeholder"></input>
+          </div>
+        </cell>
+        <cell>
+          <div class="list-cell-div">
+            <input class="list-cell-input font" style="placeholder-color:#ff0000;" type="text" placeholder="placeholder-color:#ff0000;"></input>
+          </div>
+        </cell>
+        <cell>
+          <div class="list-cell-div">
+            <input class="list-cell-input font" style="font-size:15;" type="text" placeholder="font-size:15"></input>
+          </div>
+        </cell>
+      </list>
+    </div>
+  </TC_Support_Scroller>
+</template>
+ 
+<style>
+
+
+.font{font-family: Times New Roman;}
+  .title{margin-top: 10;margin-left: 10;margin-bottom:10; font-size: 40; font-weight: bold;}
+  .div-split{height: 1; border-width: 1; border-style:dashed; border-color: #375830;}
+  .list{width: 750; border-width: 1;border-color: #eeeeee;flex-direction: column;overflow: hidden;}
+  .list-cell-div{flex-direction: column;background-color:#ffffff;justify-content:center;overflow: hidden; }
+  .list-cell-input{ font-size: 25; margin-top:15; margin-left: 15; margin-bottom:15; margin-right:15; text-decoration: underline; color: #33a3dc;width: 500;height: 30; border-width: 1;border-color:#cccccc; overflow: hidden;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    methods: {
+    }
+  }
+</script>

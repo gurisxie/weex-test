@@ -1,0 +1,48 @@
+<template>
+  <list class="list" scroll-direction="vertical" show-scrollbar="true">
+    <text class="fixed l-t">Left Top</text>
+    <text class="fixed l-b">Left Bottom</text>
+    <text class="fixed r-t">Right Top</text>
+    <text class="fixed r-b">Right Bottom</text>
+    
+    <cell class="cell" repeat="{{itemList}}" style="width:350;" item-id="{{itemId}}">
+        <text class="sticky firstT">{{title}}</text>
+        <text class="sticky secT">{{title}}--副标题</text>
+        <image class="img" src="{{pictureUrl}}" ></image>
+    </cell>
+  </list>
+</template>
+
+<style>
+  .cell{border-width: 5;border-color: #00ff00;margin-top: 10; margin-left: 10;}
+  .list{flex-direction:column;background-color:#cccccc;overflow:hidden;margin: 10}
+  .img {width: 200; height: 200; margin-top: 30;}
+  .sticky {position:sticky; margin-top:30;margin-flex: 1; color: #ff0000; font-weight: bold; font-family: "Open Sans", sans-serif;}
+  .firstT{font-size:30;background-color: #00ffff; margin-left: 30;left: 30;}
+  .secT{font-size: 20;background-color: #0000ff; margin-right: 30;left: 30; }
+  
+  .fixed{position:fixed;width:100; height:50;background-color: #523769; border-width: 5; border-color: #cccccc; border-style: solid;width: 150;color: #ffffff;height: 50;font-size: 20;}
+  .l-t{left: 250;top:50; }
+  .l-b{left: 250;bottom:50; }
+  .r-t{right:50;top:50; }
+  .r-b{right:50;bottom:50; }
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      itemList: [
+        {itemId: '520421163634', title: '宝贝标题1', pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: '宝贝标题2', pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: '宝贝标题3', pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '520421163634', title: '宝贝标题4', pictureUrl: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1huF0KpXXXXcsXpXXXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: '宝贝标题5', pictureUrl: 'https://gd3.alicdn.com/imgextra/i3/777216058/TB274wXgVXXXXXYXpXXXXXXXXXX_!!777216058.jpg'},
+        {itemId: '522076777462', title: '宝贝标题6', pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/2623842913/TB2NLTujFXXXXaiXXXXXXXXXXXX_!!2623842913.jpg'},
+        {itemId: '520421163634', title: '宝贝标题7', pictureUrl: 'https://gd4.alicdn.com/imgextra/i4/1764288638/TB2051gcVXXXXbKXXXXXXXXXXXX_!!1764288638.jpg'},
+        {itemId: '522076777462', title: '宝贝标题8', pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1T1zTHVXXXXclXVXXXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: '宝贝标题9', pictureUrl: 'https://gd1.alicdn.com/imgextra/i1/1764288638/TB2CSKpcVXXXXaKXXXXXXXXXXXX_!!1764288638.jpg'},
+      ]
+    },
+  }
+</script>

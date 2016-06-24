@@ -1,0 +1,178 @@
+<template>
+   
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Style_Flex"></TC_Support_MainTitle>
+    
+    <!--01-->
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="01.flex-whole-equal;src-valid;direct-column"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div direct-column">
+          <text class="wh bg font flex1">test</text>
+          <text class="wh bg2 font flex1">test</text>
+        </div>
+        <div class="parent2_div direct-column">
+          <div class="wh bg flex1"><div class="child"></div></div>
+          <div class="wh bg2 flex1"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div direct-column">
+          <image class="wh bg flex1" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+          <image class="wh bg2 flex1" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div direct-column">
+          <input class="wh bg font flex1" value='test'></input>
+          <input class="wh bg2 font flex1" value='test'></input>
+        </div>
+      </div>
+    </div>
+    
+    <!--02-->
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="02.flex-whole-equal;src-valid;direct-row"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div direct-row">
+          <text class="wh bg font flex1">test</text>
+          <text class="wh bg2 font flex1">test</text>
+        </div>
+        <div class="parent2_div direct-row">
+          <div class="wh bg flex1"><div class="child"></div></div>
+          <div class="wh bg2 flex1"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div direct-row">
+          <image class="wh bg flex1" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+          <image class="wh bg2 flex1" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div direct-row">
+          <input class="wh bg font flex1" value='test'></input>
+          <input class="wh bg2 font flex1" value='test'></input>
+        </div>
+      </div>
+    </div>
+    
+    <!--03-->
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="03.flex-whole-unequal;src-valid;direct-column"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div direct-column">
+          <text class="wh bg font flex1">test</text>
+          <text class="wh bg2 font flex2">test</text>
+        </div>
+        <div class="parent2_div direct-column">
+          <div class="wh bg flex1"><div class="child"></div></div>
+          <div class="wh bg2 flex2"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div direct-column">
+          <image class="wh bg flex1" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+          <image class="wh bg2 flex2" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div direct-column">
+          <input class="wh bg font flex1" value='test'></input>
+          <input class="wh bg2 font flex2" value='test'></input>
+        </div>
+      </div>
+    </div>
+    
+    <!--04-->
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="04.flex-whole-unequal;src-valid;direct-row"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div direct-row">
+          <text class="wh bg font flex1">test</text>
+          <text class="wh bg2 font flex2">test</text>
+        </div>
+        <div class="parent2_div direct-row">
+          <div class="wh bg flex1"><div class="child"></div></div>
+          <div class="wh bg2 flex2"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div direct-row">
+          <image class="wh bg flex1" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+          <image class="wh bg2 flex2" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div direct-row">
+          <input class="wh bg font flex1" value='test'></input>
+          <input class="wh bg2 font flex2" value='test'></input>
+        </div>
+      </div>
+    </div>
+    
+    <!--05-->
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="05.flex-part-equal;src-valid;direct-column"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div direct-column">
+          <text class="wh bg font">test</text>
+          <text class="wh bg2 font flex1">test</text>
+        </div>
+        <div class="parent2_div direct-column">
+          <div class="wh bg"><div class="child"></div></div>
+          <div class="wh bg2 flex1"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div direct-column">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+          <image class="wh bg2 flex1" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div direct-column">
+          <input class="wh bg font" value='test'></input>
+          <input class="wh bg2 font flex1" value='test'></input>
+        </div>
+      </div>
+    </div>
+    
+    <!--06-->
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="06.flex-part-equal;src-valid;direct-row"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div direct-row">
+          <text class="wh bg font">test</text>
+          <text class="wh bg2 font flex1">test</text>
+        </div>
+        <div class="parent2_div direct-row">
+          <div class="wh bg"><div class="child"></div></div>
+          <div class="wh bg2 flex1"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div direct-row">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+          <image class="wh bg2 flex1" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div direct-row">
+          <input class="wh bg font" value='test'></input>
+          <input class="wh bg2 font flex1" value='test'></input>
+        </div>
+      </div>
+    </div>
+     </TC_Support_Scroller>
+</template>
+
+<style>
+  .parent1_div{background-color: #ff0000;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 60;}
+  .parent2_div{background-color: #ffff00;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 60;}
+  .parent3_div{background-color: #ff00ff;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 60;}
+  .parent4_div{background-color: #00ffff;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 60;}
+  .font{font-family: Times New Roman;font-size: 15;text-align: center;}
+  .direct-row{flex-direction:row;}
+  .direct-column{flex-direction:column;}
+
+  .wh{width: 100;height:30; }
+  .child{width: 40;height: 10; background-color: #123456;margin-left: 5;margin-top: 5;}
+  .bg{background-color: #572977;}
+  .bg2{background-color: #f58220;}
+  .flex1{flex:1;}
+  .flex2{flex:2;}
+
+  .scroller {background-color: #F4F3DE;flex-direction: column;}
+  .row{flex-direction:row;}
+  
+
+
+
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    methods: {
+    }
+  };
+</script>

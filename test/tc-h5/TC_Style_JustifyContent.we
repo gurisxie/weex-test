@@ -1,0 +1,221 @@
+<template>
+    
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Style_JustifyContent"></TC_Support_MainTitle>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="01.justify-content-start;direct-column"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div justify-content-start direct-column">
+          <text class="wh bg font">test</text>
+          <text class="wh bg2 font">test</text>
+        </div>
+        <div class="parent2_div justify-content-start direct-column">
+          <div class="wh bg"><div class="child"></div></div>
+          <div class="wh bg2"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div justify-content-start direct-column">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+          <image class="wh bg2" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div justify-content-start direct-column">
+          <input class="wh bg font" value='test'></input>
+          <input class="wh bg2 font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="02.justify-content-start;direct-row"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div justify-content-start direct-row">
+          <text class="wh bg font">test</text>
+          <text class="wh bg2 font">test</text>
+        </div>
+        <div class="parent2_div justify-content-start direct-row">
+          <div class="wh bg"><div class="child"></div></div>
+          <div class="wh bg2"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div justify-content-start direct-row">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+          <image class="wh bg2" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div justify-content-start direct-row">
+          <input class="wh bg font" value='test'></input>
+          <input class="wh bg2 font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="03.justify-content-center;direct-column"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div justify-content-center direct-column">
+          <text class="wh bg font">test</text>
+          <text class="wh bg2 font">test</text>
+        </div>
+        <div class="parent2_div justify-content-center direct-column">
+          <div class="wh bg"><div class="child"></div></div>
+          <div class="wh bg2"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div justify-content-center direct-column">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+          <image class="wh bg2" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div justify-content-center direct-column">
+          <input class="wh bg font" value='test'></input>
+          <input class="wh bg2 font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="04.justify-content-center;direct-row"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div justify-content-center direct-row">
+          <text class="wh bg font">test</text>
+          <text class="wh bg2 font">test</text>
+        </div>
+        <div class="parent2_div justify-content-center direct-row">
+          <div class="wh bg"><div class="child"></div></div>
+          <div class="wh bg2"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div justify-content-center direct-row">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+          <image class="wh bg2" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div justify-content-center direct-row">
+          <input class="wh bg font" value='test'></input>
+          <input class="wh bg2 font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="05.justify-content-end;direct-column"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div justify-content-end direct-column">
+          <text class="wh bg font">test</text>
+          <text class="wh bg2 font">test</text>
+        </div>
+        <div class="parent2_div justify-content-end direct-column">
+          <div class="wh bg"><div class="child"></div></div>
+          <div class="wh bg2"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div justify-content-end direct-column">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+          <image class="wh bg2" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div justify-content-end direct-column">
+          <input class="wh bg font" value='test'></input>
+          <input class="wh bg2 font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="06.justify-content-end;direct-row"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div justify-content-end direct-row">
+          <text class="wh bg font">test</text>
+          <text class="wh bg2 font">test</text>
+        </div>
+        <div class="parent2_div justify-content-end direct-row">
+          <div class="wh bg"><div class="child"></div></div>
+          <div class="wh bg2"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div justify-content-end direct-row">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+          <image class="wh bg2" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div justify-content-end direct-row">
+          <input class="wh bg font" value='test'></input>
+          <input class="wh bg2 font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="07.justify-content-space;direct-column"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div justify-content-space direct-column">
+          <text class="wh bg font">test</text>
+           <text class="wh bg2 font">test</text>
+        </div>
+        <div class="parent2_div justify-content-space direct-column">
+          <div class="wh bg"><div class="child"></div></div>
+          <div class="wh bg2"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div justify-content-space direct-column">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+          <image class="wh bg2" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div justify-content-space direct-column">
+          <input class="wh bg font" value='test'></input>
+          <input class="wh bg2 font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="08.justify-content-space;direct-row"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div justify-content-space direct-row">
+          <text class="wh bg font">test</text>
+          <text class="wh bg2 font">test</text>
+        </div>
+        <div class="parent2_div justify-content-space direct-row">
+          <div class="wh bg"><div class="child"></div></div>
+          <div class="wh bg2"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div justify-content-space direct-row">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+          <image class="wh bg2" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div justify-content-space direct-row">
+          <input class="wh bg font" value='test'></input>
+          <input class="wh bg2 font" value='test'></input>
+        </div>
+      </div>
+    </div>
+   </scroller>
+  </div>
+
+</template>
+
+<style>
+  .parent1_div{background-color: #ff0000;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 60;}
+  .parent2_div{background-color: #ffff00;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 60;}
+  .parent3_div{background-color: #ff00ff;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 60;}
+  .parent4_div{background-color: #00ffff;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 60;}
+  
+  .direct-row{flex-direction:row;}
+  .direct-column{flex-direction:column;}
+
+  .wh{width: 60;height:20; }
+  .font{font-size: 15;text-align: center;}
+  .child{width: 50;height: 10; background-color: #123456;margin-left: 5;margin-top: 5;}
+  .bg{background-color: #572977;}
+  .bg2{background-color: #f58220;}
+
+  .justify-content-start {justify-content: flex-start;}
+  .justify-content-center {justify-content: center;}
+  .justify-content-end {justify-content: flex-end;}
+  .justify-content-space {justify-content: space-between;}
+
+  .scroller {background-color: #F4F3DE;flex-direction: column;}
+  .row{flex-direction:row;}
+
+
+
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    methods: {
+    }
+  };
+</script>

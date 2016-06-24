@@ -1,0 +1,410 @@
+<template>
+  <scroller style="flex-direction: column;">
+    <TC_Support_MainTitle title="TC_Gesture_ALL"></TC_Support_MainTitle>
+    <div class="block">
+      <text class="discript">手势测试指标：</text>
+      <text class="discript">1.click 识别点击事件</text>
+      <text class="discript">2.swipe 识别滑动方向</text>
+      <text class="discript">3.longpress 识别长按动作</text>
+      <text class="discript">4.touch: 识别touchstart  touchmove touchend touchcancel,返回坐标值;单指 多指支持</text>
+      <text class="discript">5.pan: 识别 panstart  panmove panend,返回坐标值</text>
+      <text class="discript">测试方法：在每个测试模块淡黄色背景区域进行不同手势操作</text>
+    </div>
+
+    <div class="block tc-desc">
+      <text class="tc-title">01. click测试</text>
+    </div>
+    <div class="block" style="background-color:#FAEBD7" onclick="onclick">   
+      <text style="font-size:50; height:200" value="点击我"></text>      
+    </div>
+
+    <div class="tc-desc">     
+      <text class="tc-title">02. swipe测试</text>
+    </div>   
+    <div class="block test-div" onswipe="onswipe">  
+        <div style="padding:5px">
+          <text class="console-info"  value="{{swipeText}}"></text>
+        </div> 
+    </div>
+    
+    <div class="tc-desc">
+      <text class="tc-title">03. longpress测试</text>
+    </div>
+    <div class="block test-div" onlongpress="onlongpress" onclick = "onclick">       
+      <div style="padding:5px">
+        <text class="console-info"  style="font-size:35px" value="{{longpressText}}"></text>
+      </div>
+    </div>
+  
+    <div class="tc-desc">
+      <text class="tc-title">04. touch测试 单指 多指</text>
+    </div>
+    <div style="padding:5px">
+      <text class="console-info" style="font-size:35px" onclick="setTouchCancel" value="{{showTouchCancelText}}"></text>
+    </div> 
+    <div class="block test-div" style="margin-top:10;height:500;background-color:#FAEBD7;" ontouchstart="ontouchstart" ontouchmove="ontouchmove" ontouchend="ontouchend" ontouchcancel="ontouchcancel">          
+      <div style="padding:5px">
+        <text class="console-info" style="font-size:35px" value="{{touchText}}"></text>
+      </div>      
+    </div>
+
+    <div class="tc-desc">
+      <text class="tc-title">05. pan测试</text>
+    </div>
+    <div style="padding:5px">
+      <text class="console-info" style="font-size:35px" onclick="setPanStart" value="{{showPanStartText}}"></text>
+    </div> 
+    <div class="block test-div" onpanstart="onpanstart" onpanmove="onpanmove" onpanend="onpanend">     
+      <div style="padding:5px">
+        <text class="console-info" style="font-size:35px;"  value="{{panText}}" ></text>
+      </div>      
+    </div>
+
+      <div class="tc-desc">
+      <text class="tc-title">06. 手势冲突测试</text>
+    </div>
+<!--     <div style="padding:5px">
+      <text class="console-info" style="font-size:35px" onclick="setPanStart" value="{{showPanStartText}}"></text>
+    </div>  -->
+    <div >
+      <div class="block test-div" 
+      onpanstart="onpanstart" 
+      onpanmove="onpanmove" 
+      onpanend="onpanend"
+      onclick="onclick"
+      onswipe="onswipe"
+      onlongpress="onlongpress"
+      ontouchstart="ontouchstart" ontouchmove="ontouchmove" ontouchend="ontouchend" ontouchcancel="ontouchcancel"
+     
+      >     
+      <div style="padding:5px">
+        <text class="console-info" style="font-size:35px;"  value="{{gestureConcludeValue}}" ></text>
+      </div>      
+    </div>
+    <div style="flex-direction: column;background-color:#94d6da;margin-top:10;height:800;"
+      
+      >
+    <!-- Slider组件 -->
+      <slider class="slider" interval="{{intervalValue}}" auto-play="{{isAutoPlay}}" 
+      onpanstart="onpanstart" 
+      onpanmove="onpanmove" 
+      onpanend="onpanend"
+      onclick="onclick"
+      onswipe="onswipe"
+      onlongpress="onlongpress"
+      ontouchstart="ontouchstart" ontouchmove="ontouchmove" ontouchend="ontouchend" ontouchcancel="ontouchcancel"
+      onChange="onsliderChange" 
+      
+      >
+        <div class="slider-pages" repeat="{{itemList}}" onclick="gotoDetail" item-id="{{itemId}}">
+          <image class="img" src="{{pictureUrl}}"></image>
+          <text class="title">{{title}}</text>
+        </div>
+        <!-- 指示器子节点 -->
+        <indicator class="indicator_FFFFFF" style=""></indicator>
+      </slider>
+    </div>
+  </div>
+
+  </scroller>
+</template>
+
+<style>
+.img {width: 150; height: 150;}
+.slider {
+        flex-direction: row;
+        margin: 18;
+        width: 714;
+        height: 230;
+  }
+  .slider-pages {
+        flex-direction: row;
+        width: 714;
+        height: 200;
+  }
+  .indicator {
+    width:714;
+    height:200;
+    position:absolute;
+    top:1;
+    left:1;
+    itemColor: red;
+    itemSelectedColor: blue;
+    itemSize: 20;
+  }
+    .indicator_FFFFFF {
+    width:714;
+    height:200;
+    position:absolute;
+    top:1;
+    left:1;
+    itemColor: #ff0000; 
+    itemSelectedColor: #0000ff; 
+    itemSize: 20;
+  }
+ .discript {flex: 1; color: #000000; font-weight: bold; font-size:30;background-color: #37dd23;overflow:hidden;font-family: "Open Sans", sans-serif;}
+
+  .test-div{
+    margin-top: 10;
+    height: 400;
+    background-color:#FAEBD7;
+  }
+  .test-title{
+    color: red
+  }
+  .text-click{
+    color:#1E90FF;
+    border-color: #1E90FF;
+    border-width: 3;
+    margin-top: 7;
+    margin-left: 5;
+    margin-right: 5;
+  }
+
+  .console-info{
+    color: red;
+    font-size: 40;
+  }
+
+  .tc-desc{
+    margin-top: 60;
+  }
+
+  .tc-title{
+    font-size: 45;
+    background-color: rgba(255,0,0,1.0);
+    margin-top: 15px
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      maxLength:0,
+      i:'',
+      swipeText:'',
+      longpressText:'',
+      touchText:'',
+      panText:'',
+      showTouchCancel:false,
+      showTouchCancelText:'点击设置可以观察touchcancel',
+      showPanStart:false,
+      showPanStartText:'点击设置可以观察panstart',
+      gestureConcludeValue: '监听所有手势',
+      intervalValue:"3000",
+      // isShowIndicators:"true",
+      isAutoPlay:"true",
+      itemList: [
+        {itemId: '520421163634', title: 'silder 绑定了很多事件1', pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: 'silder 绑定了很多事件2', pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: 'silder 绑定了很多事件3', pictureUrl: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg'}
+      ],
+
+    },
+    methods: {
+      onsliderChange: function(e){
+
+        nativeLog("==weex gesture== onsliderChange");
+        var a = 0;
+        a = this.i;
+        this.i = a+ 1;
+
+        this.gestureConcludeValue = "onsliderChange onsliderChange onsliderChange!! == " + this.i ;
+      },
+      gotoDetail: function (e) {
+        var message = "点击了图片";
+          var okTitle = "确 定";
+          var params = {
+            'message':message,
+            'okTitle':okTitle,
+          }
+          this.$call('modal','alert',params,2);
+      },
+      StopAutoPlay: function (e) {
+        this.isAutoPlay="false";
+      },
+      StartAutoPlay: function (e) {
+        this.isAutoPlay="true";
+      },
+      // ShowIndicators: function (e) {
+      //   this.isShowIndicators="true";
+      // },
+      // HiddenIndicators: function (e) {
+      //   this.isShowIndicators="false";
+      // },
+      Set1sInterval: function (e) {
+        this.intervalValue="1000";
+      },
+      Set3sInterval: function (e) {
+        this.intervalValue="3000";
+      },
+      Set5sInterval: function (e) {
+        this.intervalValue="5000";
+      },
+
+      setTouchCancel:function(e){
+        if(this.showTouchCancel == false){
+          this.showTouchCancel = true;
+          this.showTouchCancelText = '点击设置不观察touchcancel';
+        }else{
+          this.showTouchCancel = false;
+          this.showTouchCancelText = '点击设置可以观察touchcancel';
+        }
+      },
+      setPanStart:function(e){
+        if(this.showPanStart == false){
+          this.showPanStart = true;
+          this.showPanStartText = '点击设置不观察panstart';
+        }else{
+          this.showPanStart = false;
+          this.showPanStartText = '点击设置可以观察panstart';
+        }
+      },
+      onclick:function(e){
+        nativeLog("==weex gesture== onclick")
+        var params = {
+          'message':'触发了click事件',
+          'okTitle':'确定',
+        }
+        this.gestureConcludeValue = "触发了click事件";
+        this.$call('modal','alert',params,2);
+      },
+
+      onswipe: function(e) {
+        nativeLog("==weex gesture== onswipe")
+
+          nativeLog("onswipe called");
+//        console.log(e);
+          this.swipeText = '触发swipe ' + e.direction;
+          this.gestureConcludeValue = this.swipeText;
+      },
+
+      onlongpress:function(e) {
+        nativeLog("==weex gesture== onlongpress")
+
+        nativeLog("onlongpress called");
+        if(typeof window != 'undefined')
+        {
+          this.longpressText = '触发longpress -> {id:'+e.touch.identifier+',pageX:' + e.touch.pageX + ',pageY:' + e.touch.pageY + ',screenX:'+e.touch.screenX + ',screenY:'+e.touch.screenY+'}';
+        }
+        else
+        {
+          this.longpressText = '触发longpress -> ' + JSON.stringify(e.changedTouches);
+        }
+        this.gestureConcludeValue = this.longpressText;
+
+      },
+
+      ontouchstart:function(e) {
+        nativeLog("==weex gesture== ontouchstart")
+        if(this.showTouchCancel){
+          var params = {
+            'message':'触发了touchtart事件',
+            'okTitle':'确定',
+          }
+          //this.$call('modal','alert',params,2);
+        }
+        if(typeof window != 'undefined')
+        {
+          this.touchText = '触发touchstart -> ';
+          for(var i=0;i<e.touches.length;i++){
+            this.touchText +='{id:'+e.touches[i].identifier+',pageX:' + e.touches[i].pageX + ',pageY:' + e.touches[i].pageY + ',screenX:'+e.touches[i].screenX + ',screenY:'+e.touches[i].screenY+'},';
+          }
+        }
+        else  {
+          this.touchText = '触发touchstart -> ' + JSON.stringify(e.changedTouches);
+        }
+          
+          this.gestureConcludeValue = this.touchText;
+
+      },
+
+      ontouchmove:function(e) {
+        nativeLog("==weex gesture== ontouchmove")
+        if(typeof window != 'undefined')
+        {
+          this.touchText = '触发touchmove -> ';
+          for(var i=0;i<e.touches.length;i++){
+            this.touchText +='{id:'+e.touches[i].identifier+',pageX:' + e.touches[i].pageX + ',pageY:' + e.touches[i].pageY + ',screenX:'+e.touches[i].screenX + ',screenY:'+e.touches[i].screenY+'},';
+          }
+        }
+        else  {
+          this.touchText = '触发touchmove -> ' + JSON.stringify(e.changedTouches);
+        }
+          
+        this.gestureConcludeValue = this.touchText;
+
+      },
+
+      ontouchend:function(e) {
+        nativeLog("==weex gesture== ontouchend")
+        if(typeof window != 'undefined')
+        {
+          this.touchText = '触发touchend -> ';
+          for(var i=0;i<e.touches.length;i++){
+            this.touchText +='{id:'+e.touches[i].identifier+',pageX:' + e.touches[i].pageX + ',pageY:' + e.touches[i].pageY + ',screenX:'+e.touches[i].screenX + ',screenY:'+e.touches[i].screenY+'},';
+          }
+        }
+        else  {
+          this.touchText = '触发touchend -> ' + JSON.stringify(e.changedTouches);
+
+        }
+          
+          this.gestureConcludeValue = this.touchText;
+      },
+
+      ontouchcancel:function(e) {
+        nativeLog("==weex gesture== ontouchcancel")
+        if(typeof window != 'undefined')
+        {
+          this.touchText = '触发touchcancel -> ';
+          for(var i=0;i<e.touches.length;i++){
+            this.touchText +='{id:'+e.touches[i].identifier+',pageX:' + e.touches[i].pageX + ',pageY:' + e.touches[i].pageY + ',screenX:'+e.touches[i].screenX + ',screenY:'+e.touches[i].screenY+'},';
+          }
+        }
+        else  {
+          this.touchText = '触发touchcancel -> ' + JSON.stringify(e.changedTouches);
+        }
+        this.gestureConcludeValue = this.touchText;
+          
+      },
+
+      onpanstart:function(e){
+        nativeLog("==weex gesture== onpanstart")
+        if(this.showPanStart){
+          var params = {
+            'message':'触发了panstart事件',
+            'okTitle':'确定',
+          }
+          //this.$call('modal','alert',params,2);
+        }
+        if(typeof window != 'undefined')
+          this.panText = '触发panstart -> {id:'+e.touch.identifier+',pageX:' + e.touch.pageX + ',pageY:' + e.touch.pageY + ',screenX:'+e.touch.screenX + ',screenY:'+e.touch.screenY+'}';
+        else{
+          this.panText = '触发panstart -> '+ JSON.stringify(e.changedTouches);
+        }
+        this.gestureConcludeValue = this.panText;
+          
+      },
+
+      onpanmove:function(e){
+        nativeLog("==weex gesture== onpanmove")
+        if(typeof window != 'undefined')
+          this.panText = '触发panmove -> {id:'+e.touch.identifier+',pageX:' + e.touch.pageX + ',pageY:' + e.touch.pageY + ',screenX:'+e.touch.screenX + ',screenY:'+e.touch.screenY+'}';
+        else
+          this.panText = '触发panmove -> ' + JSON.stringify(e.changedTouches);
+        this.gestureConcludeValue = this.panText;
+      },
+
+      onpanend:function(e){
+        nativeLog("==weex gesture== onpanend")
+        if(typeof window != 'undefined')
+          this.panText = '触发panend -> {id:'+e.touch.identifier+',pageX:' + e.touch.pageX + ',pageY:' + e.touch.pageY + ',screenX:'+e.touch.screenX + ',screenY:'+e.touch.screenY+'}';
+        else
+          this.panText = '触发panend -> ' + JSON.stringify(e.changedTouches);
+        this.gestureConcludeValue = this.panText;
+
+      }
+    }
+  }
+</script>

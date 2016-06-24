@@ -1,0 +1,85 @@
+<template>
+    <scroller style="flex-direction: column;background-color: #ffffff;">
+    <TC_Support_MainTitle title="TC_Video_Update"></TC_Support_MainTitle>
+    <div class="div-split"></div>
+    <div >
+        <video class="video" play-status="{{dataSource.playstatus}}"  auto-play="{{dataSource.autoPlay}}" src = "{{dataSource.src}}"></video>
+    </div>
+    <div class="div-split" ></div>
+    <div style="flex-direction: row; margin-top:20;margin-bottom:20;padding-left:20;">
+        <!-- <text class = "btn desc mg-left" onclick="setStop">SetStop</text> -->
+        <text class = "btn desc mg-left" onclick="setPlay">SetPlay</text>
+        <text class = "btn desc mg-left" onclick="setPause">SetPause</text>
+    </div>
+  </scroller>
+</template>
+ 
+<style>
+  .title{margin-top: 10;margin-left: 10;margin-bottom:10; font-size: 40; font-weight: bold;}
+  .div-split{height: 1; border-width: 1; border-style:dashed; border-color: #375830;}
+  .list{width: 750; border-width: 1;border-color: #eeeeee;flex-direction: column;overflow: hidden;}
+  .list-cell-div{flex-direction: column;background-color:#ffffff;justify-content:center;overflow: hidden; }
+  .list-cell-input{ font-size: 25; margin-top:15; margin-left: 15; margin-bottom:15; margin-right:15; text-decoration: underline; color: #33a3dc;width: 500;height: 30; border-width: 1;border-color:#cccccc; overflow: hidden;}
+  .video {
+        width: 710; height: 400;border-style: solid;border-width:1;border-color:#ff0000;
+        margin-top: 20;margin-right:20; margin-bottom:20;margin-left:  20;
+    }
+    .border {
+        border-style: solid;border-width:3;border-color:#ffff00;
+    }
+    .btn{font-size: 30; width:200; border-color: #999999; border-radius: 5; border-width: 2;text-align: center;}
+    .desc{font-weight: bold;}
+    .mg-top{margin-top: 20;}
+    .mg-left{margin-left: 20;}
+</style>
+
+<script>
+    module.exports = {
+        data: {
+            dataSource: {
+                autoPlay: true,
+                playstatus: 'play',
+                src: ''
+            },
+        },
+        methods: {
+            ready: function () {
+                // config
+                this.$getConfig(function (config) {
+                    // var bundleUrl = config.bundleUrl;
+                    // var lastIndex = bundleUrl.lastIndexOf('weex-html5/');
+                    // if(lastIndex<0){
+                    //     lastIndex=bundleUrl.lastIndexOf('dist/');
+                    //     if(lastIndex<0){
+                    //       var message = "bundleUrl不包含dist/，无法解析";
+                    //       var okTitle = "确 定";
+                    //       var params = {
+                    //         'message':message,
+                    //         'okTitle':okTitle,
+                    //       }
+                    //       this.$call('modal','alert',params,2);
+                    //       return;
+                    //     }
+                    // }
+                    // var prifixUrl = bundleUrl.substring(0,lastIndex);
+                    //this.dataSource.src=prifixUrl+'src/TC_Video_First.mp4';
+                    this.dataSource.src="http://g.tbcdn.cn/ali-wireless-h5/res/0.0.6/toy.mp4";
+                }.bind(this));
+            },
+            setPlay:function(){
+                nativeLog('setPlay');
+                this.dataSource.playstatus='play';
+            },
+            setPause:function(){
+                nativeLog('setPause');
+                this.dataSource.playstatus='pause';
+            },
+            setStop:function(){
+                nativeLog('setStop');
+                this.dataSource.playstatus='stop';
+            },
+            
+        }
+    };
+</script>
+

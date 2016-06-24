@@ -1,0 +1,95 @@
+<template>
+  <div style="flex-direction: column;">
+    <TC_Support_MainTitle title="TC_Event"></TC_Support_MainTitle>
+    <div class="div-split"></div>
+    <div style="flex-direction: column;">
+      <list class="list" style="height:900;">
+        <cell repeat="{{script_list}}" scope="{{scopeValue}}" append="tree">
+          <div class="list-cell-div" if="{{isShow}}">
+            <text class="list-cell-link" item-id="{{itemId}}" onclick="itemClick">{{Text_Desc}}</text>
+            <div class="div-split"></div>
+          </div>
+        </cell>
+      </list>
+    </div>
+  </div>
+</template>
+ 
+<style>
+  .title{margin-top: 10;margin-left: 10;margin-bottom:10; font-size: 40; font-weight: bold;}
+  .div-split{height: 1; border-width: 1; border-style:dashed; border-color: #375830;}
+  .list{width: 750; border-width: 1;border-color: #eeeeee;flex-direction: column;overflow: hidden;}
+  .list-cell-div{flex-direction: column;background-color:#ffffff;justify-content:center; }
+  .list-cell-link{ font-size: 20; margin-top:15; margin-left: 15; margin-bottom:15; margin-right:15; color: #33a3dc;width: 500;height: 30;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      script_list: [
+          {itemId: 'a2',isShow:true, scopeValue:1,Text_Desc:'TC_Event_ElementOpt'},
+          //可根据需要添加dist目录下的js文件
+      ],
+      appConfig:''
+    },
+    methods: {
+      ready: function () {
+        // config
+        this.$getConfig(function (config) {
+            this.appConfig = config;
+        }.bind(this));
+      },
+      itemClick:function (e) {
+        var bundleUrl = this.appConfig.bundleUrl;
+        var itemId = e.target.attr.itemId;
+        var lastIndex = bundleUrl.lastIndexOf('dist/');
+        if(lastIndex<0){
+          var message = "bundleUrl不包含dist/，无法解析";
+          var okTitle = "确 定";
+          var params = {
+            'message':message,
+            'okTitle':okTitle,
+          }
+          this.$call('modal','alert',params,2);
+          return;
+        }
+        var prifixUrl = bundleUrl.substring(0,lastIndex + 5);
+
+        if (bundleUrl.indexOf("weex-samples")>=0) {
+          //run in weexDemo
+          for (var i = 0; i < this.script_list.length; i++) {
+            var itemData = this.script_list[i];
+            if(itemData.itemId==itemId){
+              var transferUrl = prifixUrl + itemData.Text_Desc+".js?weex-samples";
+              this.$openURL(transferUrl);
+              break;
+            }
+          }
+        }
+        else if (bundleUrl.indexOf("weex-taobao")>=0) {
+          //run in shoutao
+          for (var i = 0; i < this.script_list.length; i++) {
+            var itemData = this.script_list[i];
+            if(itemData.itemId==itemId){
+              var transferUrl = prifixUrl + itemData.Text_Desc+".js?weex-taobao&wh_weex=true";
+              this.$openURL(transferUrl);
+              break;
+            }
+          }
+        }
+        else if (bundleUrl.indexOf("weex-browser")>=0) {
+          //run in browser
+          for (var i = 0; i < this.script_list.length; i++) {
+            var itemData = this.script_list[i];
+            if(itemData.itemId==itemId){
+              var transferUrl = prifixUrl+ itemData.Text_Desc+".js&loader=xhr&weex-browser";
+              this.$openURL(transferUrl);
+              break;
+            }
+          }
+        }
+      }
+    }
+    
+  }
+</script>

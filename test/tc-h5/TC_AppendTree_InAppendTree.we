@@ -1,0 +1,47 @@
+<template>
+  <div>
+    <TC_Support_MainTitle title="TC_AppendTree_InAppendTree" onclick="created"></TC_Support_MainTitle>
+    <TC_Support_SubTitle title="01.div"></TC_Support_SubTitle>
+    <div append="tree">
+      <text class="text" repeat="{{list}}" append="tree">{{text}}</text>
+    </div>
+    <TC_Support_SubTitle title="02.list"></TC_Support_SubTitle>
+    <list style="height:300;" append="tree">
+      <cell repeat="{{list}}" append="tree">
+        <text class="text" >{{text}}</text>
+      </cell>
+    </list>
+    <TC_Support_SubTitle title="03.scroller"></TC_Support_SubTitle>
+    <scroller style="height:300;" append="tree">
+      <div repeat="{{list}}" append="tree">
+        <text class="text" >{{text}}</text>
+      </div>
+    </scroller>
+  </div>
+</template>
+
+<style>
+  .text{margin-top: 10;margin-left: 10;margin-bottom:10; font-size: 26; font-weight: bold;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      list: [{text: "测试文本：0"}]
+    },
+    methods: {
+      ready: function () {
+        this.created();
+      },
+      asyncMethod: function(msg,cb){
+        cb(msg);
+      },
+      created: function(e) {
+        var self = this;
+        for(var i=1;i<3;i++){
+          self.list.push({text: "测试文本："+i});
+        }
+      },
+    }
+  }
+</script>

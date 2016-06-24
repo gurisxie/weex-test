@@ -1,0 +1,20 @@
+<template>
+  <scroller class="root">
+    <TC_Support_MainTitle title="TC_Text_Event，线程补充"></TC_Support_MainTitle>
+  </scroller>
+</template>
+
+<style>
+  
+  .font{font-family: Times New Roman;}
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    methods: {
+    }
+  }
+</script>

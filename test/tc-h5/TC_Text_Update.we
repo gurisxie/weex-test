@@ -1,0 +1,182 @@
+<template>
+  
+<TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Text_Update"></TC_Support_MainTitle>
+    <div style="flex-direction: row;">
+    <TC_Support_Button class="btnHw border margin" btn-touch="{{changeSize}}" title="点击后更换宽高"></TC_Support_Button>
+    <TC_Support_Button class="btnHw border margin" btn-touch="{{changeBgc}}" title="点击后更换背景色"></TC_Support_Button>
+    </div>
+    <div style="flex-direction: row;">
+    <TC_Support_Button class="btnHw border margin" btn-touch="{{changeTitle}}" title="点击后更换长标题"></TC_Support_Button>
+    <TC_Support_Button class="btnHw border margin" btn-touch="{{changeLines}}" title="点击后设置多行"></TC_Support_Button>
+    </div>
+    <div style="flex-direction: row;">
+    <TC_Support_Button class="btnHw border margin" btn-touch="{{changeOverflow}}" title="点击后设置多行截断方式"></TC_Support_Button>
+    <TC_Support_Button class="btnHw border margin" btn-touch="{{changeFontSize}}" title="点击后设置字号"></TC_Support_Button>
+    </div>
+    <div style="flex-direction: row;">
+    <TC_Support_Button class="btnHw border margin" btn-touch="{{changeFontStyle}}" title="点击后设置文字样式"></TC_Support_Button>
+    <TC_Support_Button class="btnHw border margin" btn-touch="{{changeFontWight}}" title="点击后设置文字宽度"></TC_Support_Button>
+    </div>
+    <div style="flex-direction: row;">
+    <TC_Support_Button class="btnHw border margin" btn-touch="{{changeDecoration}}" title="点击后设置文字装饰"></TC_Support_Button>
+    <TC_Support_Button class="btnHw border margin" btn-touch="{{changeAlign}}" title="点击后设置文字位置"></TC_Support_Button>
+    </div>
+    <div style="flex-direction: row;">
+    <TC_Support_Button class="btnHw border margin" btn-touch="{{changeMargin}}" title="点击后更换margin"></TC_Support_Button>
+    <TC_Support_Button class="btnHw border margin" btn-touch="{{changeBorder}}" title="点击后更换border"></TC_Support_Button>
+    </div>
+    <div style="flex-direction: row;">
+    <TC_Support_Button class="btnHw border margin" btn-touch="{{changePadding}}" title="点击后更换padding"></TC_Support_Button>
+    </div>
+    
+    <div class="div">
+      <text class="border font" style="background-color:{{bgc}}; height:{{height}}; width:{{width}}; margin:{{margin}}; border-width:{{borderWidth}}; border-radius:{{borderRadius}}; padding-left: {{paddingLeft}}; lines:{{lines}}; text-overflow:{{overflow}}; font-size: {{fontSize}}; font-style: {{fontStyle}};font-weight: {{fontWight}};text-decoration:{{decoration}}; text-align:{{align}}">
+        {{title}}
+      </text>
+    </div>
+
+  </TC_Support_Scroller>
+</template>
+
+
+<style>
+
+
+
+  .margin {
+    margin-left: 10;
+    margin-top: 5;
+  }
+
+.font{font-family: Times New Roman;}
+
+  .btnHw{
+    height:50;
+    width:350;
+  }
+  
+  .bgc{
+    background-color:#F4F3DE;
+  }
+  
+  .border{
+    border-width: 1;
+    border-style:solid;
+    border-color: #123456;
+  }
+  
+  .div {
+    background-color:#999999;
+    width:450;
+    height:450;
+    margin-left: 30;
+    margin-top: 5;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data:{            
+      title: 'Hello Weex',
+      bgc: '#99FFCC',
+      height: 200,
+      width: 200,
+      lines:0,
+      overflow:'clip',
+      fontSize:30,
+      fontStyle:'italic',
+      fontWight:'normal',
+      decoration:'none',
+      align:'left',
+      margin: 0,
+      borderWidth: 0,
+      borderRadius: 0,
+      paddingLeft: 0,
+    },
+    methods:{
+      changeSize:function(){
+
+        // this.$call('modal', 'toast', {'message':'change','duration':2})
+
+        if(this.height === 200)
+        {
+          this.height = 400
+          this.width = 400
+        }
+        else
+        {
+          this.height = 200
+          this.width = 200
+        }
+      },
+      
+      changeBgc:function(){
+        this.bgc = this.bgc === '#99FFCC' ? '#CC99FF' : '#99FFCC'
+      },
+      
+      changeTitle:function(){
+        this.title = this.title === 'Hello Weex' ? 'ABCDEFG陈家乐福急哦我爱的色放地价及覅哦大佛寺就爱哦发动机哦埃弗顿吉欧斯奥法第三方是冻结发哦我减肥的哦啊接搜ID方剂撒娇法搜我奥发动机丝毫积分抵搜集覅我飞机都赛风都是安静达芙妮点击佛寺解放军你出息' : 'Hello Weex'
+      },
+
+      changeLines:function() {
+        this.lines = this.lines === 0 ? 3:0
+      },
+
+      changeOverflow:function() {
+        this.overflow = this.overflow === 'clip' ? 'ellipsis' : 'clip'
+      },
+
+      changeFontSize:function() {
+        this.fontSize = this.fontSize === 30? 40:30
+      },
+
+      changeFontStyle:function() {
+        this.fontStyle = this.fontStyle === 'italic' ? 'normal' : 'italic'
+      },
+
+      changeFontWight:function() {
+        this.fontWight = this.fontWight === 'bold' ? 'normal' : 'bold'
+      },
+
+      changeDecoration:function() {
+        if (this.decoration === 'none')
+          this.decoration = 'underline'
+        else if (this.decoration === 'underline')
+          this.decoration = 'line-through'
+        else
+          this.decoration = 'none'
+      },
+
+      changeAlign:function() {
+        if (this.align === 'left')
+          this.align = 'center'
+        else if (this.align === 'center')
+          this.align = 'right'
+        else
+          this.align = 'left'
+      },
+      
+      changeMargin:function(){
+        this.margin = this.margin === 20 ? 0 : 20
+      },
+      
+      changeBorder:function(){
+        if(this.borderRadius === 0)
+        {
+          this.borderWidth = 5
+          this.borderRadius = 50
+        }
+        else
+        {
+          this.borderWidth = 0
+          this.borderRadius = 0
+        }
+      },
+      
+      changePadding:function(){
+        this.paddingLeft = this.paddingLeft === 50 ? 0 : 50
+      },
+    }
+  }
+</script>

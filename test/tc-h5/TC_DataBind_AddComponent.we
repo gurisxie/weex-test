@@ -1,0 +1,57 @@
+<template>
+  
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_DataBind_AddComponent"></TC_Support_MainTitle>
+
+    <TC_Support_SubTitle title="01.Add Component By Push"></TC_Support_SubTitle>
+    <TC_Support_Button style="margin:5" flagid="btn-push" title="Add component by push" btn-touch="{{push}}"></TC_Support_Button>
+
+    <TC_Support_SubTitle title="02.Add Component By concat"></TC_Support_SubTitle>
+    <TC_Support_Button style="margin:5" flagid="btn-concat" title="Add component by concat" btn-touch="{{concat}}"></TC_Support_Button>
+
+    <TC_Support_SubTitle title="Present area"></TC_Support_SubTitle>
+    <div style="margin: 10">
+      <div repeat="{{textList1}}">
+        <text class="text font">{{textValue}}</text>
+      </div>
+    </div>
+    </TC_Support_Scroller>
+</template>
+
+<style>
+
+
+  .font{font-family: Times New Roman;}
+  .text {
+    height:30;
+    border-width: 1;
+    border-style:solid;
+    margin:2;
+    padding-left:5;
+    font-size:20
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      textList1:[],
+      textList2:[],
+    },
+    
+    methods: {
+      push:function() {
+        this.textList1.push({textValue:'List1-' + this.textList1.length})
+      },
+      concat:function() {
+        this.textList1 = this.textList1.concat(this.textList2)
+      }
+    },
+    
+    created: function() {
+      for(var i = 0; i<5; i++) {
+        this.textList2.push({textValue:'List2-' + this.textList2.length})
+      }
+    }
+  }
+</script>

@@ -1,0 +1,313 @@
+<template>
+  <div style="flex-direction: column;height:5000;">
+  <TC_Support_MainTitle title="TC_List_AllComponent"></TC_Support_MainTitle>
+  <div style="flex-direction: column;height:5000;">
+    <div style="flex-direction: column; margin-top:100;">
+      <text style="font-size:30;">02.list设置高度</text>
+      <!-- <list class="list" style="height:500;" onloadmore="loadmore" loadmoreoffset=2000>
+        <cell class="header" scope="9"  append="tree">
+          <text>这是一个header</text>
+        </cell>
+        <cell class="cell" repeat="{{list2}}" scope="{{scopeValue}}" append="tree">
+          <div style="padding-bottom:10; flex-direction: row; " id="{{itemId}}" if="{{isShow}}">
+            <div class="cell-left">
+              <image class="img" src="{{imgLeft}}"></image>
+              <text class="textRcm" if="{{isRcmLeft}}">推 荐</text>
+              <text class="textDel" onclick="DeleteCell2" item-id="{{itemId}}">移 除</text>
+              <div style="flex-direction: row; flex:1;">
+                <text class="textPrice">{{priceLeft}}</text>
+                <text class="textPayNum">{{paynumLeft}}</text>
+              </div>
+              <text class="text">{{discLeft}}</text>
+            </div>
+            <div class="cell-right">
+              <image class="img" src="{{imgRight}}"></image>
+              <text class="textRcm" if="{{isRcmRight}}">推 荐</text>
+              <div style="flex-direction: row; flex:1;">
+                <text class="textPrice">{{priceRight}}</text>
+                <text class="textPayNum">{{paynumRight}}</text>
+              </div>
+              <text class="text">{{discRight}}</text>
+            </div>
+          </div>
+        </cell>
+        <cell class="footer" scope="9" append="tree">
+          <text>这是一个footer</text>
+        </cell>
+        
+      </list> -->
+    </div>
+    <div style="flex-direction: column; margin-top:100; height:500;">
+      <text style="font-size:30;">03.list设置高度且含有slider</text>
+      <list class="list" style="height:500;" onloadmore="loadmore" loadmoreoffset=2000>
+        <div>
+          <text>slider 三屏in list</text>
+        <slider class="slider" interval="{{intervalValue}}" auto-play="{{isAutoPlay}}" onsliderChange="change">
+        <div class="slider-pages" repeat="{{itemList}}" onclick="gotoDetail" item-id="{{itemId}}">
+          <image class="img" src="{{pictureUrl}}"></image>
+          <text class="title">{{title}}</text>
+        </div>
+        <!-- 指示器子节点 -->
+        <indicator class="indicator" style=""></indicator>
+      </slider>
+  
+        </div>
+        <cell class="header" scope="9"  append="tree">
+          <text>这是一个header</text>
+        </cell>
+        <cell class="cell" repeat="{{list2}}" scope="{{scopeValue}}" append="tree">
+          <div style="padding-bottom:10; flex-direction: row; " id="{{itemId}}" if="{{isShow}}">
+            <div class="cell-left">
+              <image class="img" src="{{imgLeft}}"></image>
+              <text class="textRcm" if="{{isRcmLeft}}">推 荐</text>
+              <text class="textDel" onclick="DeleteCell2" item-id="{{itemId}}">移 除</text>
+              <div style="flex-direction: row; flex:1;">
+                <text class="textPrice">{{priceLeft}}</text>
+                <text class="textPayNum">{{paynumLeft}}</text>
+              </div>
+              <text class="text">{{discLeft}}</text>
+            </div>
+            <div class="cell-right">
+              <image class="img" src="{{imgRight}}"></image>
+              <text class="textRcm" if="{{isRcmRight}}">推 荐</text>
+              <div style="flex-direction: row; flex:1;">
+                <text class="textPrice">{{priceRight}}</text>
+                <text class="textPayNum">{{paynumRight}}</text>
+              </div>
+              <text class="text">{{discRight}}</text>
+            </div>
+          </div>
+        </cell>
+        <cell class="footer" scope="9" append="tree">
+          <text>这是一个footer</text>
+        </cell>
+
+      </list>
+    </div>
+
+
+<div style="flex-direction: column; margin-top:100; height:500;">
+      <text style="font-size:30;">03.list设置高度且含有Video</text>
+      <list class="list" style="height:500;" onloadmore="loadmore" loadmoreoffset=2000>
+        <div>
+            <text>video in list</text>
+            <div >
+            <video class="video" play-status="{{dataSource.playstatus}}"  auto-play="{{dataSource.autoPlay}}" src="{{dataSource.src}}"></video>
+            </div>
+  
+        </div>
+        <cell class="header" scope="9"  append="tree">
+          <text>这是一个header</text>
+        </cell>
+        <cell class="cell" repeat="{{list2}}" scope="{{scopeValue}}" append="tree">
+          <div style="padding-bottom:10; flex-direction: row; " id="{{itemId}}" if="{{isShow}}">
+            <div class="cell-left">
+              <image class="img" src="{{imgLeft}}"></image>
+              <text class="textRcm" if="{{isRcmLeft}}">推 荐</text>
+              <text class="textDel" onclick="DeleteCell2" item-id="{{itemId}}">移 除</text>
+              <div style="flex-direction: row; flex:1;">
+                <text class="textPrice">{{priceLeft}}</text>
+                <text class="textPayNum">{{paynumLeft}}</text>
+              </div>
+              <text class="text">{{discLeft}}</text>
+            </div>
+            <div class="cell-right">
+              <image class="img" src="{{imgRight}}"></image>
+              <text class="textRcm" if="{{isRcmRight}}">推 荐</text>
+              <div style="flex-direction: row; flex:1;">
+                <text class="textPrice">{{priceRight}}</text>
+                <text class="textPayNum">{{paynumRight}}</text>
+              </div>
+              <text class="text">{{discRight}}</text>
+            </div>
+          </div>
+        </cell>
+        <cell class="footer" scope="9" append="tree">
+          <text>这是一个footer</text>
+        </cell>
+
+      </list>
+    </div>
+
+
+
+    <div style="flex-direction: column; margin-top:100; height:500;">
+      <text style="font-size:30;">04.list不设置高度含有slider</text>
+      <list class="list" style="height:500;" onloadmore="loadmore" loadmoreoffset=2000>
+        <div>
+          <text>Slider 绑定onsliderChange 没有indicator in list</text>
+          <slider class="slider" interval="{{intervalValue}}" auto-play="{{isAutoPlay}}" onChange="changeListenner">
+        <div class="slider-pages" repeat="{{itemList}}" onclick="gotoDetail" item-id="{{itemId}}">
+          <image class="img" src="{{pictureUrl}}"></image>
+          <text class="title">{{title}}</text>
+        </div>
+        <!-- 指示器子节点 -->
+        <!-- <indicator class="indicator" style=""></indicator> -->
+      </slider> 
+        </div>
+        <cell class="header" scope="9"  append="tree">
+          <text>这是一个header</text>
+        </cell>
+        <cell class="cell" repeat="{{list3}}" scope="{{scopeValue}}" append="tree">
+          <div style="padding-bottom:10; flex-direction: row; " id="{{itemId}}">
+            <div class="cell-left">
+              <image class="img" src="{{imgLeft}}"></image>
+              <text class="textRcm" if="{{isRcmLeft}}">推 荐</text>
+              <text class="textDel" onclick="DeleteCell3" item-id="{{itemId}}">移 除</text>
+              <div style="flex-direction: row; flex:1;">
+                <text class="textPrice">{{priceLeft}}</text>
+                <text class="textPayNum">{{paynumLeft}}</text>
+              </div>
+              <text class="text">{{discLeft}}</text>
+            </div>
+            <div class="cell-right">
+              <image class="img" src="{{imgRight}}"></image>
+              <text class="textRcm" if="{{isRcmRight}}">推 荐</text>
+              <div style="flex-direction: row; flex:1;">
+                <text class="textPrice">{{priceRight}}</text>
+                <text class="textPayNum">{{paynumRight}}</text>
+              </div>
+              <text class="text">{{discRight}}</text>
+            </div>
+          </div>
+        </cell>
+        <cell class="footer" scope="9" append="tree">
+          <text>这是一个footer</text>
+        </cell>
+      </list>
+    </div>
+  </div>
+  <div>
+</template>
+ 
+<style>
+  .list{width: 750; border-width: 1;border-color: #ff00ff;flex-direction: column;overflow: hidden;}
+  .header {flex-direction: column;border-width:3;border-color:#ffff00;border-style:dotted;margin-bottom:5;overflow:hidden; background-color:#ffffff;}
+  .footer {flex-direction: column; width:750; border-width:3;border-color:#00ffff;border-style:dotted;margin-bottom:5;overflow:hidden;background-color:#ffffff;}
+  .cell {flex-direction: column; width:750; background-color:#ffffff;}
+  .cell-left{flex:1; background-color: #eeeeee; padding:5; flex-direction: column;}
+  .cell-right{flex:1;background-color: #eeeeee; padding:5; flex-direction: column;}
+  .text {font-size: 25;color: #123456;margin:3;width: 365;font-family: "Open Sans", sans-serif;}
+  .textPrice{flex:1;height:50;font-size:30;color: #000000;padding-top:10;text-align:center;font-family: "Open Sans", sans-serif;}
+  .textPayNum {flex:1;height:50;font-size:30;color: #000000;padding-top:10;text-align:center;font-family: "Open Sans", sans-serif;}
+  .img {width: 365; height: 365; background-color:#ffff00;}
+  .textRcm{ position: absolute; width: 200; height:30; font-weight: bold; font-size: 25; left: 50; top:285; color: #ff0000; background-color: #cccccc; font-family: "Open Sans", sans-serif;}
+  .textDel{ position: absolute; width: 200; height:30; font-weight: bold; font-size: 25; left: 50; top:50; color: #ff0000; background-color: #cccccc; font-family: "Open Sans", sans-serif;}
+
+  .btn{ width:250; font-size: 25; border-width: 3; border-color: #cccccc; padding: 5; border-style: solid;border-radius: 3; margin: 5; font-family: "Open Sans", sans-serif;}
+  .slider {
+        flex-direction: row;
+        margin: 18;
+        width: 714;
+        height: 230;
+  }
+  .slider-pages {
+        flex-direction: row;
+        width: 714;
+        height: 200;
+  }
+  .indicator {
+    width:714;
+    height:200;
+    position:absolute;
+    top:1;
+    left:1;
+    itemColor: red;
+    itemSelectedColor: blue;
+    itemSize: 20;
+  }
+    .indicator_FFFFFF {
+    width:714;
+    height:200;
+    position:absolute;
+    top:1;
+    left:1;
+    itemColor: #ff0000; 
+    itemSelectedColor: #0000ff; 
+    itemSize: 20;
+  }
+  .video {
+        width: 710; height: 400;border-style: solid;border-width:1;border-color:#ff0000;
+        margin-top: 20;margin-right:20; margin-bottom:20;margin-left:  20;
+    }
+    .border {
+        border-style: solid;border-width:3;border-color:#ffff00;
+    }
+    .btn{font-size: 30; width:200; border-color: #999999; border-radius: 5; border-width: 2;text-align: center;}
+    .desc{font-weight: bold;}
+    .mg-top{margin-top: 20;}
+    .mg-left{margin-left: 20;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+
+
+    dataSource: {
+                autoPlay: true,
+                playstatus: 'play',
+                src: 'http://g.tbcdn.cn/ali-wireless-h5/res/0.0.6/toy.mp4'
+            },
+
+      intervalValue:"10000",
+      // isShowIndicators:"true",
+      isAutoPlay:"true",
+      itemList: [
+        {itemId: '520421163634', title: '宝贝标题1', pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: '宝贝标题2', pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: '宝贝标题3', pictureUrl: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg'}
+      ],
+      itemList2: [
+        {itemId: '520421163634', title: '宝贝标题1', pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: '宝贝标题2', pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'},
+      ],
+      
+      list1: [
+          {itemId: 'a',isShow:true, scopeValue:1, imgLeft:'https://gd3.alicdn.com/imgextra/i3/178271486/TB2Ljf8dVXXXXXDXXXXXXXXXXXX_!!178271486.jpg',priceLeft:'¥133.44',paynumLeft:'37人付款', discLeft:'翡冷翠现代欧式客厅玄关装饰画，三联画墙壁画卧室有框挂画',imgRight:'https://gd2.alicdn.com/bao/uploaded/i2/TB1vNPuKpXXXXX9aXXXXXXXXXXX_!!0-item_pic.jpg',priceRight:'¥950.00',paynumRight:'34人付款',discRight:'定制发财鹿三联沙发背景墙，美式装饰画，家居欧式客厅挂画玄关壁画',isRcmLeft:false,isRcmRight:true},
+          {itemId: 'b',isShow:true, scopeValue:1, imgLeft:'https://gd2.alicdn.com/bao/uploaded/i2/TB1DG6DKFXXXXcmXVXXXXXXXXXX_!!0-item_pic.jpg',priceLeft:'¥185.50',paynumLeft:'49人付款', discLeft:'仟象映画梦之鹿美式装饰画现代简约客厅挂画北欧竖版墙画黑白壁画',imgRight:'https://gd1.alicdn.com/bao/uploaded/i1/TB1Q64ELXXXXXaVXFXXXXXXXXXX_!!0-item_pic.jpg',priceRight:'¥1200.00',paynumRight:'110人付款',discRight:'伊森家居组合衣柜欧式田园两门三门四门五门整体衣柜实木衣橱',isRcmLeft:true,isRcmRight:true},
+          {itemId: 'c',isShow:true, scopeValue:1, imgLeft:'https://gd1.alicdn.com/bao/uploaded/i1/TB1R6evIFXXXXbRXVXXXXXXXXXX_!!0-item_pic.jpg',priceLeft:'¥4679.00',paynumLeft:'8人付款', discLeft:'PRADO普兰达家居极美家具合时尚现代日式宜家布沙发可拆洗沙发',imgRight:'https://gd1.alicdn.com/bao/uploaded/i1/TB1pYFQIFXXXXXHXpXXXXXXXXXX_!!0-item_pic.jpg',priceRight:'¥3200.00',paynumRight:'4人付款',discRight:'大小户型客厅布艺沙发组合贵妃转角简约现代米兰家居设计师可定制',isRcmLeft:false,isRcmRight:false},
+          {itemId: 'd',isShow:true, scopeValue:1, imgLeft:'https://gd2.alicdn.com/bao/uploaded/i2/TB1viyLKFXXXXarXpXXXXXXXXXX_!!0-item_pic.jpg',priceLeft:'¥2180.00',paynumLeft:'72人付款', discLeft:'伊森家居实木欧式床双人床美式床高箱储物床',imgRight:'https://gd4.alicdn.com/bao/uploaded/i4/TB1EFkEKVXXXXXjXXXXXXXXXXXX_!!0-item_pic.jpg',priceRight:'¥4199.00',paynumRight:'57人付款',discRight:'缇欧家居 简约现代中式实木床1.8米双人婚床1.5米皮艺软靠公主床',isRcmLeft:true,isRcmRight:false},
+      ],
+      list2: [
+          {itemId: 'a2',isShow:true, scopeValue:1, imgLeft:'https://gd3.alicdn.com/imgextra/i3/178271486/TB2Ljf8dVXXXXXDXXXXXXXXXXXX_!!178271486.jpg',priceLeft:'¥133.44',paynumLeft:'37人付款', discLeft:'翡冷翠现代欧式客厅玄关装饰画，三联画墙壁画卧室有框挂画',imgRight:'https://gd2.alicdn.com/bao/uploaded/i2/TB1vNPuKpXXXXX9aXXXXXXXXXXX_!!0-item_pic.jpg',priceRight:'¥950.00',paynumRight:'34人付款',discRight:'定制发财鹿三联沙发背景墙，美式装饰画，家居欧式客厅挂画玄关壁画',isRcmLeft:false,isRcmRight:true},
+          {itemId: 'b2',isShow:true, scopeValue:2, imgLeft:'https://gd2.alicdn.com/bao/uploaded/i2/TB1DG6DKFXXXXcmXVXXXXXXXXXX_!!0-item_pic.jpg',priceLeft:'¥185.50',paynumLeft:'49人付款', discLeft:'仟象映画梦之鹿美式装饰画现代简约客厅挂画北欧竖版墙画黑白壁画',imgRight:'https://gd1.alicdn.com/bao/uploaded/i1/TB1Q64ELXXXXXaVXFXXXXXXXXXX_!!0-item_pic.jpg',priceRight:'¥1200.00',paynumRight:'110人付款',discRight:'伊森家居组合衣柜欧式田园两门三门四门五门整体衣柜实木衣橱',isRcmLeft:true,isRcmRight:true},
+          {itemId: 'c2',isShow:true, scopeValue:3, imgLeft:'https://gd1.alicdn.com/bao/uploaded/i1/TB1R6evIFXXXXbRXVXXXXXXXXXX_!!0-item_pic.jpg',priceLeft:'¥4679.00',paynumLeft:'8人付款', discLeft:'PRADO普兰达家居极美家具合时尚现代日式宜家布沙发可拆洗沙发',imgRight:'https://gd1.alicdn.com/bao/uploaded/i1/TB1pYFQIFXXXXXHXpXXXXXXXXXX_!!0-item_pic.jpg',priceRight:'¥3200.00',paynumRight:'4人付款',discRight:'大小户型客厅布艺沙发组合贵妃转角简约现代米兰家居设计师可定制',isRcmLeft:false,isRcmRight:false},
+          {itemId: 'd2',isShow:true, scopeValue:4, imgLeft:'https://gd2.alicdn.com/bao/uploaded/i2/TB1viyLKFXXXXarXpXXXXXXXXXX_!!0-item_pic.jpg',priceLeft:'¥2180.00',paynumLeft:'72人付款', discLeft:'伊森家居实木欧式床双人床美式床高箱储物床',imgRight:'https://gd4.alicdn.com/bao/uploaded/i4/TB1EFkEKVXXXXXjXXXXXXXXXXXX_!!0-item_pic.jpg',priceRight:'¥4199.00',paynumRight:'57人付款',discRight:'缇欧家居 简约现代中式实木床1.8米双人婚床1.5米皮艺软靠公主床',isRcmLeft:true,isRcmRight:false},
+      ],
+      list3: [
+          {itemId: 'a3',isShow:true, scopeValue:1, imgLeft:'https://gd3.alicdn.com/imgextra/i3/178271486/TB2Ljf8dVXXXXXDXXXXXXXXXXXX_!!178271486.jpg',priceLeft:'¥133.44',paynumLeft:'37人付款', discLeft:'翡冷翠现代欧式客厅玄关装饰画，三联画墙壁画卧室有框挂画',imgRight:'https://gd2.alicdn.com/bao/uploaded/i2/TB1vNPuKpXXXXX9aXXXXXXXXXXX_!!0-item_pic.jpg',priceRight:'¥950.00',paynumRight:'34人付款',discRight:'定制发财鹿三联沙发背景墙，美式装饰画，家居欧式客厅挂画玄关壁画',isRcmLeft:false,isRcmRight:true},
+          {itemId: 'b3',isShow:true, scopeValue:2, imgLeft:'https://gd2.alicdn.com/bao/uploaded/i2/TB1DG6DKFXXXXcmXVXXXXXXXXXX_!!0-item_pic.jpg',priceLeft:'¥185.50',paynumLeft:'49人付款', discLeft:'仟象映画梦之鹿美式装饰画现代简约客厅挂画北欧竖版墙画黑白壁画',imgRight:'https://gd1.alicdn.com/bao/uploaded/i1/TB1Q64ELXXXXXaVXFXXXXXXXXXX_!!0-item_pic.jpg',priceRight:'¥1200.00',paynumRight:'110人付款',discRight:'伊森家居组合衣柜欧式田园两门三门四门五门整体衣柜实木衣橱',isRcmLeft:true,isRcmRight:true},
+          {itemId: 'c3',isShow:true, scopeValue:3, imgLeft:'https://gd1.alicdn.com/bao/uploaded/i1/TB1R6evIFXXXXbRXVXXXXXXXXXX_!!0-item_pic.jpg',priceLeft:'¥4679.00',paynumLeft:'8人付款', discLeft:'PRADO普兰达家居极美家具合时尚现代日式宜家布沙发可拆洗沙发',imgRight:'https://gd1.alicdn.com/bao/uploaded/i1/TB1pYFQIFXXXXXHXpXXXXXXXXXX_!!0-item_pic.jpg',priceRight:'¥3200.00',paynumRight:'4人付款',discRight:'大小户型客厅布艺沙发组合贵妃转角简约现代米兰家居设计师可定制',isRcmLeft:false,isRcmRight:false},
+          {itemId: 'd3',isShow:true, scopeValue:4, imgLeft:'https://gd2.alicdn.com/bao/uploaded/i2/TB1viyLKFXXXXarXpXXXXXXXXXX_!!0-item_pic.jpg',priceLeft:'¥2180.00',paynumLeft:'72人付款', discLeft:'伊森家居实木欧式床双人床美式床高箱储物床',imgRight:'https://gd4.alicdn.com/bao/uploaded/i4/TB1EFkEKVXXXXXjXXXXXXXXXXXX_!!0-item_pic.jpg',priceRight:'¥4199.00',paynumRight:'57人付款',discRight:'缇欧家居 简约现代中式实木床1.8米双人婚床1.5米皮艺软靠公主床',isRcmLeft:true,isRcmRight:false},
+      ],
+      textInfo:"info"
+    },
+    methods: {
+      DeleteCell2: function (e) {
+        var itemId = e.target.attr.itemId;
+        for (var i = 0; i < this.list2.length; i++) {
+          var itemData = this.list2[i];
+          if(itemData.itemId==itemId){
+            itemData.isShow = false;
+            break;
+          }
+        }
+      },
+      DeleteCell3: function (e) {
+        var itemId = e.target.attr.itemId;
+        for (var i = 0; i < this.list3.length; i++) {
+          var itemData = this.list3[i];
+          if(itemData.itemId==itemId){
+            itemData.isShow = false;
+            break;
+          }
+        }
+      },
+      loadmore:function (e) {
+        
+      }
+    }
+    
+  }
+</script>

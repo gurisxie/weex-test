@@ -1,0 +1,213 @@
+<template>
+  <div class="root">
+  <scroller class="screen">
+    <TC_Support_MainTitle title="TC_List_Contains_Comm_Components"></TC_Support_MainTitle>
+
+    <list class="list">
+    <refresh  class = "refresh-view" display="{{refresh_display}}" onrefresh="onrefresh">
+      <text class="refresh-arrow" if="{{(refresh_display==='hide')}}"> ↓ 下拉刷新 </text>
+      <loading-indicator color="red" class="refresh-indicator"></loading-indicator>
+    </refresh>
+
+      <cell class="cell">
+        <text class="title">silder in list</text>
+        <div>
+        <slider class="slider" interval="{{intervalValue}}" auto-play="{{isAutoPlay}}" onchange="change">
+          <div class="slider-pages" repeat="{{itemList}}" onclick="gotoDetail" item-id="{{itemId}}">
+            <image class="img" src="{{pictureUrl}}"></image>
+<!--             <text class="title">{{title}}</text>
+ -->          </div>
+        <!-- 指示器子节点 -->
+          <indicator class="indicator" style=""></indicator>
+        </slider>
+
+        <slider class="slider" interval="{{intervalValue}}" auto-play="{{isAutoPlay}}" onchange="change">
+          <div class="slider-pages" repeat="{{itemList}}" onclick="gotoDetail" item-id="{{itemId}}">
+            <image class="img" src="{{pictureUrl}}"></image>
+<!--             <text class="title">{{title}}</text>
+ -->          </div>
+        <!-- 指示器子节点 -->
+          <indicator class="indicator" style=""></indicator>
+        </slider>
+
+      </div>
+      </cell>
+
+      <cell class="cell">
+        <text class="title">video in list</text>
+        <div style="justify-content: center; align-items: center; padding-top:5">
+          <video class="video" onpause="onpause" onstart="onstart" onfinish="onfinish" onfail="onfail"
+           src="http://g.tbcdn.cn/ali-wireless-h5/res/0.0.6/toy.mp4"
+           auto-play="true" play-status="{{playStatus}}">
+          </video>
+        </div>
+      </cell>
+
+      <cell class="cell">
+        <text class="title">web in list</text>
+        <scroller style="justify-content: center; align-items: center; padding-top:5">
+        <web class="web" src = "http://h5.m.taobao.com"></web>
+        </scroller>
+      </cell>
+
+      <loading class="loading" display="{{loading_display}}" onloading="onloading">
+      <text class="refresh-arrow" if="{{(loading_display==='hide')}}"> ↑ 上拉刷新 </text>
+      <loading-indicator class="refresh-indicator"></loading-indicator>
+    </loading>
+
+    </list>
+  </scroller>
+</div>
+</template>
+
+<style>
+.list{width:750;height:800}
+.cell{padding-top: 5;padding-bottom: 10}
+.title{text-align: center; background-color: #3366CC;color: white;font-size: 35}
+
+.slider {
+        flex-direction: row;
+        margin: 18;
+        width: 714;
+        height: 230;
+  }
+  .slider-pages {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 714;
+        height: 250;
+  }
+  .img {
+      width: 250; 
+      height: 250;
+/*      justify-content: center;
+      align-items: center;*/
+      /*position:static;
+      position:relative;
+      top:-50%;left:-50%;
+      vertical-align:middle;*/
+      }
+  .indicator {
+    width:714;
+    height:200;
+    position:absolute;
+    top:1;
+    left:1;
+    itemColor: red;
+    itemSelectedColor: blue;
+    itemSize: 20;
+  }
+
+  .video {
+    width: 250;
+    height: 250;
+    margin-bottom: 10px;
+  }
+  .web{
+    width: 250px;
+    height: 250px;
+    margin-bottom: 10px;
+  }
+  .refresh-view{
+    width: 750;
+    height: 100;
+    background-color: #33b5e5;
+  }
+  .refresh-arrow {
+    font-size: 30;
+    color: yellow;
+    text-align: center;
+  }
+  .refresh-indicator{
+    flex: 1;
+    color: #889967;
+  }
+  .loading{
+    width: 750;
+    height: 100;
+    background-color: #33b5e5;
+}
+
+
+.root{flex-direction: column; background-color: #ffffff;}
+.screen{flex-direction: column; background-color: #ffffff;width:750;height:1000;border-width: 3;border-color: #00ff00;}
+.font{font-family: Times New Roman;}
+</style>
+
+<script>
+  module.exports = {
+
+    data: {
+      intervalValue:"1000",
+      isAutoPlay:"true",
+      playStatus: 'play',
+      refresh_display: "hide",
+      loading_display:"hide",
+
+      itemList: [
+        {itemId: '520421163634', title: '宝贝标题1', pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: '宝贝标题2', pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: '宝贝标题3', pictureUrl: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg'}
+      ],
+      sliderItems: []
+    },
+
+    methods: {
+
+
+      gotoDetail: function (e) {
+        var itemId = e.target.attr.itemId;
+        this.$openURL('https://item.taobao.com/item.htm?id=' + itemId)
+      },
+
+      change: function (e) {
+        nativeLog("onsliderChange !!");
+      },
+
+      onrefresh: function(e) {
+        var self = this;
+        self.refresh_display = 'show';
+        self.$call('modal', 'toast', {
+          'message': 'list onrefresh'
+        });
+
+        // this.isrequest = 'yes'
+
+        // if (this.isrequest === 'yes') {
+        //           self = this;
+        // this.$call('timer', 'setTimeout', function () {
+        //   self.refresh_display = 'hide'
+          
+        //   self.$call('modal', 'toast', {
+        //   'message': 'tttt'
+        // }); 
+
+        // this.isrequest = 'no'
+        // }, 3000);
+        // };
+
+        // this.isrequest = 'no'
+        self.refresh_display = 'hide';
+      },
+
+      onloading: function() {
+        var self = this;
+        self.loading_display = 'show';
+        self.$call('modal', 'toast', {
+          'message': 'list onloading'
+        });
+
+        // if (this.loading_display !== 'hide') {
+        // self = this;
+      //   this.$call('timer', 'setTimeout', function () {
+      //     self.loading_display = 'hide';
+      //   }, 3000);
+      // }
+
+        self.loading_display = 'hide';
+      },
+
+    }
+  }
+</script>

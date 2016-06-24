@@ -1,0 +1,154 @@
+<template>
+  
+<TC_Support_Scroller>
+    <text class="discript">我是weex页面～</text>
+    <div class="div-split"></div>
+    <div style="flex-direction: column;">
+      <list class="list" style="height:900;">
+        <cell append="tree">
+          <div class="list-cell-div">
+            <div style="flex-direction: row;">
+              <text class="list-cell-desc" >deviceWidth：</text>
+              <text class="list-cell-link">{{_deviceWidth}}</text>
+            </div>
+            <div class="div-split"></div>
+          </div>
+        </cell>
+        <cell append="tree">
+          <div class="list-cell-div">
+            <div style="flex-direction: row;">
+              <text class="list-cell-desc" >deviceHeight：</text>
+              <text class="list-cell-link">{{_deviceHeight}}</text>
+            </div>
+            <div class="div-split"></div>
+          </div>
+        </cell>
+        <cell append="tree">
+          <div class="list-cell-div">
+            <div style="flex-direction: row;">
+              <text class="list-cell-desc" >weexVersion：</text>
+              <text class="list-cell-link">{{_weexVersion}}</text>
+            </div>
+            <div class="div-split"></div>
+          </div>
+        </cell>
+        <cell append="tree">
+          <div class="list-cell-div">
+            <div style="flex-direction: row;">
+              <text class="list-cell-desc" >osVersion：</text>
+              <text class="list-cell-link">{{_osVersion}}</text>
+            </div>
+            <div class="div-split"></div>
+          </div>
+        </cell>
+        <cell append="tree">
+          <div class="list-cell-div">
+            <div style="flex-direction: row;">
+              <text class="list-cell-desc" >platform：</text>
+              <text class="list-cell-link">{{_platform}}</text>
+            </div>
+            <div class="div-split"></div>
+          </div>
+        </cell>
+        <cell append="tree">
+          <div class="list-cell-div">
+            <div style="flex-direction: row;">
+              <text class="list-cell-desc" >appName：</text>
+              <text class="list-cell-link">{{_appName}}</text>
+            </div>
+            <div class="div-split"></div>
+          </div>
+        </cell>
+        <cell append="tree">
+          <div class="list-cell-div">
+            <div style="flex-direction: row;">
+              <text class="list-cell-desc" >appVersion：</text>
+              <text class="list-cell-link">{{_appVersion}}</text>
+            </div>
+            <div class="div-split"></div>
+          </div>
+        </cell>
+        <cell append="tree">
+          <div class="list-cell-div">
+            <div style="flex-direction: row;">
+              <text class="list-cell-desc" >deviceModel：</text>
+              <text class="list-cell-link">{{_deviceModel}}</text>
+            </div>
+            <div class="div-split"></div>
+          </div>
+        </cell>
+        <cell append="tree">
+          <div class="list-cell-div">
+            <div style="flex-direction: row;">
+              <text class="list-cell-desc largeH" >bundleUrl：</text>
+              <text class="list-cell-link largeH">{{_bundleUrl}}</text>
+            </div>
+            <div class="div-split"></div>
+          </div>
+        </cell>
+      </list>
+    </div>
+    
+  </TC_Support_Scroller>
+</template>
+<style>
+
+
+
+.discript {flex: 1; color: #000000; font-weight: bold; font-size:30;background-color: #37dd23;}
+ .title{margin-top: 10;margin-left: 10;margin-bottom:10; font-size: 40; font-weight: bold;text-align: center;;}
+  .div-split{height: 2; border-width: 1; border-style:dashed; border-color: #375830;}
+  .list{width: 750; border-width: 1;border-color: #eeeeee;flex-direction: column;overflow: hidden;}
+  .list-cell-div{flex-direction: column;background-color:#ffffff;justify-content:center; }
+  .list-cell-link{ font-size: 30; margin-top:15; margin-left: 15; margin-bottom:15; }
+  .list-cell-desc{ font-size: 30; margin-top:15; margin-left: 15; margin-bottom:15; font-weight: bold;}
+  .largeH{height: 100;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      appConfig:'',
+      _deviceWidth:'',
+      _deviceHeight:'',
+      _weexVersion:'',
+      _osVersion:'',
+      _platform:'',
+      _appName:'',
+      _appVersion:'',
+      _deviceModel:'',
+      _bundleUrl:'',
+    },
+    methods: {
+      ready: function () {
+        // config
+        this.$getConfig(function (config) {
+            this.appConfig = config;
+            //nativeLog(JSON.stringify(config));
+            this._deviceWidth=config.env.deviceWidth;
+            this._deviceHeight=config.env.deviceHeight;
+            this._weexVersion=config.env.weexVersion;
+            this._osVersion=config.env.osVersion;
+            this._platform=config.env.platform;
+            this._appName=config.env.appName;
+            this._appVersion=config.env.appVersion;
+            this._deviceModel=config.env.deviceModel;
+            this._bundleUrl=config.bundleUrl;
+        }.bind(this));
+      },
+    }
+  }
+</script>
+
+<script type="config">
+{
+    downgrade:{
+      ios: {
+        deviceModel: ['x86_64','iPhone1,1','iPhone1,2','iPhone2,1','iPhone3,1','iPhone3,2','iPhone3,3','iPhone4,1','iPhone5,1','iPhone5,2','iPhone5,3','iPhone5,4','iPhone6,1','iPhone6,2','iPhone7,1','iPhone7,2','iPhone7,3','iPhone7,4','iPhone7,5','iPhone8,1','iPhone8,2','iPhone8,3','iPhone8,4','iPhone8,5']
+      },
+      android: {
+        deviceModel: ['Nexus 5', 'HM NOTE 1LTE', '2014813','SM701','Nexus 5X','Nexus 5X','R7007','N1T','SCL-TL00','KIW-TL00','HUAWEI P7-L07','vivo X6A','HUAWEI RIO-CL00','MX5','M57AC','Bird LT02','vivo X6Plus D','Redmi Note 2','vivo Y23L','HUAWEI G750-T01','MI NOTE LTE','ALE-TL00','X9007','Lenovo A7600-m','HUAWEI G750-T01','SM-A7000','vivo Y29L','2014501','Letv X500','R7Plus','m2','C03','HM NOTE 1TD','OPPO R7t','OPPO A33','U707T','PRO 5','MI 5']
+      }
+    }
+}
+</script>

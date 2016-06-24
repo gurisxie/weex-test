@@ -1,0 +1,41 @@
+<template>
+  
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Video_Style"></TC_Support_MainTitle>
+    <div class="size column js-con">
+      <video play-status="pause" auto-play="false" src = "{{src}}"></video>
+    </div>
+    <TC_Support_SubTitle title="02.No width and height, but flex"></TC_Support_SubTitle>
+    <div class="size row js-con">
+      <video class="flex" play-status="pause"  auto-play="false" src = "{{src}}"></video>
+    </div>
+
+    <TC_Support_SubTitle title="03.has width and height"></TC_Support_SubTitle>
+    <div class="size row js-con">
+      <video class="video-h" play-status="pause"  auto-play="false" src = "{{src}}"></video>
+    </div>
+    </TC_Support_Scroller>
+</template>
+ 
+<style>
+
+
+
+  .font{font-family: Times New Roman;font-size: 30;}
+
+  .row{ flex-direction:row;}
+  .size{width: 750;height: 200;}
+
+  .flex{flex:1;}
+  .video-h {width:710;height: 150;margin: 20;}
+  .div{width: 750;height: 300;justify-content: space-between; flex-direction: row;}
+</style>
+
+<script>
+    module.exports = {
+        data: {
+            src : 'http://g.tbcdn.cn/ali-wireless-h5/res/0.0.6/toy.mp4',
+        },
+    };
+</script>
+

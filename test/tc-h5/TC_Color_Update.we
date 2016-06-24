@@ -1,0 +1,106 @@
+<template>
+
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Color_Update"></TC_Support_MainTitle>
+    <div class="block mt15">
+      <div class="block">
+        <TC_Support_SubTitle title="transparency->opacity->transparency"></TC_Support_SubTitle>
+        <text class="tc-content font" flag-id="txt-trans" onclick="changeTransparent" style="color:{{transparentColor}};background-color:#00FFFF;height:50;">transparency->opacity->transparency</text>
+      </div>    
+      <div class="block">
+        <TC_Support_SubTitle title="click to change color"></TC_Support_SubTitle>
+        <text class="tc-content font" flag-id="txt-hex-name" onclick="changeHexColorToName" style="color:{{hexColorToName}}">update hex - colorname  blue-red</text>
+        <text class="tc-content font" flag-id="txt-hex-rgb" onclick="changeHexColorToRgb" style="color:{{hexColorToRgb}}">update hex - rgb blue-green</text>
+        <text class="tc-content font" flag-id="txt-hex-rgba" onclick="changeHexColorToRgba" style="color:{{hexColorToRgba}}">update hex - rgba blue-orange</text>
+        <text class="tc-content font" flag-id="txt-rgb-rgba" onclick="changeRgbColorToRgba" style="color:{{rgbColorToRgba}}">update rgb - rgba red-lake blue</text>
+        <text class="tc-content font" flag-id="txt-rgb-name" onclick="changeRgbColorToName" style="color:{{rgbColorToName}}">update rgb - colorname red-olivine</text>
+        <text class="tc-content font" flag-id="txt-rgba-name" onclick="changeRgbaColorToName" style="color:{{rgbaColorToName}}">update rgba - colorname grass green-olivine</text>
+      </div>        
+    </div>
+    </TC_Support_Scroller>
+</template>
+<style>
+
+
+
+
+
+  .font{font-family: Times New Roman;font-size: 30;}
+
+  .tc-desc{
+    margin-top: 7;
+    font-size: 30;
+    font-weight: bold;
+    background-color: #ff00ff;
+  }
+
+  .tc-content{
+    margin-top: 7;
+    font-size:30;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      hexColorToName:'#0000FF',
+      hexColorToRgb:'#0000FF',
+      hexColorToRgba:'#0000FF',
+      rgbColorToRgba:'rgb(255,0,0)',
+      rgbColorToName:'rgb(255,0,0)',
+      rgbaColorToName:'rgba(34,139,34, 1.0)',
+      transparentColor:'transparent'
+    },
+    methods: {
+      changeTransparent:function(e){
+        if(this.transparentColor == "transparent"){
+          this.transparentColor = "black";
+        }else{
+          this.transparentColor = "transparent";
+        }
+      },
+      changeHexColorToName:function(e){   
+        if(this.hexColorToName=="#0000FF"){
+          this.hexColorToName="red";
+        }else{
+          this.hexColorToName="#0000FF"
+        }                
+      },
+      changeHexColorToRgb:function(e){
+        if(this.hexColorToRgb=="#0000FF"){
+          this.hexColorToRgb="rgb(46,139,87)";
+        }else{
+          this.hexColorToRgb="#0000FF"
+        }
+      },
+      changeHexColorToRgba:function(e){
+        if(this.hexColorToRgba=="#0000FF"){
+          this.hexColorToRgba="rgba(255,99,71 , 0.8)";
+        }else{
+          this.hexColorToRgba="#0000FF"
+        }
+      },
+      changeRgbColorToRgba:function(e){
+        if(this.rgbColorToRgba=="rgb(255,0,0)"){
+          this.rgbColorToRgba="rgba(64,224,208, 1.0)";
+        }else{
+          this.rgbColorToRgba="rgb(255,0,0)"
+        }
+      },
+      changeRgbColorToName:function(e){
+        if(this.rgbColorToName=="rgb(255,0,0)"){
+          this.rgbColorToName="yellowgreen";
+        }else{
+          this.rgbColorToName="rgb(255,0,0)"
+        }
+      },
+      changeRgbaColorToName:function(e){
+        if(this.rgbaColorToName=="rgba(34,139,34, 1.0)"){
+          this.rgbaColorToName="yellowgreen";
+        }else{
+          this.rgbaColorToName="rgba(34,139,34, 1.0)"
+        }
+      }
+    }
+  }
+</script>

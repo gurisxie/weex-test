@@ -1,0 +1,610 @@
+<we-element name='btn'>
+  <template>
+    <div class="btn" onclick="{{btnClick}}">
+      <text class="title">{{title}}</text>
+    </div>
+  </template>
+  <style>
+    .btn {height:115; background-color:#337AB7; justify-content: center; border-radius:15;}
+    .title {font-size:40; text-align: center; color:#FFFFFF}
+  </style>
+  <script>
+    module.exports = {
+      data: {
+        title:'Button Click',
+      },
+    }
+  </script>
+</we-element>
+
+<template>
+  <scroller>
+    <div class="group">
+      <text class="title">基础 Base</text>
+      <btn class="btn" btn-click="{{checkWindVaneSDK}}" title="checkWindVaneSDK(iOS)"></btn>
+      <btn class="btn" btn-click="{{copyToClipboard}}" title="copyToClipboard"></btn>
+      <btn class="btn" btn-click="{{postNotificationToNative}}" title="postNotificationToNative"></btn>
+      <btn class="btn" btn-click="{{isInstall}}" title="isInstall"></btn>
+      <btn class="btn" btn-click="{{isWindVaneSDK}}" title="isWindVaneSDK"></btn>
+      <btn class="btn" btn-click="{{notify}}" title="notify(iOS)"></btn>
+      <btn class="btn" btn-click="{{plusUT}}" title="plusUT"></btn>
+      <btn class="btn" btn-click="{{commitUTEvent}}" title="commitUTEvent"></btn>
+      <btn class="btn" btn-click="{{openBrowser}}" title="openBrowser(iOS)"></btn>
+      <btn class="btn" btn-click="{{setBackgroundColor}}" title="setBackgroundColor(iOS)"></btn>
+      <btn class="btn" btn-click="{{addTailJSBridge}}" title="addTailJSBridge"></btn>
+    </div>
+    <div class="group">
+      <text class="title">声音播放 WVAudio</text>
+      <btn class="btn" btn-click="{{playSystemSound}}" title="playSystemSound(iOS)"></btn>
+    </div>
+    <div class="group">
+      <text class="title">相机 WVCamera</text>
+      <btn class="btn" btn-click="{{takePhoto}}" title="takePhoto"></btn>
+      <btn class="btn" btn-click="{{confirmUploadPhoto}}" title="confirmUploadPhoto"></btn>
+    </div>
+    <div class="group">
+      <text class="title">通讯录 WVContacts</text>
+      <btn class="btn" btn-click="{{askAuth}}" title="askAuth(iOS)"></btn>
+      <btn class="btn" btn-click="{{authStatus}}" title="authStatus"></btn>
+      <btn class="btn" btn-click="{{choose}}" title="choose"></btn>
+      <btn class="btn" btn-click="{{find}}" title="find"></btn>
+    </div>
+    <div class="group">
+      <text class="title">跨域Cookie WVCookie</text>
+      <btn class="btn" btn-click="{{read}}" title="read"></btn>
+      <btn class="btn" btn-click="{{write}}" title="write"></btn>
+    </div>
+    <div class="group">
+      <text class="title">地理位置 WVLocation</text>
+      <btn class="btn" btn-click="{{getLocation}}" title="getLocation"></btn>
+      <btn class="btn" btn-click="{{searchLocation}}" title="searchLocation(iOS)"></btn>
+    </div>
+    <div class="group">
+      <text class="title">动作检测 WVMotion</text>
+      <btn class="btn" btn-click="{{listenBlow}}" title="listenBlow"></btn>
+      <btn class="btn" btn-click="{{stopListenBlow}}" title="stopListenBlow"></btn>
+      <btn class="btn" btn-click="{{listenGyro}}" title="listenGyro"></btn>
+      <btn class="btn" btn-click="{{listeningShake}}" title="listeningShake"></btn>
+      <btn class="btn" btn-click="{{vibrate}}" title="vibrate"></btn>
+    </div>
+    <div class="group">
+      <text class="title">网络检测 WVNetwork</text>
+      <btn class="btn" btn-click="{{getNetworkType}}" title="getNetworkType"></btn>
+    </div>
+    <div class="group">
+      <text class="title">蜂鸣 WVNotification</text>
+      <btn class="btn" btn-click="{{beep}}" title="beep"></btn>
+    </div>
+    <div class="group">
+      <text class="title">屏幕 WVScreen</text>
+      <btn class="btn" btn-click="{{capture}}" title="capture"></btn>
+      <btn class="btn" btn-click="{{getOrientation}}" title="getOrientation"></btn>
+      <btn class="btn" btn-click="{{setOrientation}}" title="setOrientation(Android)"></btn>
+    </div>
+    <div class="group">
+      <text class="title">文件 WVFile</text>
+      <btn class="btn" btn-click="{{read}}" title="read"></btn>
+      <btn class="btn" btn-click="{{write}}" title="write"></btn>
+    </div>
+    <div class="group">
+      <text class="title">本地检测 WVNativeDetector</text>
+      <btn class="btn" btn-click="{{getModelInfo}}" title="getModelInfo(iOS)"></btn>
+      <btn class="btn" btn-click="{{getCurrentUsage}}" title="getCurrentUsage"></btn>
+      <btn class="btn" btn-click="{{getDeviceYear}}" title="getDeviceYear"></btn>
+      <btn class="btn" btn-click="{{isHighPerformanceDevice}}" title="isHighPerformanceDevice(iOS)"></btn>
+    </div>
+    <div class="group">
+      <text class="title">Web 性能 WVWebPerformance</text>
+      <btn class="btn" btn-click="{{timing}}" title="timing"></btn>
+      <btn class="btn" btn-click="{{jsBridgeHistory}}" title="jsBridgeHistory"></btn>
+    </div>
+    <div class="group">
+      <text class="title">窗口小部件 Widget</text>
+      <btn class="btn" btn-click="{{show}}" title="showActionSheet"></btn>
+      <btn class="btn" btn-click="{{alert}}" title="alert"></btn>
+      <btn class="btn" btn-click="{{confirm}}" title="confirm"></btn>
+      <btn class="btn" btn-click="{{showLoadingBox}}" title="showLoadingBox"></btn>
+      <btn class="btn" btn-click="{{hideLoadingBox}}" title="hideLoadingBox"></btn>
+      <btn class="btn" btn-click="{{toast}}" title="toast"></btn>
+    </div>
+  </scroller>
+</template>
+
+<style>
+  .group {margin-top:20; border-top-width:3; border-style:solid; border-color:#E8E8E8;}
+  .title {font-size:40; margin:20; font-weight:bold;}
+  .btn {margin:20;margin-top:0;}
+  .element {border-top-width:1; border-style:solid; border-color:#DCDCDC;}
+</style>
+
+<script>
+  module.exports = {
+    methods:{
+      checkWindVaneSDK:function() {
+        var params = {
+          v:"6.3.0",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'Base',method: 'checkWindVaneSDK',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      copyToClipboard:function() {
+        var params = {
+          text:"text to copy",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'Base',method: 'copyToClipboard',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      postNotificationToNative:function() {
+        var params = {
+          param:"test",
+          event:"WVEvent.Post.TestEvent",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVStandardEventCenter',method: 'postNotificationToNative',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      isInstall:function() {
+        var params = {
+          ios:"taobao://",
+          android:"com.taobao.taobao",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'Base',method: 'isInstall',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      isWindVaneSDK:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'Base',method: 'isWindVaneSDK',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      notify:function() {
+        var params = {
+          event:"MyNotifyName",
+          param:"[object Object]",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'Base',method: 'notify',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      plusUT:function() {
+        var params = {
+          a2:"Button",
+          a3:"Click",
+          args:"[object Object]",
+          eid:"9199",
+          a1:"redCouponAct",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'Base',method: 'plusUT',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      commitUTEvent:function() {
+        var params = {
+          arg2:"WindVane-Test-arg2",
+          arg3:"WindVane-Test-arg3",
+          args:"[object Object]",
+          eventId:"64403",
+          arg1:"WindVane-Test-arg1",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'Base',method: 'commitUTEvent',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      openBrowser:function() {
+        var params = {
+          url:"http://www.baidu.com",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'Base',method: 'openBrowser',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      setBackgroundColor:function() {
+        var params = {
+          color:"#FF0000",
+          alpha:"0.3",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'Base',method: 'setBackgroundColor',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      addTailJSBridge:function() {
+        var params = {
+          className:"WVUIDialog",
+          handlerName:"alert",
+          params:"[object Object]",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'Base',method: 'addTailJSBridge',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      playSystemSound:function() {
+        var params = {
+          sound:"1000",
+          count:"3",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVAudio',method: 'playSystemSound',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      takePhoto:function() {
+        var params = {
+          type:"0",
+          mode:"camera",
+          v:"1.0",
+          mutipleSelection:"1",
+          needLogin:"true",
+          needBase64:"true",
+          useResourceURL:"true",
+          fullImage:"true",
+          compatible:"true",
+          maxSelect:"6",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVCamera',method: 'takePhoto',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      confirmUploadPhoto:function() {
+        var params = {
+          v:"1.0",
+          path:"undefined",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVCamera',method: 'confirmUploadPhoto',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      askAuth:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVContacts',method: 'askAuth',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      authStatus:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVContacts',method: 'authStatus',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      choose:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVContacts',method: 'choose',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      find:function() {
+        var params = {
+          filter:"[object Object]",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVContacts',method: 'find',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      read:function() {
+        var params = {
+          url:"http://m.taobao.com",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVCookie',method: 'read',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      write:function() {
+        var params = {
+          _w_al_f:"1",
+          domain:"m.taobao.com",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVCookie',method: 'write',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      getLocation:function() {
+        var params = {
+          enableHighAcuracy:"true",
+          address:"true",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVLocation',method: 'getLocation',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      searchLocation:function() {
+        var params = {
+          addrs:"浙江省杭州市余杭区文一西路960号",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVLocation',method: 'searchLocation',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      listenBlow:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVMotion',method: 'listenBlow',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      stopListenBlow:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVMotion',method: 'stopListenBlow',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      listenGyro:function() {
+        var params = {
+          frequency:"100",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVMotion',method: 'listenGyro',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      listeningShake:function() {
+        var params = {
+          frequency:"",
+          shakeThreshold:"",
+          shakeNum:"",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVMotion',method: 'listeningShake',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      vibrate:function() {
+        var params = {
+          duration:"7000",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVMotion',method: 'vibrate',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      getNetworkType:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVNetwork',method: 'getNetworkType',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      beep:function() {
+        var params = {
+          count:"3",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVNotification',method: 'beep',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      capture:function() {
+        var params = {
+          inAlbum:"true",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVScreen',method: 'capture',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      getOrientation:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVScreen',method: 'getOrientation',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      setOrientation:function() {
+        var params = {
+          orientation:"landscape",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVScreen',method: 'setOrientation',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      read:function() {
+        var params = {
+          fileName:"testFile.txt",
+          share:"true",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVFile',method: 'read',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      write:function() {
+        var params = {
+          mode:"write",
+          fileName:"testFile.txt",
+          data:"Hello World!!! ",
+          share:"true",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVFile',method: 'write',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      getModelInfo:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVNativeDetector',method: 'getModelInfo',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      getCurrentUsage:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVNativeDetector',method: 'getCurrentUsage',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      getDeviceYear:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVNativeDetector',method: 'getDeviceYear',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      isHighPerformanceDevice:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVNativeDetector',method: 'isHighPerformanceDevice',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      timing:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVWebPerformance',method: 'timing',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      jsBridgeHistory:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVWebPerformance',method: 'jsBridgeHistory',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      show:function() {
+        var params = {
+          title:"Choose a button!",
+          _index:"32768",
+          buttons:"按钮 1,按钮 2,按钮 3,按钮 4,按钮 5",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVUIActionSheet',method: 'show',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      alert:function() {
+        var params = {
+          identifier:"my alert",
+          message:"Hello World!",
+          okbutton:"确 👌 定",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVUIDialog',method: 'alert',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      confirm:function() {
+        var params = {
+          _index:"10086",
+          message:"Are you really really sure?",
+          okbutton:"确 👌 定",
+          canclebutton:"取 ❎ 消",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVUIDialog',method: 'confirm',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      showLoadingBox:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVUI',method: 'showLoadingBox',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      hideLoadingBox:function() {
+        var params = {
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVUI',method: 'hideLoadingBox',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+      toast:function() {
+        var params = {
+          duration:"5",
+          message:"Toast information",
+
+        }
+        var windvane = this._app.requireModule('windvane')
+        windvane.call({class: 'WVUIToast',method: 'toast',data: params}, function(e){
+          this.$call('modal', 'alert', {'message':'result:' + JSON.stringify(e), 'okTitle':'OK'},function(){})
+        }.bind(this));
+      },
+    }
+  }
+</script>

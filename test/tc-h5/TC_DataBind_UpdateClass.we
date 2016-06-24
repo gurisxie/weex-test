@@ -1,0 +1,42 @@
+<template>
+  
+<TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_DataBind_UpdateClass"></TC_Support_MainTitle>
+    <TC_Support_SubTitle title="01.Update class"></TC_Support_SubTitle>
+    <TC_Support_Button style="margin:5" flagid="btn-change" title="Click to change class" btn-touch="{{change}}"></TC_Support_Button>
+    <div class="{{size}} {{bgc}}"></div>
+  </TC_Support_Scroller>
+</template>
+
+<style>
+
+
+
+  .large {width:400; height:200;}
+  .middle {width:380;height:180;}
+  .green {background-color:#00FF00;}
+  .pink {background-color:#FF00FF;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      bgc: 'green',
+      size: 'middle',
+    },
+    methods: {
+      change: function () {
+        if(this.bgc === 'green')
+        {
+          this.size = 'large'
+          this.bgc = 'pink'
+        }
+        else
+        {
+          this.size = 'middle'
+          this.bgc = 'green'
+        }
+      }
+    }
+  }
+</script>

@@ -1,0 +1,97 @@
+<template>
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Scroller_Event_AsRoot"></TC_Support_MainTitle>
+    <div id="topId" onclick="scrollToBottom" style="width:750;height:100; background-color:#573926;"><text class="title font">点击到达底部</text></div>
+    <div repeat="{{itemList}}" onclick="clickEvent" style="width:750;" item-id="{{itemId}}">
+      <text class="title bg font" style="height:500; text-align:center; padding-top:100;">占位符，无任何事件</text>
+      <text class="title mr font" onappear="onappear" ondisappear="ondisappear">{{title}}</text>
+      <image class="img mr" src="{{pictureUrl}}" title="{{title}}" onappear="onappear"></image>
+    </div>
+    <div id="bottomId" style="width:750;height:50; background-color:#573926;" onclick="scrollToTop"><text class="title font">点击回到顶部，offset:-20</text></div>
+    <div class="fixed">
+      <div style="flex-direction: row;">
+      <text class="leftTxt font">OnAppear：</text><text class="btn font">{{appearTxt}}</text>
+      </div>
+      <div style="flex-direction: row;">
+        <text class="leftTxt font">OnDisAppear：</text><text class="btn font">{{disappearTxt}}</text>
+      </div>
+      <div style="flex-direction: row;">
+        <text class="leftTxt font">Direction：</text><text class="btn font">{{directionTxt}}</text>
+      </div>
+      <div style="flex-direction: row;">
+        <text class="leftTxt font">Click：</text><text class="btn font">{{clickTxt}}</text>
+      </div>
+    </div>
+  </scroller>
+</template>
+
+<style>
+
+
+
+
+  .font{font-family: Times New Roman;font-size: 30;}
+  .block {flex-direction: column;border-width:3;border-color:#ffff00;border-style:dotted;margin-bottom:5;overflow:hidden;}
+  .scroller{flex-direction:column;background-color:#ffff00;width:750;overflow:hidden;margin: 10}
+  .img {width: 200; height: 200;}
+  .leftTxt {width:250; font-size: 25; border-width: 3; padding: 5; margin: 5; font-family: "Open Sans", sans-serif;}
+  .btn{ width:475; font-size: 25; border-width: 3; border-color: #cccccc; padding: 5; border-style: solid;border-radius: 3; margin: 5; font-family: "Open Sans", sans-serif;}
+  .mr{margin-top: 50;}
+  .bg{background-color: #00ffff;}
+  .fixed{position: fixed;left: 5;top:300;background-color: #87CEFA;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      appearTxt: '',
+      disappearTxt:'',
+      directionTxt:'',
+      clickTxt:'',
+      itemList: [
+        {itemId: '101', title: '标题1', pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '102', title: '标题2', pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '103', title: '标题3', pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '104', title: '标题4', pictureUrl: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1huF0KpXXXXcsXpXXXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '105', title: '标题5', pictureUrl: 'https://gd3.alicdn.com/imgextra/i3/777216058/TB274wXgVXXXXXYXpXXXXXXXXXX_!!777216058.jpg'},
+        {itemId: '106', title: '标题6', pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/2623842913/TB2NLTujFXXXXaiXXXXXXXXXXXX_!!2623842913.jpg'},
+        {itemId: '107', title: '标题7', pictureUrl: 'https://gd4.alicdn.com/imgextra/i4/1764288638/TB2051gcVXXXXbKXXXXXXXXXXXX_!!1764288638.jpg'},
+        {itemId: '108', title: '标题8', pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1T1zTHVXXXXclXVXXXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '109', title: '标题9', pictureUrl: 'https://gd1.alicdn.com/imgextra/i1/1764288638/TB2CSKpcVXXXXaKXXXXXXXXXXXX_!!1764288638.jpg'},
+      ],
+    },
+    methods: {
+      clickEvent: function (e) {
+        var itemId = e.target.attr.itemId;
+        this.clickTxt = "Click itemId : "+itemId;
+      },
+      onappear: function (e) {
+        var type = e.target.type;
+        var title ;
+        if(type.indexOf('image') >= 0){
+          title = e.target.attr.title + " of image";
+        }else if(type.indexOf('text') >= 0){
+          title = e.target.attr.value + " of text";
+        }
+        this.appearTxt = title + " appear~";
+        this.directionTxt=""+e.direction;
+      },
+      ondisappear:function(e){
+        var type = e.target.type;
+        var title ;
+        if(type.indexOf('image') >= 0){
+          title = e.target.attr.title + " of image";
+        }else if(type.indexOf('text') >= 0){
+          title = e.target.attr.value + " of text";
+        }
+        this.disappearTxt = title + " disappear~";
+      },
+      scrollToBottom:function(e){
+        this.$scrollTo('bottomId',0)
+      },
+      scrollToTop:function(e){
+        this.$scrollTo('topId',20)
+      },
+    }
+  }
+</script>

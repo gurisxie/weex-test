@@ -1,0 +1,92 @@
+<template>
+  <div style="flex-direction: column;">
+    <TC_Support_MainTitle title="测试脚本列表"></TC_Support_MainTitle>
+    <list class="list">
+      <cell repeat="{{script_list}}" append="tree">
+        <TC_Support_IndexItem text="{{textDesc}}"></TC_Support_IndexItem>
+      </cell>
+    </list>
+  </div>
+</template>
+ 
+<style>
+  .list{flex:1; width: 750;border-width: 1;border-color: #eeeeee;flex-direction: column;overflow: hidden;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      script_list: [],
+      str: "TC_AHref,TC_Animation,TC_AppendTree,TC_BizComponent,TC_BizModule,TC_Color,TC_DataBind,TC_Downgrade,TC_Gesture,TC_Image,TC_Input,TC_List,TC_Monitor,TC_PopBox,TC_Scroller,TC_Select,TC_Slider,TC_Style,TC_Switch,TC_Text,TC_Video,TC_Web",
+    },
+    methods: {
+      ready: function () {
+        var arr = this.str.split(",");
+        var newArr=[];
+        var itemObj = {};
+        arr.forEach(function (itemStr, index){
+           if(itemStr != ''){
+              itemObj.textDesc=itemStr;
+              newArr.push(itemObj);
+              itemObj = {};
+           }
+        }); 
+        this.script_list = newArr;
+      },
+    }
+  }
+</script>
+
+<!-- <template>
+  <list>
+    <cell repeat="{{cases}}">
+      <TC_Support_IndexItem title="{{title}}" url="{{url}}"></TC_Support_IndexItem>
+    </cell>
+  </list>
+</template>
+
+<script>
+  // TODO ontouch highlight
+  module.exports = {
+    data: {
+      cases: [
+        {name: 'test', title: 'Test', url: ''},
+        {name: 'test', title: 'Test', url: ''},
+        {name: 'test', title: 'Test', url: ''},
+        {name: 'test', title: 'Test', url: ''},
+        {name: 'test', title: 'Test', url: ''},
+        {name: 'test', title: 'Test', url: ''},
+        {name: 'test', title: 'Test', url: ''},
+        {name: 'test', title: 'Test', url: ''},
+        {name: 'test', title: 'Test', url: ''}
+      ]
+    },
+    created: function() {
+      var useLocal = true; // false when releasing
+      var host = '//localhost:12580';
+      var matches = /\/\/([^\/]+?)\//.exec(this.$getConfig().bundleUrl);
+      if (matches && matches.length >= 2) {
+        host = matches[1];
+      }
+      var localBase = '//' + host + '/test/build/';
+      var nativeBase = '';
+      var h5Base = './index.html?page=./test/build/';
+
+      // in native
+      var base = useLocal ? localBase : nativeBase;
+      // in browser or WebView
+      if (typeof window === 'object') {
+        base = h5Base;
+      }
+
+      for (var i in this.cases) {
+        var ca = this.cases[i];
+        ca.url = base + ca.name + '.js';
+      }
+      //nativeLog('hit', this.cases[0].url);
+    }
+  }
+</script>
+
+<style>
+</style> -->

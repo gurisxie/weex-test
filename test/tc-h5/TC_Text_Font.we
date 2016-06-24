@@ -1,0 +1,52 @@
+<template>
+  <scroller class="root">
+    <TC_Support_MainTitle title="TC_Style_MaxWidth"></TC_Support_MainTitle>
+    <TC_Support_SubTitle title="01.Font size"></TC_Support_SubTitle>
+    <div>
+      <text class="content" style="font-size:40">字号1.font-size:40</text>
+      <text class="content" style="font-size:80">字号2.font-size:80</text>
+    </div>
+
+    <TC_Support_SubTitle title="02.Font style"></TC_Support_SubTitle>
+    <div>
+      <text class="content" style="font-style:normal">样式1.font-style:normal</text>
+      <text class="content" style="font-style:italic">样式2.font-style:italic</text>
+    </div>
+
+    <TC_Support_SubTitle title="03.Font weight"></TC_Support_SubTitle>
+    <div>
+      <text class="content" style="font-weight:normal">字宽1.font-weight:normal</text>
+      <text class="content" style="font-weight:bold">字宽2.font-weight:bold</text>
+    </div>
+
+    <TC_Support_SubTitle title="04.Text decoration"></TC_Support_SubTitle>
+    <div>
+      <text class="content" style="text-decoration:none">装饰1.text-decoration:none</text>
+      <text class="content" style="text-decoration:underline">装饰2.text-decoration:underline</text>
+      <text class="content" style="text-decoration:line-through">装饰3.text-decoration:line-through</text>
+    </div>
+  </scroller>
+</template>
+
+<style>
+  
+  .container{margin: 10; border-style: solid;border-width: 2;border-color: #FF00FF;}
+  .content{background-color: #FFEFD5;margin: 10;}
+
+  .border{border-style: solid;border-width: 3;border-color: #0000FF}
+  .separation-line{border-style: solid;border-width: 2;border-color: #FF00FF}
+
+  .max-width{max-width: 100;}
+  .width-50{width: 50;}
+  .width-100{width: 100;}
+  .width-200{width: 200;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    methods: {
+    }
+  }
+</script>

@@ -1,0 +1,40 @@
+<template>
+  <div>
+    <TC_Support_MainTitle title="TC_Animation"></TC_Support_MainTitle>
+    <div style="flex-direction: column;">
+      <list class="list">
+        <cell repeat="{{script_list}}" append="tree">
+          <TC_Support_IndexItem text="{{textDesc}}"></TC_Support_IndexItem>
+        </cell>
+      </list>
+    </div>
+  </div>
+</template>
+ 
+<style>
+  .list{width: 750;height:1134; border-width: 1;border-color: #eeeeee;flex-direction: column;overflow: hidden;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      script_list: [],
+      str: "TC_Animation_Rotate,TC_Animation_Scale,TC_Animation_Shadow,TC_Animation_Transform,TC_Animation_Translate",
+    },
+    methods: {
+      ready: function () {
+        var arr = this.str.split(",");
+        var newArr=[];
+        var itemObj = {};
+        arr.forEach(function (itemStr, index){
+           if(itemStr != ''){
+              itemObj.textDesc=itemStr;
+              newArr.push(itemObj);
+              itemObj = {};
+           }
+        }); 
+        this.script_list = newArr;
+      },
+    }
+  }
+</script>

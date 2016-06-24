@@ -1,0 +1,128 @@
+<template>
+    
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Style_Border_Unilateral"></TC_Support_MainTitle>
+
+    <div>
+      <TC_Support_SubTitle title="01.div"></TC_Support_SubTitle>
+      <div class="row">
+        <div repeat="{{borderList}}">
+          <div class="container">
+            <div class="{{border}} content"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div repeat="{{radiusList}}">
+          <div class="container">
+            <div class="{{radius}} {{border1}} {{border2}} content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <TC_Support_SubTitle title="02.text"></TC_Support_SubTitle>
+      <div class="row">
+        <div repeat="{{borderList}}">
+          <div class="container">
+            <text class="{{border}} content font">Hello weex</text>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div repeat="{{radiusList}}">
+          <div class="container">
+            <text class="{{radius}} {{border1}} {{border2}} content font">Hello weex</text>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <TC_Support_SubTitle title="03.input"></TC_Support_SubTitle>
+      <div class="row">
+        <div repeat="{{borderList}}">
+          <div class="container">
+            <input class="{{border}} content font" placeholder="Hello weex"></input>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div repeat="{{radiusList}}">
+          <div class="container">
+            <input class="{{radius}} {{border1}} {{border2}} content font" placeholder="Hello weex"></input>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <TC_Support_SubTitle title="04.image"></TC_Support_SubTitle>
+      <div class="row">
+        <div repeat="{{borderList}}">
+          <div class="container">
+            <image class="{{border}} content" src="https://img.alicdn.com/imgextra/i4/2173732306/TB26N1ycFXXXXb.XpXXXXXXXXXX_!!2173732306.jpg"></image>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div repeat="{{radiusList}}">
+          <div class="container">
+            <image class="{{radius}} {{border1}} {{border2}} content" src="https://img.alicdn.com/imgextra/i4/2173732306/TB26N1ycFXXXXb.XpXXXXXXXXXX_!!2173732306.jpg"></image>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </TC_Support_Scroller>
+</template>
+
+<style>
+  .scroller {background-color: #F4F3DE;flex-direction: column;}
+  .row{flex-direction:row;}
+  .font{font-family: Times New Roman;}
+
+  .container{width: 178;height: 60;background-color: #666666;margin-top: 10;margin-left: 8;}
+  .content{width: 160;height: 40;background-color: #BBFFFF;margin: 5}
+
+  .topborder{border-top-color: #FF0000; border-top-width: 5;border-top-style: dotted;}
+  .leftborder{border-left-color: #00FF00; border-left-width: 10;border-left-style: dotted;}
+  .bottomborder{border-bottom-color: #0000FF; border-bottom-width: 15;border-bottom-style: dotted;}
+  .rightborder{border-right-color: #FF00FF; border-right-width: 20;border-right-style: dotted;}
+
+  .radiustl{border-top-left-radius: 20}
+  .radiuslb{border-bottom-left-radius: 20}
+  .radiusbr{border-bottom-right-radius: 20}
+  .radiusrt{border-top-right-radius: 20}
+
+  
+
+
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      borderList: [
+        {border: 'topborder'},
+        {border: 'leftborder'},
+        {border: 'bottomborder'},
+        {border: 'rightborder'},
+      ],
+      radiusList: [
+        {radius: 'radiustl', border1: 'topborder', border2: 'leftborder'},
+        {radius: 'radiuslb', border1: 'leftborder', border2: 'bottomborder'},
+        {radius: 'radiusbr', border1: 'bottomborder', border2: 'rightborder'},
+        {radius: 'radiusrt', border1: 'rightborder', border2: 'topborder'},
+      ],
+    },
+    methods: {
+    }
+  };
+</script>

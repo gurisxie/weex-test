@@ -1,0 +1,49 @@
+<template>
+  
+<TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_DataBind_FuncType"></TC_Support_MainTitle>
+    <TC_Support_SubTitle title="01.Data bind by function type"></TC_Support_SubTitle>
+    <div style="margin: 10">
+      <text class="text font">{{getFullName()}}</text>
+      <image class="img" src={{getImageUrl()}}></image>
+    </div>
+
+    </TC_Support_Scroller>
+</template>
+
+<style>
+
+
+.font{font-family: Times New Roman;}
+  .text {
+    height:30;
+    border-width: 1;
+    border-style:solid;
+    margin:2;
+    padding-left:5;
+    font-size:20
+  }
+  .img {
+    margin: 2;
+    width: 400;
+    height: 400;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      firstName: 'Jack',
+      lastName: 'Ma',
+      imgUrl: 'https://gd2.alicdn.com/imgextra/i2/TB1ThbXIVXXXXbNXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg'
+    },
+    methods: {
+      getFullName:function() {
+        return this.firstName+' '+this.lastName
+      },
+      getImageUrl:function() {
+        return this.imgUrl
+      }
+    }
+  }
+</script>

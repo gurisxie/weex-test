@@ -1,0 +1,38 @@
+<template>
+  <div style="flex-direction: column;">
+    <TC_Support_MainTitle title="TC_BizModule"></TC_Support_MainTitle>
+    <list class="list">
+      <cell repeat="{{script_list}}" append="tree">
+        <TC_Support_IndexItem text="{{textDesc}}"></TC_Support_IndexItem>
+      </cell>
+    </list>
+  </div>
+</template>
+ 
+<style>
+  .list{width: 750;height:1134; border-width: 1;border-color: #eeeeee;flex-direction: column;overflow: hidden;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      script_list: [],
+      str: "TC_BizModule_AppMonitor_ErrorData,TC_BizModule_GetConfig,TC_BizModule_GetConfigSync,TC_BizModule_GetUserInfo,TC_BizModule_LocalImage,TC_BizModule_Nav_Module,TC_BizModule_OpenURL,TC_BizModule_RegisterMethod,TC_BizModule_SendHttp,TC_BizModule_SendMtop,TC_BizModule_SetSpm,TC_BizModule_SetTitle,TC_BizModule_Share,TC_BizModule_Stream_Fetch,TC_BizModule_UserTrack,TC_BizModule_Windvane",
+    },
+    methods: {
+      ready: function () {
+        var arr = this.str.split(",");
+        var newArr=[];
+        var itemObj = {};
+        arr.forEach(function (itemStr, index){
+           if(itemStr != ''){
+              itemObj.textDesc=itemStr;
+              newArr.push(itemObj);
+              itemObj = {};
+           }
+        }); 
+        this.script_list = newArr;
+      },
+    }
+  }
+</script>

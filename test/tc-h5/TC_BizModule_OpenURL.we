@@ -1,0 +1,58 @@
+<template>
+  <scroller style="flex-direction: column;">
+  	<TC_Support_MainTitle title="TC_BizModule_OpenURL"></TC_Support_MainTitle>
+    <div>
+        <text class= "btn" value = '点击我，跳转' onclick = "openUrl"></text>
+    </div>
+  </scroller>
+</template>
+
+<style>
+.btn{ width:300; font-size: 25; border-width: 3; border-color: #cccccc; padding: 5; border-style: solid;border-radius: 3; margin: 5;font-family: "Open Sans", sans-serif; }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+
+    },
+    methods: {	
+      ready: function () {
+        // config
+        this.$getConfig(function (config) {
+            this.appConfig = config;
+        }.bind(this));
+      },
+      openUrl:function (e) {
+        var bundleUrl = this.appConfig.bundleUrl;
+        var itemId = e.target.attr.itemId;
+        var lastIndex = bundleUrl.lastIndexOf('build/');
+        if(lastIndex<0){
+          var message = "bundleUrl不包含build/，无法解析";
+          var okTitle = "确 定";
+          var params = {
+            'message':message,
+            'okTitle':okTitle,
+          }
+          this.$call('modal','alert',params,2);
+          return;
+        }
+        var prifixUrl = bundleUrl.substring(0,lastIndex + 6);
+        var transferUrl = prifixUrl + "TC_BizModule_GetConfig.js";
+
+        if (bundleUrl.indexOf("weex-samples")>=0) {
+          transferUrl = transferUrl+"?weex-samples";
+        }
+        else if (bundleUrl.indexOf("weex-taobao")>=0) {
+    	  transferUrl = transferUrl+"?weex-taobao&wh_weex=true";
+        }
+        else if (bundleUrl.indexOf("weex-browser")>=0) {
+        	transferUrl = transferUrl+"&loader=xhr&weex-browser";
+        }
+
+        this.$openURL(transferUrl);
+      }
+    }
+  }
+</script>
+

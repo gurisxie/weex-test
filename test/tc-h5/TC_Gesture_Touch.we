@@ -1,0 +1,162 @@
+<template>
+  <scroller class="root">
+    <TC_Support_MainTitle title="TC_Gesture_Touch"></TC_Support_MainTitle>
+    <div class="tc-desc">
+      <text class="tc-title">touch测试 单指 多指</text>
+    </div>
+    <div style="padding:5px">
+      <text class="console-info" style="font-size:35px" onclick="setTouchCancel" value="{{showTouchCancelText}}"></text>
+    </div>
+    <div class="block test-div" style="margin-top:10;height:500;background-color:#FAEBD7;" ontouchstart="ontouchstart" ontouchmove="ontouchmove" ontouchend="ontouchend" ontouchcancel="ontouchcancel">
+      <div style="padding:5px">
+        <text class="console-info" style="font-size:35px" value="{{touchText}}"></text>
+      </div>
+    </div>
+  </scroller>
+</template>
+
+<style>
+  
+  .test-div{
+    margin-top: 10;
+    height: 400;
+    background-color:#FAEBD7;
+  }
+  .tc-title{
+    font-size: 45;
+    background-color: rgba(255,0,0,1.0);
+    margin-top: 15px
+  }
+
+  .test-div{
+    margin-top: 10;
+    height: 400;
+    background-color:#FAEBD7;
+  }
+
+  .console-info{
+    color: red;
+    font-size: 40;
+  }
+  .tc-desc{
+    //margin-top: 60;
+  }
+
+  .tc-title{
+    font-size: 45;
+    background-color: rgba(255,0,0,1.0);
+    margin-top: 15px
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      touchText:'',
+      showTouchCancel:false,
+      showTouchCancelText:'点击设置可以观察touchcancel',
+    },
+    methods: {
+        setTouchCancel:function(e){
+          if(this.showTouchCancel == false){
+          this.showTouchCancel = true;
+          this.showTouchCancelText = '点击设置不观察touchcancel';
+        }else{
+          this.showTouchCancel = false;
+          this.showTouchCancelText = '点击设置可以观察touchcancel';
+        }
+      },
+      ontouchstart:function(e) {
+      nativeLog("==weex gesture== ontouchstart")
+      if(this.showTouchCancel){
+      var params = {
+      'message':'触发了touchtart事件',
+      'okTitle':'确定',
+      }
+      //this.$call('modal','alert',params,2);
+      }
+      if(typeof window != 'undefined')
+      {
+        this.touchText = '触发touchstart -> ';
+        for(var i=0;i<e.touches.length;i++){
+          this.touchText +='{id:'+e.touches[i].identifier+',pageX:' + e.touches[i].pageX + ',pageY:' + e.touches[i].pageY + ',screenX:'+e.touches[i].screenX + ',screenY:'+e.touches[i].screenY+'},';
+      }
+      }
+      else  {
+        this.touchText = '触发touchstart -> ' + JSON.stringify(e.changedTouches);
+      }
+
+      this.gestureConcludeValue = this.touchText;
+
+    },
+
+      ontouchmove:function(e) {
+      nativeLog("==weex gesture== ontouchmove")
+      if(typeof window != 'undefined')
+       {
+      this.touchText = '触发touchmove -> ';
+      for(var i=0;i<e.touches.length;i++){
+        this.touchText +='{id:'+e.touches[i].identifier+',pageX:' + e.touches[i].pageX + ',pageY:' + e.touches[i].pageY + ',screenX:'+e.touches[i].screenX + ',screenY:'+e.touches[i].screenY+'},';
+      }
+      }
+      else  {
+        this.touchText = '触发touchmove -> ' + JSON.stringify(e.changedTouches);
+      }
+
+      this.gestureConcludeValue = this.touchText;
+
+     },
+
+      ontouchend:function(e) {
+      nativeLog("==weex gesture== ontouchend")
+      if(typeof window != 'undefined')
+      {
+        this.touchText = '触发touchend -> ';
+        for(var i=0;i<e.touches.length;i++){
+          this.touchText +='{id:'+e.touches[i].identifier+',pageX:' + e.touches[i].pageX + ',pageY:' + e.touches[i].pageY + ',screenX:'+e.touches[i].screenX + ',screenY:'+e.touches[i].screenY+'},';
+      }
+     }
+      else  {
+      this.touchText = '触发touchend -> ' + JSON.stringify(e.changedTouches);
+
+    }
+
+      this.gestureConcludeValue = this.touchText;
+    },
+
+      ontouchcancel:function(e) {
+      nativeLog("==weex gesture== ontouchcancel")
+      if(typeof window != 'undefined')
+    {
+      this.touchText = '触发touchcancel -> ';
+      for(var i=0;i<e.touches.length;i++){
+      this.touchText +='{id:'+e.touches[i].identifier+',pageX:' + e.touches[i].pageX + ',pageY:' + e.touches[i].pageY + ',screenX:'+e.touches[i].screenX + ',screenY:'+e.touches[i].screenY+'},';
+    }
+    }
+      else  {
+      this.touchText = '触发touchcancel -> ' + JSON.stringify(e.changedTouches);
+    }
+      this.gestureConcludeValue = this.touchText;
+
+    },
+
+      onpanstart:function(e){
+      nativeLog("==weex gesture== onpanstart")
+      if(this.showPanStart){
+      var params = {
+      'message':'触发了panstart事件',
+      'okTitle':'确定',
+    }
+      //this.$call('modal','alert',params,2);
+    }
+      if(typeof window != 'undefined')
+      this.panText = '触发panstart -> {id:'+e.touch.identifier+',pageX:' + e.touch.pageX + ',pageY:' + e.touch.pageY + ',screenX:'+e.touch.screenX + ',screenY:'+e.touch.screenY+'}';
+      else{
+      this.panText = '触发panstart -> '+ JSON.stringify(e.changedTouches);
+    }
+      this.gestureConcludeValue = this.panText;
+
+    },
+    }
+  }
+</script>

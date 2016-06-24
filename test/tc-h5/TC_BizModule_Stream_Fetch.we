@@ -1,0 +1,100 @@
+<template>
+  <scroller>
+    <TC_Support_MainTitle title=" "></TC_Support_MainTitle>
+      <div class = "panel" onclick = "httpGet">
+        <text value="Click to test method GET" onclick = "httpGet"></text>
+        <text class="result">{{getResult}}</text>
+      </div>
+
+      <div class = "panel" onclick = "httpPost">
+        <text value="Click to test method POST" onclick = "httpPost"></text>
+        <text class="result">{{postResult}}</text>
+      </div>
+  </scroller>
+</template>
+
+<style>
+.result{font-size: 25}
+.panel {
+    margin-bottom: 20px;
+    border-color: rgb(40, 96, 144);
+    /*border: 1px solid transparent;*/
+    /*border-radius: 10px;*/
+    /*-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);*/
+    /*box-shadow: 0 1px 1px rgba(0,0,0,.05);*/
+    border-width: 1px;
+    background-color: rgb(40, 96, 144);
+    color: #ffffff;
+    font-size:40px;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      getResult:"getResult loading...",
+      postResult:"postResult loading...",
+      getUrl:"http://httpbin.org/get",
+      postUrl:"http://httpbin.org/post"
+    },
+    methods: {  
+      ready:function(){
+        
+      },
+
+      // http://velocity.alibaba-inc.com/issues/2140
+      httpGet: function(e){
+        nativeLog("httpGet");
+        var stream = require('@weex-module/stream');
+        var me = this;
+
+        stream.fetch({
+        method: 'GET',
+        url: me.getUrl,
+        type:'json'
+      }, function(ret) {
+        if(typeof ret === 'string'){
+          ret = JSON.parse(ret);
+        }
+        if(!ret.ok){
+          me.getResult = "request failed";
+        }else{
+          console.log('get:'+ret);
+          me.getResult = ret.data;
+        }
+      },function(response){
+        console.log('get in progress:'+response.length);
+        me.getResult = "bytes received:"+response.length;
+      });
+
+        },
+
+      // http://velocity.alibaba-inc.com/issues/2140
+      httpPost: function(e){
+        nativeLog("httpPost");
+        var stream = require('@weex-module/stream');
+        var me = this;
+
+        stream.fetch({
+        method: 'POST',
+        url: me.postUrl,
+        type:'json'
+        }, function(ret) {
+        if(typeof ret === 'string'){
+          ret = JSON.parse(ret);
+        }
+        if(!ret.ok){
+          me.postResult = "request failed";
+        }else{
+          console.log('get:'+ret);
+          me.postResult = ret.data;
+        }
+      },function(response){
+        console.log('get in progress:'+response.length);
+        me.postResult = "bytes received:"+response.length;
+      });
+
+        },
+    }
+  }
+</script>

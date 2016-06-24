@@ -1,0 +1,184 @@
+<template>
+  <scroller >
+    <TC_Support_MainTitle title="TC_Slider_Update"></TC_Support_MainTitle>
+    <div style="flex-direction: column;background-color:#94d6da;">
+      <!-- Slider组件 -->
+      <slider class="slider" interval="{{intervalValue}}" auto-play="{{isAutoPlay}}" onchange="change">
+        <div class="slider-pages" repeat="{{itemList2}}" onclick="gotoDetail" item-id="{{itemId}}">
+          <image class="img" src="{{pictureUrl}}"></image>
+          <text class="title">{{title}}</text>
+        </div>
+        <!-- 指示器子节点 -->
+        <indicator class="indicator_FFFFFF" style=""></indicator>
+      </slider>
+    </div>
+    <text>Slider有三屏</text>
+    <div style="flex-direction: column;background-color:#94d6da;">
+      <!-- Slider组件 -->
+      <slider class="slider" interval="{{intervalValue}}" auto-play="{{isAutoPlay}}" onchange="change">
+        <div class="slider-pages" repeat="{{itemList}}" onclick="gotoDetail" item-id="{{itemId}}">
+          <image class="img" src="{{pictureUrl}}"></image>
+          <text class="title">{{title}}</text>
+        </div>
+        <!-- 指示器子节点 -->
+        <indicator class="indicator" style=""></indicator>
+      </slider>
+
+      <div style="flex-direction: row;">
+        <text class="btn" onclick="StopAutoPlay">点击我，停止播放</text>
+      </div>  
+      <div style="flex-direction: row;">
+        <text class="btn" onclick="StartAutoPlay">点击我，自动播放</text>
+      </div> 
+  <!--  不支持   <div style="flex-direction: row;">
+        <text class="btn" onclick="ShowIndicators">点击我，展示指示标</text>
+      </div>  
+      <div style="flex-direction: row;">
+        <text class="btn" onclick="HiddenIndicators">点击我，关闭指示标</text>
+      </div>  -->
+      <!-- <div style="flex-direction: row;">
+        <text class="btn" onclick="Set1sInterval">点击我，设置间隔1s</text>
+      </div>  
+      <div style="flex-direction: row;">
+        <text class="btn" onclick="Set3sInterval">点击我，设置间隔3s</text>
+      </div> 
+      <div style="flex-direction: row;">
+        <text class="btn" onclick="Set5sInterval">点击我，设置间隔5s</text>
+      </div> --> 
+    </div>
+
+    <text>Slider 绑定onsliderChange 没有indicator</text>
+    <div style="flex-direction: column;background-color:#94d6da;">
+      <!-- Slider组件 -->
+      <slider class="slider" interval="{{intervalValue}}" auto-play="{{isAutoPlay}}" onchange="changeListenner">
+        <div class="slider-pages" repeat="{{itemList}}" onclick="gotoDetail" item-id="{{itemId}}">
+          <image class="img" src="{{pictureUrl}}"></image>
+          <text class="title">{{title}}</text>
+        </div>
+        <!-- 指示器子节点 -->
+        <!-- <indicator class="indicator" style=""></indicator> -->
+      </slider> 
+    </div>
+
+  <text>Slider 绑定onsliderChange 有indicator</text>
+    <div style="flex-direction: column;background-color:#94d6da;">
+      <!-- Slider组件 -->
+      <slider class="slider" interval="{{intervalValue}}" auto-play="{{isAutoPlay}}" onchange="changeListennerWithIndicator">
+        <div class="slider-pages" repeat="{{itemList}}" onclick="gotoDetail" item-id="{{itemId}}">
+          <image class="img" src="{{pictureUrl}}"></image>
+          <text class="title">{{title}}</text>
+        </div>
+        <!-- 指示器子节点 -->
+        <indicator class="indicator" style=""></indicator>
+      </slider> 
+    </div>
+
+
+  </scroller>
+</template>
+
+<style>
+  .block {flex-direction: column;border-width:3;border-color:#ffff00;border-style:dotted;margin-bottom:5;overflow:hidden;}
+  .discript {flex: 1; color: #000000; font-weight: bold; font-size:30;background-color: #37dd23;overflow:hidden;font-family: "Open Sans", sans-serif;}
+  .img {width: 150; height: 150;}
+  .title {flex: 1; color: #ff0000; font-size: 48; font-weight: bold; background-color: #eeeeee;font-family: "Open Sans", sans-serif;}
+  .btn{ width:250; font-size: 25; border-width: 3; border-color: #cccccc; padding: 5; border-style: solid;border-radius: 3; margin: 5; font-family: "Open Sans", sans-serif;}
+  .slider {
+        flex-direction: row;
+        margin: 18;
+        width: 714;
+        height: 230;
+  }
+  .slider-pages {
+        flex-direction: row;
+        width: 714;
+        height: 200;
+  }
+  .indicator {
+    width:714;
+    height:200;
+    position:absolute;
+    top:1;
+    left:1;
+    itemColor: red;
+    itemSelectedColor: blue;
+    itemSize: 20;
+  }
+    .indicator_FFFFFF {
+    width:714;
+    height:200;
+    position:absolute;
+    top:1;
+    left:1;
+    itemColor: #ff0000; 
+    itemSelectedColor: #0000ff; 
+    itemSize: 20;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      intervalValue:"3000",
+      // isShowIndicators:"true",
+      isAutoPlay:"true",
+      itemList: [
+        {itemId: '520421163634', title: '宝贝标题1', pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: '宝贝标题2', pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: '宝贝标题3', pictureUrl: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg'}
+      ],
+      itemList2: [
+        {itemId: '520421163634', title: '宝贝标题1', pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: '宝贝标题2', pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'},
+      ]
+    },
+    methods: {
+      gotoDetail: function (e) {
+        var itemId = e.target.attr.itemId;
+        this.$openURL('https://item.taobao.com/item.htm?id=' + itemId)
+      },
+      StopAutoPlay: function (e) {
+        this.isAutoPlay="false";
+      },
+      StartAutoPlay: function (e) {
+        this.isAutoPlay="true";
+      },
+      // ShowIndicators: function (e) {
+      //   this.isShowIndicators="true";
+      // },
+      // HiddenIndicators: function (e) {
+      //   this.isShowIndicators="false";
+      // },
+      Set1sInterval: function (e) {
+        this.intervalValue="1000";
+      },
+      Set3sInterval: function (e) {
+        this.intervalValue="3000";
+      },
+      Set5sInterval: function (e) {
+        this.intervalValue="5000";
+      },
+      changeListenner: function (e) {
+        nativeLog("onsliderChange changeListennerWithNoIndicator!!");
+      },
+      changeListennerWithIndicator: function (e) {
+        nativeLog("onsliderChange changeListennerWithIndicator!!");
+      },
+      change: function (e) {
+        nativeLog("onsliderChange !!");
+        // var index =  e.index; 
+        // if (index % 2==0) {
+        //   this.itemList=[
+        //       {itemId: '520421163634', title: '宝贝标题1', pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg'},
+        //       {itemId: '522076777462', title: '宝贝标题2', pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'}
+        //   ];
+        // }else{
+        //   this.itemList=[
+        //       {itemId: '520421163634', title: '宝贝标题3', pictureUrl: 'https://gd4.alicdn.com/bao/uploaded/i4/TB1NjCNLXXXXXarXVXXXXXXXXXX_!!0-item_pic.jpg'},
+        //       {itemId: '522076777462', title: '宝贝标题4', pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/106916400/TB210MhiFXXXXaVXpXXXXXXXXXX_!!106916400.jpg'}
+        //   ];
+        // }
+      }
+    }
+  }
+</script>

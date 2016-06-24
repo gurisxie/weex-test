@@ -1,0 +1,81 @@
+<template>
+  <scroller style="flex-direction: column;">
+    <div class="block">
+      <text class="discript">UT测试指标：</text>
+      <text class="discript">
+        注意:由于UserTrack module在adapter中,且强依赖UT,所以只能在手淘中扫码进行测试,或者强依赖UT的APP
+      </text>
+      <!-- 另外。由于enter 才用的会场的module utInfo埋点的
+            http://gitlab.alibaba-inc.com/tbhuichang/tbhuichang_android/blob/develop/src/com/taobao/tao/huichang/ut/TBUTWxInfoModule.java -->
+      <text class="discript">
+        /**
+         * 埋点接口
+         * @param {string} instanceId
+         * @param {string} type 埋点类型：enter，click, expose, updateNextProp
+         * @param {string} name 页面名称
+         * @param {string} comName 控件名称 以ut定义的类型为标准 Button Text Image
+         * @param {object} param 页面参数 (监控平台显示)
+         */
+        function userTrack(instanceId:string, type:string, name:string,comName:string, param:object)
+
+      </text>
+    </div>
+    <div>
+      <text class = "title" value = "点击我测试ut enter,  eventid: 2001, pageName [ {{pageName}} ]" onclick="onclickUtEnterCommit" ></text>
+      <text  class = "title" value = "点击我测试ut clcik,  eventid: 2101, pageName [ {{pageName}} ]" onclick="onclickUtClickCommit" ></text>
+      <text  class = "title" value = "点击我测试ut expose,  eventid: 19999, pageName [ {{pageName}} ]" onclick="onclickUtExposeCommit" ></text>
+    </div>
+    </scroller>
+    </template>
+
+<style>
+  .block {flex-direction: column;border-width:3;border-color:#ffff00;border-style:dotted;margin-bottom:5;overflow:hidden;}
+  .discript {flex: 1; color: #000000; font-weight: bold; font-size:30;background-color: #37dd23;overflow:hidden;font-family: "Open Sans", sans-serif;}
+  .title {flex: 1; color: #000000;font-size:35; font-weight: bold; background-color: #ff0000;overflow: visible;font-family: "Open Sans", sans-serif;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      eventId: '',
+      commitType:"",
+      pageName : '',
+      comName : 'Button',
+      param : {
+          'mtlDisplay enter': 'test',
+        },
+      appConfig:''
+    },
+    methods: {
+      ready: function () {
+        // config
+        this.$getConfig(function (config) {
+            this.appConfig = config;
+        }.bind(this));
+      },
+      onclickUtEnterCommit: function (e) {
+        this.commitType = 'enter';
+        this.eventId = "2001";
+        this.pageName = 'entertestpage';
+        
+        this.$userTrack(this.commitType, this.pageName, this.comName, this.param);
+
+        this.$openURL(this.appConfig.bundleUrl);
+        //会场的埋点，只在会场bundle中可用
+        //this.$call('utInfo','enterEvent',this.pageName + 'enterEvent', this.param);
+      },
+      onclickUtClickCommit: function (e) {
+        this.commitType = 'click';
+        this.eventId = "2101";
+        this.pageName = 'clicktestpage';
+        this.$userTrack(this.commitType, this.pageName, this.comName, this.param);
+      },
+      onclickUtExposeCommit: function (e) {
+        this.commitType = 'expose';
+        this.eventId = "19999";
+        this.pageName = 'exposetestpage';
+        this.$userTrack(this.commitType, this.pageName, this.comName, this.param);
+      },
+    }
+  }
+</script>

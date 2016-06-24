@@ -1,0 +1,56 @@
+<style>
+    .banner {
+        flex-direction: column;
+        align-items: center;
+        width: 750;
+    }
+    .banner-countdown {
+        align-items: center;
+
+        text-color: #000000;
+        font-size: 28;
+
+        time-color: #ff5000;
+        time-font-size: 32;
+
+        /* Native 端无法计算 <countdown> 的尺寸，需要写死 */
+        width: 714;
+        height: 44; 
+        text-align: center;
+        line-height: 44;
+    }
+</style>
+
+<template>
+  <div>
+    <container class="banner">
+        <countdown class="banner-countdown" countdown-time="{{endtime}}" formatter-value="距结束仅剩dd天hh小时mm分ss秒"></countdown>
+    </container>
+  </div>
+</template>
+
+<script>
+    module.exports = {
+        data: {
+            dataSource: {
+                image: '',
+                showCountdown: false,
+                showParty: false,
+                countdown: {},
+                party: {},
+                links: []
+            },
+            endtime: 0
+        },
+        methods: {
+            ready: function () {
+                // 更新倒计时时间
+                this.getEndTime();
+            },
+            getEndTime: function () {
+            var now = 1689902654244;
+            this.endtime = 1689902654244;
+            }
+        }
+    };
+</script>

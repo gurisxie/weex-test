@@ -1,0 +1,18 @@
+<template>
+  <scroller class="root">
+    <TC_Support_MainTitle title="TC_Select_Update，线程补充"></TC_Support_MainTitle>
+  </scroller>
+</template>
+
+<style>
+  
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    methods: {
+    }
+  }
+</script>

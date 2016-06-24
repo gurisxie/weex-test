@@ -1,0 +1,104 @@
+<template>
+  <scroller style="flex-direction: column;">
+    <TC_Support_MainTitle title="TC_BizModule_RegisterMethod"></TC_Support_MainTitle>
+    <div>
+        <text class= "btn" value = '内部方式' onclick = "internalMethod"></text>
+    </div>
+    <div>
+        <text class= "btn" value = '外部方式，有参数' onclick = "externMethodWithParam"></text>
+    </div>
+    <div>
+        <text class= "btn" value = '外部方式，有Callback' onclick = "externMethodWithCallback"></text>
+    </div>
+    <div>
+        <text class= "btn" value = '外部方式，调用主页面方法' onclick = "externMethodWithMainFunc"></text>
+    </div>
+    <div>
+        <text class= "btn" value = '外部方式，继续require第三个文件' onclick = "externMethodRequireAnother"></text>
+    </div>
+    <div>
+        <text class= "btn" value = 'require两个外部文件' onclick = "externMethodRequireTwoFile"></text>
+    </div>
+    <div>
+        <text class= "btn" value = 'require两个外部文件，定义了相同的方法' onclick = "externMethodWithSameMethod"></text>
+    </div>
+    <TC_Support_SubTitle title="响应状态："></TC_Support_SubTitle>
+    <div style="flex-direction:column; margin-top:5; padding-top:5; padding-bottom:5;">
+        <text class="textarea" >{{resultType}}</text>
+    </div>
+    <TC_Support_SubTitle title="请求结果："></TC_Support_SubTitle>
+    <div style="flex-direction:column; margin-top:5; padding-top:5; padding-bottom:5;">
+        <text class="textarea">{{resultData}}</text>
+    </div>
+  </scroller>
+</template>
+
+<style>
+.btn{ width:710; font-size: 25; border-width: 3; border-color: #cccccc; padding: 5; border-style: solid;border-radius: 3; margin: 5;font-family: "Open Sans", sans-serif; }
+.textarea{width: 710; height: 300; font-size: 30;}
+</style>
+
+<script>
+  registerMethods({$internalFunc: function() {
+    var message = "内部方式";
+    var okTitle = "OK";
+    var params = {
+      'message':message,
+      'okTitle':okTitle,
+    }
+    this.$call('modal','alert',params, function() {
+    });
+  }});
+  require("./TC_BizModule_RegisterMethod_First.js");
+  require("./TC_BizModule_RegisterMethod_Second.js");
+  module.exports = {
+    data: {
+      resultType:'等待结果',
+      resultData:'等待结果'
+    },
+    methods: {  
+      internalMethod:function (e) {
+        this.$internalFunc()
+      },
+      externMethodWithParam:function (e) {
+        this.$externFuncWithParam("外部方式，有参数")
+      },
+      externMethodWithCallback:function (e) {
+        var self = this;
+        this.$externFuncWithCallback("外部方式，CallBack", function(msg) {
+          var message = msg;
+          var okTitle = "OK";
+          var params = {
+            'message':message,
+            'okTitle':okTitle,
+          }
+          self.$call('modal','alert', params, function() {
+          });
+        });
+      },
+      externMethodWithMainFunc:function (e) {
+        this.$externFuncWithMainFunc("调用MainFunc");
+      },
+      externMethodRequireAnother:function (e) {
+        this.$externFuncRequireAnother("RequireAnother")
+      },
+      externMethodRequireTwoFile:function (e) {
+        var result=this.$externFuncWithParamFirst("调用第一个引用文件的方法;");
+        this.$externFuncWithParamSec(result+"调用第二个引用文件的方法");
+      },
+      externMethodWithSameMethod:function (e) {
+        this.$externFuncWithSameMethod("SameMethod")
+      },
+      mainMethod:function (msg) {
+        var message = msg;
+        var okTitle = "OK";
+        var params = {
+          'message':message,
+          'okTitle':okTitle,
+        }
+        this.$call('modal','alert', params, function() {
+        });
+      },
+    }
+  }
+</script>

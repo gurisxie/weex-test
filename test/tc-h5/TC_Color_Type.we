@@ -1,0 +1,46 @@
+<template>
+  
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Color_Type"></TC_Support_MainTitle>
+    <div class="block">
+      <text class="tc-content font" style="color:#00CD66;">green #00CD66</text>
+      <text class="tc-content font" style="color:rgb(29,29,214);">blue rgb(29,29,214)</text>
+      <text class="tc-content font" style="color:rgb(29, 29, 214);">blue with blank rgb(29, 29, 214)</text>
+      <text class="tc-content font" style="color:rgba(128,0,128,1.0);">violet opacity rgba(128,0,128,1)</text>
+      <text class="tc-content font" style="color:rgba(128,0,128,0.5)">violet transparency rgba(128,0,128,0.5)</text>
+      <text class="tc-content font" style="font-size:20;">next line: rgba(128,0,128,1.5) transparency > 1 then no valid</text>
+      <text class="tc-content font" style="color:rgba(128,0,128,1.5)">violet rgba(128,0,128,1.5)</text>
+      <text class="tc-content font" style="font-size:20;">next line: rgba(128,0,128,0) transparency = 0 not show</text>
+      <text class="tc-content font" style="color:rgba(128,0,128,0)">violet rgba(128,0,128,0)</text>
+      <text class="tc-content font" style="font-size:20;">next line: rgba(128,0,128,-1) transparency < 0 no valid</text>
+      <text class="tc-content font" style="color:rgba(128,0,128,-1)">violet rgba(128,0,128,-1)</text>
+      <text class="tc-content font" style="color:deeppink;">deeppink：deeppink</text>
+    </div>
+    </TC_Support_Scroller>
+</template>
+<style>
+
+
+  .font{font-family: Times New Roman;font-size: 30;}
+  .tc-desc{
+    margin-top: 7;
+    font-size: 30;
+    font-weight: bold;
+    background-color: #ff00ff;
+  }
+
+  .tc-content{
+    margin-top: 7;
+    font-size:30;
+  }
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    methods: {
+    }
+  }
+</script>

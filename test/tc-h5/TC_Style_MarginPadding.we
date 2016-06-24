@@ -1,0 +1,99 @@
+<template>
+    
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Style_MarginPadding"></TC_Support_MainTitle>
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="01.M-L;P-L;M-T;P-T"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div">
+          <text class="wh mrg pad bg font">test</text>
+        </div>
+        <div class="parent2_div">
+          <div class="wh mrg pad bg "><div class="child"></div></div>
+        </div>
+        <div class="parent3_div">
+          <image class="wh mrg pad bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div">
+          <input class="wh mrg pad bg font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="02.M-R;P-R;M-B;P-B"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div align-flex-right">
+          <div class="wh mlg plg bg "><text class="font">test</text></div>
+        </div>
+        <div class="parent2_div align-flex-right">
+          <div class="wh mlg plg bg "><div class="child"></div></div>
+        </div>
+        <div class="parent3_div align-flex-right">
+          <image class="wh mlg plg bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div align-flex-right">
+          <input class="wh mlg plg bg font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="03.M-L;P-R;M-T;P-B"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div">
+          <div class="wh mrg plg bg "><text class="font">test</text></div>
+        </div>
+        <div class="parent2_div">
+          <div class="wh mrg plg bg "><div class="child"></div></div>
+        </div>
+        <div class="parent3_div">
+          <image class="wh mrg plg bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div">
+          <input class="wh mrg plg bg font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+
+  
+    </TC_Support_Scroller>
+</template>
+
+<style>
+  .parent1_div{background-color: #ff0000;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 80;}
+  .parent2_div{background-color: #ffff00;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 80;}
+  .parent3_div{background-color: #ff00ff;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 80;}
+  .parent4_div{background-color: #00ffff;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 80;}
+
+  .wh{width: 110;height:50; }
+  .mrg{margin-left: 30;margin-top: 10;}
+  .pad{padding-left: 30;padding-top: 10;}
+  .bg{background-color: #572977;}
+
+  .font{font-family: Times New Roman;font-size: 20;}
+
+  .align-flex-right{align-items: flex-end;justify-content: flex-end;}
+  .mlg{margin-right: 30; margin-bottom: 10;}
+  .plg{padding-right: 30; padding-bottom: 10;}
+
+
+  .child{width: 50;height: 20; background-color: #123456;}
+
+  .scroller {background-color: #F4F3DE;flex-direction: column;}
+  .row{flex-direction:row;}
+
+
+
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    methods: {
+    }
+  };
+</script>

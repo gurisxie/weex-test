@@ -1,0 +1,29 @@
+<template>
+  <scroller style="flex-direction: column;">
+  	<TC_Support_MainTitle title="TC_BizModule_SetTitle"></TC_Support_MainTitle>
+    <div>
+        <text class= "btn" value = '点击我设置Title' onclick = "setTitle"></text>
+    </div>
+  </scroller>
+</template>
+
+<style>
+.btn{ width:300; font-size: 25; border-width: 3; border-color: #cccccc; padding: 5; border-style: solid;border-radius: 3; margin: 5;font-family: "Open Sans", sans-serif; }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+
+    },
+    methods: {	
+    	ready:function(){
+    		this.$setTitle("初始化Title");
+    	},
+        setTitle: function(e){
+            this.$setTitle("Update新的Title");
+        },
+    }
+  }
+</script>
+

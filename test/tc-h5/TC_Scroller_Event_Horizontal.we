@@ -1,0 +1,115 @@
+<template>
+  
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Scroller_Event_Horizontal"></TC_Support_MainTitle>
+    <scroller class="horizontal" scroll-direction="horizontal">
+      <div id="topId" onclick="scrollToBottom" style="width:200;height:400; background-color:#573926;"><text class="title font">Click To Right</text></div>
+      <text class="title font bg" onclick="clickEvent" itemid="99" style="text-align:center; padding-top:20;">Placeholder For Layout</text>
+      <image class="img" itemid="100" onclick="clickEvent" src="https://gd2.alicdn.com/imgextra/i2/TB1ThbXIVXXXXbNXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg" onappear="onappear" ondisappear="ondisappear"></image>
+      <image class="img" itemid="101" src="https://gd2.alicdn.com/imgextra/i2/TB1ThbXIVXXXXbNXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg" onappear="onappear" ondisappear="ondisappear"></image>
+      <image class="img" itemid="102" src="https://gd2.alicdn.com/imgextra/i2/TB1ThbXIVXXXXbNXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg" onappear="onappear" ondisappear="ondisappear"></image>
+
+      <div id="bottomId" style="width:200;height:400; background-color:#573926;" onclick="scrollToTop"><text class="title font">Click To Left OffsetL50</text></div>      
+    </scroller>
+    <div style="flex-direction: row;">
+      <text class="leftTxt font">OnAppear：</text><text class="btn font">{{appearTxt}}</text>
+    </div>
+    <div style="flex-direction: row;">
+      <text class="leftTxt font">OnDisAppear：</text><text class="btn font">{{disappearTxt}}</text>
+    </div>
+    <div style="flex-direction: row;">
+      <text class="leftTxt font">Direction：</text><text class="btn font">{{directionTxt}}</text>
+    </div>
+    <div style="flex-direction: row;">
+      <text class="leftTxt font">Click：</text><text class="btn font">{{clickTxt}}</text>
+    </div>
+  </div>
+  </div>
+</template>
+
+<style>
+
+
+
+.bg{background-color: #00ffff; width: 200;height:400;}
+  .font{font-family: Times New Roman;font-size: 30;}
+  .horizontal {
+    flex-direction: row;
+    width: 500;
+    height: 440;
+    background-color: #DDDDDD;
+    border: 5;
+    border-style: solid;
+    border-color: #FFCC66;
+    margin: 20;
+  }
+
+  .img {
+    width: 400;
+    height: 400;
+    margin: 20;
+  }
+  .text {
+    font-size: 30;
+    width: 400;
+    background-color: #00FF00;
+    margin: 20;
+  }
+  .div {
+    width: 400;
+    height: 400;
+    background-color: #FF0000;
+    margin: 20;
+  }
+  .leftTxt {width:250; font-size: 25; border-width: 3; padding: 5; margin: 5; }
+  .btn{ width:475; font-size: 25; border-width: 3; border-color: #cccccc; padding: 5; border-style: solid;border-radius: 3; margin: 5; }
+  .mr{margin-top: 50;}
+  .bg{background-color: #00ffff;}
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      appearTxt: '',
+      disappearTxt:'',
+      directionTxt:'',
+      clickTxt:'',
+    },
+    methods: {
+      clickEvent: function (e) {
+        var itemId = e.target.attr.itemid;
+        this.clickTxt = "Click item:"+itemId;
+      },
+      onappear: function (e) {
+        var type = e.target.type;
+        var itemId = e.target.attr.itemid;
+        var title ;
+        if(type.indexOf('image') >= 0){
+          title = "image";
+        }else if(type.indexOf('text') >= 0){
+          title = e.target.attr.value + " of text";
+        }
+        this.appearTxt = title + " "+itemId+" appear~";
+        this.directionTxt=""+e.direction;
+      },
+      ondisappear:function(e){
+        var type = e.target.type;
+        var itemId = e.target.attr.itemid;
+        var title ;
+        if(type.indexOf('image') >= 0){
+          title = "image";
+        }else if(type.indexOf('text') >= 0){
+          title = e.target.attr.value + " of text";
+        }
+        this.disappearTxt = title + " "+itemId + " disappear~";
+      },
+      scrollToBottom:function(e){
+        this.$scrollTo('bottomId',0)
+      },
+      scrollToTop:function(e){
+        this.$scrollTo('topId',50)
+      },
+    }
+  }
+</script>

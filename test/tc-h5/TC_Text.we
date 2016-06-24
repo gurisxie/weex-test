@@ -1,0 +1,38 @@
+<template>
+  <div style="flex-direction: column;">
+    <TC_Support_MainTitle title="TC_Text"></TC_Support_MainTitle>
+    <list class="list">
+      <cell repeat="{{script_list}}" append="tree">
+        <TC_Support_IndexItem text="{{textDesc}}"></TC_Support_IndexItem>
+      </cell>
+    </list>
+  </div>
+</template>
+ 
+<style>
+  .list{width: 750;height:1134; border-width: 1;border-color: #eeeeee;flex-direction: column;overflow: hidden;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      script_list: [],
+      str: "TC_Text_Event,TC_Text_Font,TC_Text_Lineheight,TC_Text_Overflow,TC_Text_Style,TC_Text_Style_Column,TC_Text_Style_Own,TC_Text_Style_Row,TC_Text_Type,TC_Text_Update",
+    },
+    methods: {
+      ready: function () {
+        var arr = this.str.split(",");
+        var newArr=[];
+        var itemObj = {};
+        arr.forEach(function (itemStr, index){
+           if(itemStr != ''){
+              itemObj.textDesc=itemStr;
+              newArr.push(itemObj);
+              itemObj = {};
+           }
+        }); 
+        this.script_list = newArr;
+      },
+    }
+  }
+</script>

@@ -1,0 +1,83 @@
+<template>
+  
+    <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Modal_Toast"></TC_Support_MainTitle>
+    <div class="test-div">
+      <text class="text-click font" onclick="callToast" message="duration:3.0s">duration default</text>
+      <text class="text-click font" onclick="callToast" message="duration:5.5s" duration="5.5" >duration custom</text>
+      <text class="text-click font" onclick="callToast" message="This is a long message that we can describe complicated info. however,we just want to test it" duration="2.0" >message long</text>
+      <text class="text-click font" onclick="callToast" message="" duration="2.0">message blank</text>
+    </div>
+    <div class="test-div">
+      <text class="log-text font" repeat="{{logList}}">{{logMessage}}</text>
+    </div>
+     </TC_Support_Scroller>
+</template>
+
+<style>
+
+
+
+  .font{font-family: Times New Roman;font-size: 30;}
+  .test-div{
+    margin-top: 5;
+    font-size: 35;
+    background-color:#FAEBD7;
+    padding-bottom: 10;
+  }
+  .log-title{
+    background-color: red;
+    font-size: 30;
+    width:200;
+    height:40;
+    position:fixed;
+    right:20;
+    top:15;
+    text-align: center;
+  }
+  .log-text{
+    font-size: 20;
+    margin-top: 5;
+    margin-left: 5;
+    margin-right: 5;
+  }
+  .test-title{
+    color: red;
+    font-size: 30;
+    font-weight: bold;
+  }
+  .text-click{
+    color:#1E90FF;
+    border-color: #1E90FF;
+    border-width: 3;
+    margin-top: 10;
+    margin-left: 5;
+    margin-right: 5;
+    font-size:30;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      logList: [
+        ]
+    },
+    methods: {
+      callToast:function(e){  
+        var message = e.target.attr.message;
+        var duration = e.target.attr.duration;
+        var params = {
+          'message': message,
+          'duration': duration,
+        }
+        this.$call('modal','toast',params);
+        this.logList.push({logMessage:e.target.attr.value});
+      },
+      
+      clearLog:function(){
+        this.logList=[];
+      }
+    }
+  }
+</script>

@@ -1,0 +1,316 @@
+<template>
+  <TC_Navpage data-role="none" height={{navBarHeight}} background-color="#ff5898" title="微淘" title-color="white" left-item-title="更多" left-item-color="white" right-item-src="http://gtms02.alicdn.com/tps/i2/TB1ED7iMpXXXXXEXXXXWA_BHXXX-48-48.png">
+    <scroller style="flex-direction: column; position:absolute; top:0; left:0; right:0; bottom:0; margin-top:{{navBarHeight}}">
+      <div class="block" >
+      <text class="discript">Text测试指标1：</text>
+      <text class="discript">1.在父控件不同flew-direction的布局情况；</text>
+      <text class="discript">2.有无宽度的布局情况；</text>
+      <text class="discript">3.不同Overflow的布局情况；</text>
+      <text class="discript">4.默认无高度；</text>
+      <text class="discript">5.Native不支持宽度设置为auto；</text>
+      <text class="discript">测试方法：进入页面，点击每一个文本；</text>
+      </div>
+      <div class="block">
+        <text class="title">01.Column，HasW，Visible</text>
+        <text item-id="{{itemId}}" class="hasWH" repeat="{{Column_HasHW_VisibleOF}}" value="{{textValue}}" style="width:{{width}};font-size:{{fontSize}}" onclick="clickEvent" event-name="{{eventName}}" parent-name="{{parentName}}"></text>
+      </div> 
+      <div class="block">
+        <text class="title">02.Column，NoHW，Visible</text>
+        <text item-id="{{itemId}}" class="noWH" repeat="{{Column_NoHW_VisibleOF}}" value="{{textValue}}" style="font-size:{{fontSize}}" onclick="clickEvent" event-name="{{eventName}}" parent-name="{{parentName}}"></text>
+      </div> 
+      <div class="block">
+        <text class="title">03.Row，HasHW，Visible</text>
+        <div style="flex-direction: row;" repeat="{{Row_HasHW_VisibleOF}}">
+          <text class="support">前置</text>
+          <text item-id="{{itemId}}" class="hasWH" value="{{textValue}}" style="width:{{width}};font-size:{{fontSize}}" onclick="clickEvent" event-name="{{eventName}}" parent-name="{{parentName}}"></text>
+          <text class="support">后置</text>
+        </div> 
+      </div> 
+      <div class="block">
+        <text class="title">04.Row，NoHW，Visible</text>
+        <div style="flex-direction: row;" repeat="{{Row_NoHW_VisibleOF}}">
+          <text class="support">前置</text>
+          <text item-id="{{itemId}}" class="noWH" value="{{textValue}}" style="width:{{width}};font-size:{{fontSize}}" onclick="clickEvent" event-name="{{eventName}}" parent-name="{{parentName}}"></text>
+          <text class="support">后置</text>
+        </div> 
+      </div> 
+      <div class="block">
+        <text class="title">05.Column，HasHW，Hidden</text>
+        <text item-id="{{itemId}}" class="hasWH" repeat="{{Column_HasHW_HiddenOF}}" value="{{textValue}}" style="width:{{width}};font-size:{{fontSize}};overflow:hidden;" onclick="clickEvent" event-name="{{eventName}}" parent-name="{{parentName}}"></text>
+      </div> 
+      <div class="block">
+        <text class="title">06.Column，NoHW，Hidden</text>
+        <text item-id="{{itemId}}" class="noWH" repeat="{{Column_NoHW_HiddenOF}}" value="{{textValue}}" style="width:{{width}};font-size:{{fontSize}};overflow:hidden;" onclick="clickEvent" event-name="{{eventName}}" parent-name="{{parentName}}"></text>
+      </div> 
+      <div class="block">
+        <text class="title">07.Row，HasHW，Hidden</text>
+        <div style="flex-direction: row;" repeat="{{Row_HasHW_HiddenOF}}">
+          <text class="support">前置</text>
+          <text item-id="{{itemId}}" class="hasWH" value="{{textValue}}" style="width:{{width}};font-size:{{fontSize}};overflow:hidden;" onclick="clickEvent" event-name="{{eventName}}" parent-name="{{parentName}}"></text>
+          <text class="support">后置</text>
+        </div> 
+      </div> 
+      <div class="block">
+        <text class="title">08.Row，NoHW，Hidden</text>
+        <div style="flex-direction: row;" repeat="{{Row_NoHW_HiddenOF}}">
+          <text class="support">前置</text>
+          <text item-id="{{itemId}}" class="noWH" value="{{textValue}}" style="width:{{width}};font-size:{{fontSize}};overflow:hidden;" onclick="clickEvent" event-name="{{eventName}}" parent-name="{{parentName}}"></text>
+          <text class="support">后置</text>
+        </div> 
+      </div> 
+      <div class="block">
+        <text class="title">09.TextType</text>
+        <div style="flex-direction: row;">
+          <text class="typeBase">我是汉字</text>
+          <text class="typeCompare">small english</text>
+        </div> 
+        <div style="flex-direction: row;">
+          <text class="typeBase">我是汉字</text>
+          <text class="typeCompare">Large English</text>
+        </div> 
+        <div style="flex-direction: row;">
+          <text class="typeBase">我是汉字</text>
+          <text class="typeCompare">汉字和English混排</text>
+        </div> 
+        <div style="flex-direction: row;">
+          <text class="typeBase">我是汉字</text>
+          <text class="typeCompare">中文标点：～！@＃¥％＊；，。？／</text>
+        </div> 
+        <div style="flex-direction: row;">
+          <text class="typeBase">我是汉字</text>
+          <text class="typeCompare">英文标点:~!@#$%^&*();"',.?/</text>
+        </div> 
+      </div> 
+    </scroller>
+  </TC_Navpage>
+</template>
+
+<style>
+  .block {flex-direction: column;border-width:3;border-color:#ffff00;border-style:dotted;overflow: visible;}
+  .discript {flex: 1; color: #000000; font-size:30;font-weight: bold; background-color: #37dd23;overflow: visible;font-family: "Open Sans", sans-serif;}
+  .title {flex: 1; color: #000000;font-size:35; font-weight: bold; background-color: #ff0000;overflow: visible;font-family: "Open Sans", sans-serif;}
+  .hasWH {width:400;background-color:#cccccc;font-size:30;margin:10;overflow: visible;font-family: "Open Sans", sans-serif;}
+  .noWH {background-color:#cccccc;font-size:30;margin:10;overflow: visible;font-family: "Open Sans", sans-serif;}
+  .support {background-color: #ffff00;font-size:30;overflow: visible;font-family: "Open Sans", sans-serif;}
+  .typeBase {width:200;background-color:#00ffff;font-size:30;margin:10;font-family: "Open Sans", sans-serif;}
+  .typeCompare {width:500;background-color:#cccccc;font-size:30;margin:10;font-family: "Open Sans", sans-serif;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      navBarHeight: 88,
+      Column_HasHW_VisibleOF:[
+        {itemId: 'id0101', textValue: '点击后设置较大的宽度', width: 400, fontSize:30,eventName:'setLargeWidth',parentName:'Column_HasHW_VisibleOF'},
+        {itemId: 'id0102', textValue: '点击后设置较小的宽度', width: 400, fontSize:30,eventName:'setSmallerWidth',parentName:'Column_HasHW_VisibleOF'},
+        // {itemId: 'id0103', textValue: '点击后设置较大的高度', width: 400, fontSize:30,eventName:'setLargeHeight',parentName:'Column_HasHW_VisibleOF'},
+        // {itemId: 'id0104', textValue: '点击后设置较小的高度', width: 400, fontSize:30,eventName:'setSmallerHeight',parentName:'Column_HasHW_VisibleOF'},
+        {itemId: 'id0105', textValue: '点击后设置较多的文字', width: 400, fontSize:30,eventName:'setMoreText',parentName:'Column_HasHW_VisibleOF'},
+        {itemId: 'id0106', textValue: '点击后设置较少的文字', width: 400, fontSize:30,eventName:'setLessText',parentName:'Column_HasHW_VisibleOF'},
+        {itemId: 'id0107', textValue: '点击后设置较大的字体', width: 400, fontSize:30,eventName:'setLargeFont',parentName:'Column_HasHW_VisibleOF'},
+        {itemId: 'id0108', textValue: '点击后设置较小的字体', width: 400, fontSize:30,eventName:'setSmallerFont',parentName:'Column_HasHW_VisibleOF'},
+        // {itemId: 'id0109', textValue: '点击后不设置宽度', width: 400, fontSize:30,eventName:'setNoWidth',parentName:'Column_HasHW_VisibleOF'},
+      ],
+      Column_NoHW_VisibleOF: [
+        // {itemId: 'id0201', textValue: '点击后设置较大的宽度', fontSize:30,eventName:'setLargeWidth',parentName:'Column_NoHW_VisibleOF'},
+        // {itemId: 'id0202', textValue: '点击后设置较小的宽度', fontSize:30,eventName:'setSmallerWidth',parentName:'Column_NoHW_VisibleOF'},
+        // {itemId: 'id0203', textValue: '点击后设置较大的高度', fontSize:30,eventName:'setLargeHeight',parentName:'Column_NoHW_VisibleOF'},
+        // {itemId: 'id0204', textValue: '点击后设置较小的高度', fontSize:30,eventName:'setSmallerHeight',parentName:'Column_NoHW_VisibleOF'},
+        {itemId: 'id0205', textValue: '点击后设置较多的文字', fontSize:30,eventName:'setMoreText',parentName:'Column_NoHW_VisibleOF'},
+        {itemId: 'id0206', textValue: '点击后设置较少的文字', fontSize:30,eventName:'setLessText',parentName:'Column_NoHW_VisibleOF'},
+        {itemId: 'id0207', textValue: '点击后设置较大的字体', fontSize:30,eventName:'setLargeFont',parentName:'Column_NoHW_VisibleOF'},
+        {itemId: 'id0208', textValue: '点击后设置较小的字体', fontSize:30,eventName:'setSmallerFont',parentName:'Column_NoHW_VisibleOF'}
+      ],
+      Row_HasHW_VisibleOF:[
+        {itemId: 'id0301', textValue: '点击后设置较大的宽度', width: 400, height: 30 ,fontSize:30,eventName:'setLargeWidth',parentName:'Row_HasHW_VisibleOF'},
+        {itemId: 'id0302', textValue: '点击后设置较小的宽度', width: 400, fontSize:30,eventName:'setSmallerWidth',parentName:'Row_HasHW_VisibleOF'},
+        // {itemId: 'id0303', textValue: '点击后设置较大的高度', width: 400, fontSize:30,eventName:'setLargeHeight',parentName:'Row_HasHW_VisibleOF'},
+        // {itemId: 'id0304', textValue: '点击后设置较小的高度', width: 400, fontSize:30,eventName:'setSmallerHeight',parentName:'Row_HasHW_VisibleOF'},
+        {itemId: 'id0305', textValue: '点击后设置较多的文字', width: 400, fontSize:30,eventName:'setMoreText',parentName:'Row_HasHW_VisibleOF'},
+        {itemId: 'id0306', textValue: '点击后设置较少的文字', width: 400, fontSize:30,eventName:'setLessText',parentName:'Row_HasHW_VisibleOF'},
+        {itemId: 'id0307', textValue: '点击后设置较大的字体', width: 400, fontSize:30,eventName:'setLargeFont',parentName:'Row_HasHW_VisibleOF'},
+        {itemId: 'id0308', textValue: '点击后设置较小的字体', width: 400, fontSize:30,eventName:'setSmallerFont',parentName:'Row_HasHW_VisibleOF'},
+        // {itemId: 'id0309', textValue: '点击后不设置宽度', width: 400, fontSize:30,eventName:'setNoWidth',parentName:'Row_HasHW_VisibleOF'},
+      ],
+      Row_NoHW_VisibleOF: [
+        // {itemId: 'id0201', textValue: '点击后设置较大的宽度', fontSize:30,eventName:'setLargeWidth',parentName:'Row_NoHW_VisibleOF'},
+        // {itemId: 'id0202', textValue: '点击后设置较小的宽度', fontSize:30,eventName:'setSmallerWidth',parentName:'Row_NoHW_VisibleOF'},
+        // {itemId: 'id0203', textValue: '点击后设置较大的高度', fontSize:30,eventName:'setLargeHeight',parentName:'Row_NoHW_VisibleOF'},
+        // {itemId: 'id0204', textValue: '点击后设置较小的高度', fontSize:30,eventName:'setSmallerHeight',parentName:'Row_NoHW_VisibleOF'},
+        {itemId: 'id0205', textValue: '点击后设置较多的文字', fontSize:30,eventName:'setMoreText',parentName:'Row_NoHW_VisibleOF'},
+        {itemId: 'id0206', textValue: '点击后设置较少的文字', fontSize:30,eventName:'setLessText',parentName:'Row_NoHW_VisibleOF'},
+        {itemId: 'id0207', textValue: '点击后设置较大的字体', fontSize:30,eventName:'setLargeFont',parentName:'Row_NoHW_VisibleOF'},
+        {itemId: 'id0208', textValue: '点击后设置较小的字体', fontSize:30,eventName:'setSmallerFont',parentName:'Row_NoHW_VisibleOF'}
+      ],
+      Column_HasHW_HiddenOF:[
+        {itemId: 'id0101', textValue: '点击后设置较大的宽度', width: 400, height: 30 ,fontSize:30,eventName:'setLargeWidth',parentName:'Column_HasHW_HiddenOF'},
+        {itemId: 'id0102', textValue: '点击后设置较小的宽度', width: 400, fontSize:30,eventName:'setSmallerWidth',parentName:'Column_HasHW_HiddenOF'},
+        // {itemId: 'id0103', textValue: '点击后设置较大的高度', width: 400, fontSize:30,eventName:'setLargeHeight',parentName:'Column_HasHW_HiddenOF'},
+        // {itemId: 'id0104', textValue: '点击后设置较小的高度', width: 400, fontSize:30,eventName:'setSmallerHeight',parentName:'Column_HasHW_HiddenOF'},
+        {itemId: 'id0105', textValue: '点击后设置较多的文字', width: 400, fontSize:30,eventName:'setMoreText',parentName:'Column_HasHW_HiddenOF'},
+        {itemId: 'id0106', textValue: '点击后设置较少的文字', width: 400, fontSize:30,eventName:'setLessText',parentName:'Column_HasHW_HiddenOF'},
+        {itemId: 'id0107', textValue: '点击后设置较大的字体', width: 400, fontSize:30,eventName:'setLargeFont',parentName:'Column_HasHW_HiddenOF'},
+        {itemId: 'id0108', textValue: '点击后设置较小的字体', width: 400, fontSize:30,eventName:'setSmallerFont',parentName:'Column_HasHW_HiddenOF'},
+        // {itemId: 'id0109', textValue: '点击后不设置宽度', width: 400, fontSize:30,eventName:'setNoWidth',parentName:'Column_HasHW_HiddenOF'},
+      ],
+      Column_NoHW_HiddenOF: [
+        // {itemId: 'id0201', textValue: '点击后设置较大的宽度', fontSize:30,eventName:'setLargeWidth',parentName:'Column_NoHW_HiddenOF'},
+        // {itemId: 'id0202', textValue: '点击后设置较小的宽度', fontSize:30,eventName:'setSmallerWidth',parentName:'Column_NoHW_HiddenOF'},
+        // {itemId: 'id0203', textValue: '点击后设置较大的高度', fontSize:30,eventName:'setLargeHeight',parentName:'Column_NoHW_HiddenOF'},
+        // {itemId: 'id0204', textValue: '点击后设置较小的高度', fontSize:30,eventName:'setSmallerHeight',parentName:'Column_NoHW_HiddenOF'},
+        {itemId: 'id0205', textValue: '点击后设置较多的文字', fontSize:30,eventName:'setMoreText',parentName:'Column_NoHW_HiddenOF'},
+        {itemId: 'id0206', textValue: '点击后设置较少的文字', fontSize:30,eventName:'setLessText',parentName:'Column_NoHW_HiddenOF'},
+        {itemId: 'id0207', textValue: '点击后设置较大的字体', fontSize:30,eventName:'setLargeFont',parentName:'Column_NoHW_HiddenOF'},
+        {itemId: 'id0208', textValue: '点击后设置较小的字体', fontSize:30,eventName:'setSmallerFont',parentName:'Column_NoHW_HiddenOF'}
+      ],
+      Row_HasHW_HiddenOF:[
+        {itemId: 'id0301', textValue: '点击后设置较大的宽度', width: 400, height: 30 ,fontSize:30,eventName:'setLargeWidth',parentName:'Row_HasHW_HiddenOF'},
+        {itemId: 'id0302', textValue: '点击后设置较小的宽度', width: 400, fontSize:30,eventName:'setSmallerWidth',parentName:'Row_HasHW_HiddenOF'},
+        // {itemId: 'id0303', textValue: '点击后设置较大的高度', width: 400, fontSize:30,eventName:'setLargeHeight',parentName:'Row_HasHW_HiddenOF'},
+        // {itemId: 'id0304', textValue: '点击后设置较小的高度', width: 400, fontSize:30,eventName:'setSmallerHeight',parentName:'Row_HasHW_HiddenOF'},
+        {itemId: 'id0305', textValue: '点击后设置较多的文字', width: 400, fontSize:30,eventName:'setMoreText',parentName:'Row_HasHW_HiddenOF'},
+        {itemId: 'id0306', textValue: '点击后设置较少的文字', width: 400, fontSize:30,eventName:'setLessText',parentName:'Row_HasHW_HiddenOF'},
+        {itemId: 'id0307', textValue: '点击后设置较大的字体', width: 400, fontSize:30,eventName:'setLargeFont',parentName:'Row_HasHW_HiddenOF'},
+        {itemId: 'id0308', textValue: '点击后设置较小的字体', width: 400, fontSize:30,eventName:'setSmallerFont',parentName:'Row_HasHW_HiddenOF'},
+        // {itemId: 'id0309', textValue: '点击后不设置宽度', width: 400, fontSize:30,eventName:'setNoWidth',parentName:'Row_HasHW_HiddenOF'},
+      ],
+      Row_NoHW_HiddenOF: [
+        // {itemId: 'id0201', textValue: '点击后设置较大的宽度', fontSize:30,eventName:'setLargeWidth',parentName:'Row_NoHW_HiddenOF'},
+        // {itemId: 'id0202', textValue: '点击后设置较小的宽度', fontSize:30,eventName:'setSmallerWidth',parentName:'Row_NoHW_HiddenOF'},
+        // {itemId: 'id0203', textValue: '点击后设置较大的高度', fontSize:30,eventName:'setLargeHeight',parentName:'Row_NoHW_HiddenOF'},
+        // {itemId: 'id0204', textValue: '点击后设置较小的高度', fontSize:30,eventName:'setSmallerHeight',parentName:'Row_NoHW_HiddenOF'},
+        {itemId: 'id0205', textValue: '点击后设置较多的文字', fontSize:30,eventName:'setMoreText',parentName:'Row_NoHW_HiddenOF'},
+        {itemId: 'id0206', textValue: '点击后设置较少的文字', fontSize:30,eventName:'setLessText',parentName:'Row_NoHW_HiddenOF'},
+        {itemId: 'id0207', textValue: '点击后设置较大的字体', fontSize:30,eventName:'setLargeFont',parentName:'Row_NoHW_HiddenOF'},
+        {itemId: 'id0208', textValue: '点击后设置较小的字体', fontSize:30,eventName:'setSmallerFont',parentName:'Row_NoHW_HiddenOF'}
+      ],
+    },
+    methods: {
+      ready: function (e) {
+        this.$getConfig(function (config) {
+            var env = config.env;
+            if(env.platform == 'iOS'){
+              var scale = env.scale;
+              var deviceWidth = env.deviceWidth / scale;
+              this.navBarHeight = 64.0 * 750.0 / deviceWidth;
+            }   
+        }.bind(this));
+      },
+      setLargeWidth: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.width = 600;
+            break;
+          }
+        }
+      },
+      setSmallerWidth: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.width = 200;
+            break;
+          }
+        }
+      },
+      setLargeHeight: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.height = 50;
+            break;
+          }
+        }
+      },
+      setSmallerHeight: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.height = 10;
+            break;
+          }
+        }
+      },
+      setMoreText: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.textValue = "这是一个变成比以前文字多很多很多文字的结果";
+            break;
+          }
+        }
+      },
+      setLessText: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.textValue="文字很少";
+            break;
+          }
+        }
+      },
+      setLargeFont: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.fontSize=50;
+            break;
+          }
+        }
+      },
+      setSmallerFont: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.fontSize = 10;
+            break;
+          }
+        }
+      },
+      setNoWidth: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.width = "auto";
+            break;
+          }
+        }
+      },
+      setNoHeight: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.height = "auto";
+            break;
+          }
+        }
+      },
+      clickEvent: function (e) {
+        var eventName = e.target.attr.eventName;
+        var parentName = "'"+e.target.attr.parentName+"'";
+        eval("this."+eventName+"(e,"+parentName+");");
+      },
+    }
+  }
+</script>

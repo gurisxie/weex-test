@@ -1,0 +1,125 @@
+<template>
+  
+<TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Input_Style_Own"></TC_Support_MainTitle>
+    <div class="block">
+      <TC_Support_SubTitle title="01.lines"></TC_Support_SubTitle>
+      <div class="con con-lines">
+        <text class="item it-lines it-lines-default font">multi lines, text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</text>
+        <text class="item it-lines it-lines-1  font">1 line, text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</text>
+        <text class="item it-lines it-lines-2  font">2 lines, text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</text>
+      </div>
+
+      <!---------------------------------------------------------------------------->
+      <TC_Support_SubTitle title="02.text-align"></TC_Support_SubTitle>
+      <div class="con con-text">
+        <text class="item it-text-0 it-text-00 font">left</text>
+        <text class="item it-text-0 it-text-01 font">center</text>
+        <text class="item it-text-0 it-text-02 font">right</text>
+      </div>
+
+      <!---------------------------------------------------------------------------->
+      <TC_Support_SubTitle title="03.text-decoration"></TC_Support_SubTitle>
+      <div class="con con-text">
+        <text class="item txt it-text-1 it-text-10 font">text-decoration: none</text>
+        <text class="item txt it-text-1 it-text-11 font">text-decoration: underline</text>
+        <text class="item txt it-text-1 it-text-15 font">text-decoration: line-through;</text>
+      </div>
+    </div> 
+  </TC_Support_Scroller>
+</template>
+
+<style>
+
+
+
+  .div-split{height: 1; border-width: 1; border-style:dashed; border-color: #375830;}
+  .block {flex-direction: column;border-width:3;border-color:#ffff00;border-style:dotted;margin-bottom:5;overflow: visible;}
+.font{font-family: Times New Roman;}
+  .item {
+    padding-left: 15;
+    padding-right: 15;
+    padding-top: 15;
+    margin-top: 10;
+    color: #eeeeee;
+    font-size: 30;
+    background-color: #BEAD92;
+  }
+  .it-lines {
+    width: 710;
+    height: 120;
+  }
+
+  .it-lines-default {
+  }
+
+  .it-lines-1 {
+    lines: 1;
+  }
+
+  .it-lines-2 {
+    lines: 2;
+  }
+
+  .con-text {
+    flex-direction: column;
+  }
+
+  .it-text-0 {
+    width: 710;
+  }
+
+  .it-text-00 {
+    text-align: left;
+  }
+
+  .it-text-01 {
+    text-align: center;
+  }
+
+  .it-text-02 {
+    text-align: right;
+  }
+
+  .it-text-03 {
+    text-align: justify;
+  }
+
+  .it-text-04 {
+    text-align: justify-all;
+  }
+
+  .it-text-1 {
+    text-decoration: underline solid #F35A4A;
+    width: 710;
+    height: 80;
+    font-size: 50;
+  }
+
+  .it-text-10 {
+    text-decoration: none;
+  }
+
+  .it-text-11 {
+    text-decoration: underline;
+  }
+
+  .it-text-15 {
+    text-decoration: line-through;
+  }
+
+  .it-text-16 {
+    text-decoration: underline line-through;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      
+    },
+    methods: {
+      
+    }
+  }
+</script>

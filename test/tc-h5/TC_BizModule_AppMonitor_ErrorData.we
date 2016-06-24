@@ -1,0 +1,63 @@
+<template>
+  
+    <TC_Support_Scroller>
+      <TC_Support_MainTitle title="TC_BizModule_AppMonitor_ErrorData"></TC_Support_MainTitle>
+      <div style="margin: 10">
+        <TC_Support_Button style="margin:5" flagid="btn-if" title="赋值错误数据" btn-touch="{{toggle}}"></TC_Support_Button>
+        <div class="component {{boder}}" repeat="{{itemList}}">
+          <image class="img" src="{{imgUrl}}"></image>
+          <text class="text">{{title}}</text>
+        </div>
+      </div>
+      </TC_Support_Scroller>
+</template>
+
+<style>
+
+
+
+  .component {
+    margin: 10;
+    flex-direction: row;
+    align-items:center;
+  }
+  .border-green {
+    border-width: 5;
+    border-style: solid;
+    border-color: #00FF00;
+  }
+  .border-pink {
+    border-width: 5;
+    border-style: solid;
+    border-color: #FF00FF;
+  }
+  .text {
+    height:30;
+    border-width: 1;
+    border-style:solid;
+    margin:2;
+    padding-left:5;
+    font-size:20
+  }
+  .img {
+    margin: 2;
+    width: 400;
+    height: 400;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      itemList:[
+        {boder:'border-green', title:'~\(≧▽≦)/~啦啦啦，有美景', imgUrl:'https://gd2.alicdn.com/imgextra/i2/TB1ThbXIVXXXXbNXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg'},
+        {boder:'border-pink', title:'~\(≧▽≦)/~啦啦啦，有美食', imgUrl:'https://img.alicdn.com/bao/uploaded/i3/TB1lauIKXXXXXXQXXXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg'}
+        ]
+    },
+    methods: {
+      toggle: function () {
+        this.itemList = "~~~~~~~~~~~~~~~~~~~~~";
+      }
+    }
+  }
+</script>

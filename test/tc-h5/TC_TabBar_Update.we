@@ -1,0 +1,312 @@
+<template>
+  <div style="flex-direction: column;">
+    <tabbar  id="tabbar" tab-items="{{tabItems}}"></tabbar>
+  </div>
+</template>
+
+<script>
+  module.exports = {
+    data: {
+      imageItems: [
+        {
+          src:"http://d.lanrentuku.com/down/png/1407/karate-icons/karate-flyingkick-icon.png", 
+          alt:"空手道飞踢动作PNG图片",
+        }, 
+        {
+          src:"http://d.lanrentuku.com/down/png/1407/karate-icons/karate-block-icon.png",
+          alt:"空手道动作PNG图片",
+        },  
+        {
+          src:"http://d.lanrentuku.com/down/png/1407/karate-icons/karate-punch-icon.png", 
+          alt:"空手道打拳动作PNG图片"
+        },
+        {
+          src:"http://d.lanrentuku.com/down/png/1407/karate-icons/karate-ready-icon.png", 
+          alt:"空手道准备动作PNG图片"
+        },  
+        {
+          src:"http://d.lanrentuku.com/down/png/1407/karate-icons/karate-highkick-icon.png", 
+          alt:"空手道高踢腿动作PNG图片"
+        },
+      ],
+      tabItemsChange: [
+        {
+          index: 0,
+          title: "首页",
+          titleColor: 0x0,
+          icon: "",
+          image: "http://h5.m.taobao.com/img/thttps/taoban.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/taoban_selected.png",
+          src: "../examples/build/TC_TabItem_0.js",
+          visibility: "visible",
+          isShow: true,
+        },
+        {
+          index: 1,
+          title: "微淘",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/contacts.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/contacts_selected.png",
+          src: "http://localhost:12580/examples/build/TC_TabItem_1.js",
+          visibility: "hidden",
+          isShow: true,
+        },
+        {
+          index: 2,
+          title: "社区",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/TC_TabBar_Update.js",
+          visibility: "hidden",
+          isShow: true,
+        },
+        {
+          index: 3,
+          title: "购物车",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/TC_TabBar_Update.js",
+          visibility: "hidden",
+          isShow: true,
+        },
+        {
+          index: 4,
+          title: "tab",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/TC_Style.js",
+          visibility: "hidden",
+          isShow: true,
+        },
+        {
+          index: 5,
+          title: "tab",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/TC_Style.js",
+          visibility: "hidden",
+          isShow: true,
+        },
+        {
+          index: 6,
+          title: "tab",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/TC_Style.js",
+          visibility: "hidden",
+          isShow: true,
+        },
+        {
+          index: 7,
+          title: "tab",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/TC_Style.js",
+          visibility: "hidden",
+          isShow: true,
+        }
+        ,
+        {
+          index: 8,
+          title: "tab",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/TC_Style.js",
+          visibility: "hidden",
+          isShow: true,
+        }
+        ,
+        {
+          index: 9,
+          title: "tab",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/TC_Style.js",
+          visibility: "hidden",
+          isShow: true,
+        }
+        ,
+        {
+          index: 10,
+          title: "tab",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/TC_Style.js",
+          visibility: "hidden",
+          isShow: true,
+        }
+        ,
+        {
+          index: 11,
+          title: "tab",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/TC_Style.js",
+          visibility: "hidden",
+          isShow: true,
+        }
+        ,
+        {
+          index: 12,
+          title: "tab",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/TC_Style.js",
+          visibility: "hidden",
+          isShow: true,
+        }
+        ,
+        {
+          index: 13,
+          title: "tab",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/TC_Style.js",
+          visibility: "hidden",
+          isShow: true,
+        }
+        ,
+        {
+          index: 14,
+          title: "tab",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/TC_Style.js",
+          visibility: "hidden",
+          isShow: true,
+        }
+      ],
+      tabItems: [
+        {
+          index: 0,
+          title: "首页",
+          titleColor: 0x0,
+          icon: "",
+          image: "http://h5.m.taobao.com/img/thttps/taoban.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/taoban_selected.png",
+          src: "http://localhost:12580/examples/build/list-event.js",
+          visibility: "visible",
+          isShow: true,
+        },
+        {
+          index: 1,
+          title: "微淘",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/contacts.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/contacts_selected.png",
+          src: "http://localhost:12580/examples/build/list-event.js",/* 从这里能够跳转到tabbar界面，多次跳转验证无问题*/
+          visibility: "hidden",
+          isShow: true,
+        },
+        {
+          index: 2,
+          title: "社区",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/list-event.js",
+          visibility: "hidden",
+          isShow: true,
+        },
+        {
+          index: 3,
+          title: "购物车",
+          titleColor: 0x0,
+          icon:"",
+          image: "http://h5.m.taobao.com/img/thttps/me.png",
+          selectedImage: "http://h5.m.taobao.com/img/thttps/me_selected.png",
+          src: "http://localhost:12580/examples/build/list-event.js",
+          visibility: "hidden",
+          isShow: true,
+        },
+      ],
+    },
+    methods: {
+      ready: function (e) {
+        var vm = this;
+        for (var i = 0; i < this.tabItems.length; i++) {
+            var item = this.tabItems[i];
+            item.title = item.title + item.index;
+            if(i > 7) {
+              // 测试发现，isShow 是可以用的，并且不占用空间，可以将item和tab绑定的内容全部隐藏
+              item.isShow = false;
+            }
+        }
+
+        vm.$on('tabBar.onClick',function(e){
+          var detail= e.detail;
+          nativeLog('tabBar.onClick ' + detail.index);
+          vm.toast(detail.index);
+
+          var item = this.tabItems[detail.index];
+          //支持动态切换图片,这里根据当前时间来生成一个0-5的随机数用于获取图片
+          var number = new Date().getSeconds()%5;
+          nativeLog('currentnumber'+number)
+          //item.image = this.imageItems[number].src;
+          item.selectedImage = this.imageItems[(number+1)%5].src;
+
+
+          //这里来动态切换tabItems
+          if(detail.index == 3) {
+              this.tabItems = this.tabItemsChange;
+              for(var i = 0; i < this.tabItems.length; i++) {
+                tabItem = this.tabItems[i];
+                if(i == detail.index) {
+                  tabItem.icon = tabItem.selectedImage;
+                  tabItem.titleColor = this.selectedColor;
+                  tabItem.visibility = "visible";
+                } else {
+                  tabItem.icon = tabItem.image;
+                  tabItem.titleColor = this.unselectedColor;
+                  tabItem.visibility = "hidden";
+                  //如果不设置hidden 所有的view都是可见状态，所以只能见到最后一个渲染的tab页
+                  //tabItem.visibility = "visible"
+                }
+              }
+          }
+
+        });
+      },
+      toast:function(index) {
+        var item = this.tabItems[index]
+
+        var message = item.title + "onClicked";
+        var duration = 0.5;
+        var params = {
+          'message': message,
+          'duration': duration,
+        }
+        this.$call('modal','toast',params);
+      }
+    }
+  }
+</script>

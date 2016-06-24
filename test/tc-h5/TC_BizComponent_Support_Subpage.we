@@ -1,0 +1,15 @@
+<style>
+    .childClass {
+        font-size: 60;
+        width: 348;
+        height: 400;
+        color: #ff0000;
+        background-color: #00ffff;
+    }
+</style>
+
+<template>
+    <text > 我是自定义子控件 </text>
+</template>
+
+

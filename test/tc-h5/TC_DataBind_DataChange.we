@@ -1,0 +1,60 @@
+<template>
+  
+<TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_DataBind_DataChange"></TC_Support_MainTitle>
+    <TC_Support_SubTitle title="01.Change data"></TC_Support_SubTitle>
+    <div style="margin: 10">
+      <TC_Support_Button style="margin:5" title="refresh instance" btn-touch="{{refresh}}"></TC_Support_Button>
+      <text class="text font">{{currentItem.title}}</text>
+      <image class="img" src={{currentItem.imgUrl}}></image>
+    </div>
+    </TC_Support_Scroller>
+</template>
+
+<style>
+
+
+.font{font-family: Times New Roman;}
+
+  .text {
+    height:30;
+    border-width: 1;
+    border-style:solid;
+    margin:2;
+    padding-left:5;
+    font-size:20
+  }
+  .img {
+    margin: 2;
+    width: 400;
+    height: 400;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      currentItem: {},
+      currentIndex: 0,
+      itemList:[
+        {title:'~\(≧▽≦)/~啦啦啦，有美景', imgUrl:'https://gd2.alicdn.com/imgextra/i2/TB1ThbXIVXXXXbNXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg'},
+        {title:'有美食，~\(≧▽≦)/~啦啦啦', imgUrl:'https://img.alicdn.com/bao/uploaded/i3/TB1lauIKXXXXXXQXXXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg'}]
+    },
+
+    methods: {
+      refresh:function() {
+        if (this.currentIndex === 0) {
+          this.currentIndex = 1
+        }
+        else {
+          this.currentIndex = 0
+        }
+        this.currentItem = this.itemList[this.currentIndex]
+      }
+    },
+
+    created:function () {
+      this.currentItem = this.itemList[this.currentIndex]
+    }
+  }
+</script>

@@ -1,0 +1,68 @@
+<template>
+  
+    <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Text_Overflow"></TC_Support_MainTitle>
+    <div>
+
+      <div>
+        <text class="title font">1.lines:0 text-overflow:ellipsis</text>
+        <text class="font" style="text-overflow:ellipsis;lines:0;width:700 ;font-size:40">
+          ellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsis
+        </text>
+      </div>
+
+      <div>
+        <text class="title font">2.lines:0 text-overflow:clip</text>
+        <text class="font" style="text-overflow:clip; lines:0;width:700;font-size:40">
+          clipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclip
+        </text>
+      </div>
+
+      <div>
+        <text class="title font">3.lines:1 text-overflow:ellipsis</text>
+        <text class="font" style="text-overflow:ellipsis;lines:1;width:700 ;font-size:40">
+          ellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsis
+        </text>
+      </div>
+
+      <div>
+        <text class="title font">4.lines:1 text-overflow:clip</text>
+        <text class="font" style="text-overflow:clip; lines:1;width:700;font-size:40">
+          clipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclip
+        </text>
+      </div>
+
+      <div>
+        <text class="title font">5.lines:2 text-overflow:ellipsis</text>
+        <text class="font" style="text-overflow:ellipsis;lines:2;width:700 ;font-size:40">
+          ellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsisellipsis
+        </text>
+      </div>
+
+      <div>
+        <text class="title font">6.lines:2 text-overflow:clip</text>
+        <text class="font" style="text-overflow:clip; lines:2;width:700;font-size:40">
+          clipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclipclip
+        </text>
+      </div>
+
+  </div>
+
+  </TC_Support_Scroller>
+</template>
+
+<style>
+  .font{font-family: Times New Roman;}
+
+
+  .title{font-size:40;padding: 10; background-color:red;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    methods: {
+    }
+  }
+</script>

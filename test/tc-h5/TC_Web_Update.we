@@ -1,0 +1,87 @@
+<template>
+  <scroller class="root">
+    <TC_Support_MainTitle title="TC_Web_Update"></TC_Support_MainTitle>
+    <div class="size row js-con solid">
+      <web if="{{isShow}}" class="bg" style="width:{{widthV}};height:{{heightV}};" src = "{{srcUrl}}"></web>
+    </div>
+    <TC_Support_SubTitle title="01.Src change"></TC_Support_SubTitle>
+    <div class="size row js-con b-height" >
+      <TC_Support_Button style="margin-left:20;margin-top:20;width:200;" title="Src变为淘宝" btn-touch="{{srcTaobaoEvt}}"></TC_Support_Button>
+      <TC_Support_Button style="margin-left:20;margin-top:20;width:200;" title="Src变为天猫" btn-touch="{{srcTmallEvt}}"></TC_Support_Button>
+      <TC_Support_Button style="margin-right:20;margin-top:20;width:200;" title="Src错误链接" btn-touch="{{srcErrEvt}}"></TC_Support_Button>
+    </div>
+    <div class="size row js-con b-height">
+      <TC_Support_Button style="margin-left:20;margin-top:20;width:200;" title="Src变成Https" btn-touch="{{srcHttpsEvt}}"></TC_Support_Button>
+      <TC_Support_Button style="margin-left:20;margin-top:20;width:200;" title="Src无前缀" btn-touch="{{srcNoPrifixEvt}}"></TC_Support_Button>
+      <TC_Support_Button style="margin-right:20;margin-top:20;width:200;" title="Src部分前缀" btn-touch="{{srcPartPrifixEvt}}"></TC_Support_Button>
+    </div>
+    <TC_Support_SubTitle title="02.Web show or notShow"></TC_Support_SubTitle>
+    <div class="size row js-con b-height">
+      <TC_Support_Button style="margin-left:20;margin-top:20;width:200;" title="Web显示" btn-touch="{{showEvt}}"></TC_Support_Button>
+      <TC_Support_Button style="margin-right:20;margin-top:20;width:200;" title="Web不显示" btn-touch="{{showNotEvt}}"></TC_Support_Button>
+    </div>
+    <TC_Support_SubTitle title="03.WH change"></TC_Support_SubTitle>
+    <div class="size row js-con b-height">
+      <TC_Support_Button style="margin-left:20;margin-top:20;width:200;" title="改变高宽" btn-touch="{{changeWH}}"></TC_Support_Button>
+    </div>
+  </scroller>
+</template>
+
+<style>
+  
+  .row{ flex-direction:row;}
+  .column{flex-direction:column;}
+  .size{width: 750;height: 300;}
+  .b-height{height: 80;}
+  .js-con{justify-content: space-between;}
+  .bg{background-color: #FFFFDF;}
+  .flex{flex:1;}
+  .solid{ border-style: solid;border-width: 5;border-color:#019858;border-radius:5;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      srcUrl:'http://h5.m.taobao.com',
+      isShow:true,
+      srcTaobao:'http://h5.m.taobao.com',
+      srcTmall:'http://www.tmall.com',
+      srcErr:"http://m.h5.taobao.com",
+      srcHttps:'https://h5.m.taobao.com',
+      srcNoPrifix:'h5.m.taobao.com',
+      srcPartPrifix:'//h5.m.taobao.com',
+      widthV:750,
+      heightV:300
+    },
+    methods: {
+      srcTaobaoEvt:function(e){
+        this.srcUrl=this.srcTaobao;
+      },
+      srcTmallEvt:function(e){
+        this.srcUrl=this.srcTmall;
+      },
+      srcErrEvt:function(e){
+        this.srcUrl=this.srcErr;
+      },
+      srcHttpsEvt:function(e){
+        this.srcUrl=this.srcHttps;
+      },
+      srcNoPrifixEvt:function(e){
+        this.srcUrl=this.srcNoPrifix;
+      },
+      srcPartPrifixEvt:function(e){
+        this.srcUrl=this.srcPartPrifix;
+      },
+      showEvt:function(e){
+        this.isShow=true;
+      },
+      showNotEvt:function(e){
+        this.isShow=false;
+      },
+      changeWH:function(e){
+        this.widthV=500;
+        this.heightV=200;
+      },
+    }
+  }
+</script>

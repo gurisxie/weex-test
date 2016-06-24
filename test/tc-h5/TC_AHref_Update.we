@@ -1,0 +1,130 @@
+<template>
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_AHref_Update"></TC_Support_MainTitle>
+    
+    <TC_Support_Button style="margin:5" title="Change href" btn-touch="{{changeHref}}"></TC_Support_Button>
+
+    <TC_Support_Button style="margin:5" title="Change width and height" btn-touch="{{changeSize}}"></TC_Support_Button>
+
+    <TC_Support_Button style="margin:5" title="Change background color" btn-touch="{{changeBgc}}"></TC_Support_Button>
+
+    <TC_Support_Button style="margin:5" title="Change titile" btn-touch="{{changeTitle}}"></TC_Support_Button>
+
+    <TC_Support_Button style="margin:5" title="Change margin" btn-touch="{{changeMargin}}"></TC_Support_Button>
+
+    <TC_Support_Button style="margin:5" title="Change border" btn-touch="{{changeBorder}}"></TC_Support_Button>
+
+    <TC_Support_Button style="margin:5" title="Change padding" btn-touch="{{changePadding}}"></TC_Support_Button>
+    
+    <div class="div">
+      <a class="border" href={{href}} style="background-color:{{bgc}}; height:{{height}}; width:{{width}}; margin:{{margin}}; border-width:{{borderWidth}}; border-radius:{{borderRadius}}; padding-left: {{paddingLeft}};">
+        <text class="font">{{title}}</text>
+      </a>
+    </div>
+
+  </TC_Support_Scroller>
+</template>
+
+
+<style>
+  .font{font-family: Times New Roman;font-size: 30;}
+  .btnHw{
+    height:80;
+    width:500;
+  }
+  
+  .bgc{
+    background-color:#F4F3DE;
+  }
+  
+  .border{
+    border-width: 1;
+    border-style:solid;
+    border-color: #123456;
+  }
+  
+  .div {
+    margin:5;
+    background-color:#999999;
+    width:450;
+    height:450;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data:{
+      herf01:'http://weex.alibaba-inc.com/raw/dist/3c9aaa200bcedda13c8a828b03d60127.js',
+      title01: '没有设置宽高',
+      
+      title02: '没有设置href',
+      
+      href: 'http://weex.alibaba-inc.com/raw/dist/3c9aaa200bcedda13c8a828b03d60127.js',
+      title: 'Hello Weex',
+      bgc: '#99FFCC',
+      height: 200,
+      width: 200,
+      margin: 0,
+      borderWidth: 0,
+      borderRadius: 0,
+      paddingLeft: 0
+    },
+    methods:{
+      
+      changeHref:function(){
+        if(this.href === 'http://weex.alibaba-inc.com/raw/dist/3c9aaa200bcedda13c8a828b03d60127.js')
+        {
+          this.href = 'http://weex.alibaba-inc.com/raw/dist/547162652d64eea8ddcd4f38386e145d.js'
+          this.title = 'Hello World'
+        }
+        else
+        {
+          this.href = 'http://weex.alibaba-inc.com/raw/dist/3c9aaa200bcedda13c8a828b03d60127.js'
+          this.title = 'Hello Weex'
+        }
+      },
+      
+      changeSize:function(){
+        if(this.height === 200)
+        {
+          this.height = 400
+          this.width = 400
+        }
+        else
+        {
+          this.height = 200
+          this.width = 200
+        }
+      },
+      
+      changeBgc:function(){
+        this.bgc = this.bgc === '#99FFCC' ? '#CC99FF' : '#99FFCC'
+      },
+      
+      changeTitle:function(){
+        this.title = this.title === 'Hello Weex' ? 'Hello World' : 'Hello Weex'
+      },
+      
+      changeMargin:function(){
+        this.margin = this.margin === 20 ? 0 : 20
+      },
+      
+      changeBorder:function(){
+        if(this.borderRadius === 0)
+        {
+          this.borderWidth = 5
+          this.borderRadius = 50
+        }
+        else
+        {
+          this.borderWidth = 0
+          this.borderRadius = 0
+        }
+      },
+      
+      changePadding:function(){
+        this.paddingLeft = this.paddingLeft === 50 ? 0 : 50
+      },
+    }
+  }
+</script>

@@ -1,0 +1,72 @@
+<template>
+  
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Web_Style"></TC_Support_MainTitle>
+    <TC_Support_SubTitle title="01.No width and height"></TC_Support_SubTitle>
+    <div class="size column js-con solid">
+      <web class="bg" src = "http://h5.m.taobao.com"></web>
+    </div>
+    <TC_Support_SubTitle title="02.No width and height, but flex"></TC_Support_SubTitle>
+    <div class="size row js-con solid">
+      <web class="bg flex" src = "http://h5.m.taobao.com"></web>
+    </div>
+    <TC_Support_SubTitle title="03.Set width and height"></TC_Support_SubTitle>
+    <div class="size row js-con solid">
+      <web class="bg sub-size" src = "http://h5.m.taobao.com"></web>
+    </div>
+    <TC_Support_SubTitle title="04.Set Src https"></TC_Support_SubTitle>
+    <div class="size row js-con solid">
+      <web class="bg flex" src = "https://h5.m.taobao.com"></web>
+    </div>
+    </TC_Support_Scroller>
+</template>
+
+<style>
+  
+
+  .row{ flex-direction:row;}
+  .column{flex-direction:column;}
+  .size{width: 750;height: 150;}
+  .sub-size{width:500;height:120;background-color: #0000ff;border-width: 1;border-color: #ff0000;}
+  .js-con{justify-content: space-between;}
+
+  .origin{background-color: #FFFFDF;width: 200;height: 50;}
+  .bg{background-color: #FFFFDF;}
+  .flex{flex:1;}
+
+  .mg{ margin: 5;}
+  .mg-lt{margin-top: 5;margin-left: 10;}
+  .mg-rb{margin-bottom: 5;margin-right: 10;}
+  .p-rb{justify-content:flex-end;align-items:flex-end;}
+
+  .pd{padding: 5;}
+  .pd-lt{padding-top: 5;padding-left: 10;}
+  .pd-rb{padding-bottom: 5;padding-right: 10;}
+
+  .solid{ border-style: solid;border-width: 5;border-color:#019858;border-radius:5;}
+  .dotted{ border-style: dotted; border-width: 5;border-color:#019858;border-radius:5;}
+  .dashed{ border-style: dashed; border-width: 5;border-color:#019858;border-radius:5;}
+
+  .max-w-less{max-width: 150;}
+  .max-w-more{max-width: 250;}
+
+  .min-w-less{min-width: 150;}
+  .min-w-more{min-width: 250;}
+
+  .max-h-less{max-height: 20;}
+  .max-h-more{max-height: 70;}
+
+  .min-h-less{min-height: 20;}
+  .min-h-more{min-height: 70;}
+
+</style>
+
+
+<script>
+  module.exports = {
+    data: {
+    },
+    methods: {
+    }
+  }
+</script>

@@ -1,0 +1,109 @@
+<template>
+  <div>
+    <TC_Support_MainTitle title="TC_List_Event_AppearDisappear"></TC_Support_MainTitle>
+    <list class="list">
+      <cell class="cell" repeat="{{list}}" item-id="{{itemId}}" scope="{{scopeValue}}"  onappear="onappear" ondisappear="ondisappear">
+        <div style="padding-bottom:10;" id="{{itemId}}" if="{{isShow}}">
+          <image class="img" src="{{imgLeft}}"></image>
+          <div>
+            <div style="flex-direction: row; flex:1;">
+              <text class="textPrice">{{priceLeft}}</text>
+              <text class="textPayNum">{{paynumLeft}}</text>
+            </div>
+            <text class="text">{{discLeft}}</text>
+          </div>
+          <text class="textRcm" onclick="tuijian">推 荐</text>
+          <text class="textDel" onclick="deleteCell" item-id="{{itemId}}">移 除</text>
+        </div>
+      </cell>
+    </list>
+
+    <div style="flex-direction: row;">
+        <text class="leftTxt">OnAppear：</text><text class="btn1">{{appearTxt}}</text>
+    </div>
+    <div style="flex-direction: row;">
+      <text class="leftTxt">OnDisAppear：</text><text class="btn1">{{disappearTxt}}</text>
+    </div>
+    <div style="flex-direction: row;">
+      <text class="leftTxt">Direction：</text><text class="btn1">{{directionTxt}}</text>
+    </div>
+    <div style="flex-direction: row;">
+      <text class="leftTxt">Click：</text><text class="btn1">{{clickTxt}}</text>
+    </div>
+
+  </div>
+</template>
+
+<style>
+  
+  .list{width: 750; height: 300;border-width: 1;border-color: #ff00ff;flex-direction: column;overflow: hidden;}
+  .list1{width: 750; height: 300;border-width: 1;border-color: #ff00ff;flex-direction: column;}
+  .img {width: 740; height: 200; background-color:#ffff00; margin: 5;}
+  .cell {flex-direction: column; width:750; background-color:#ffffff;}
+  .textPrice{flex:1;height:50;font-size:30;color: #000000;padding-top:10;text-align:center;font-family: "Open Sans", sans-serif;}
+  .textPayNum {flex:1;height:50;font-size:30;color: #000000;padding-top:10;text-align:center;font-family: "Open Sans", sans-serif;}
+  .textRcm{ position: absolute; width: 200; height:30; font-weight: bold; font-size: 25; right: 50; top:50; color: #ff0000; background-color: #cccccc; font-family: "Open Sans", sans-serif;}
+  .textDel{ position: absolute; width: 200; height:30; font-weight: bold; font-size: 25; left: 50; top:50; color: #ff0000; background-color: #cccccc; font-family: "Open Sans", sans-serif;}
+  .btn{ width:250; font-size: 25; border-width: 3; border-color: #cccccc; padding: 5; border-style: solid;border-radius: 3; margin: 5; font-family: "Open Sans", sans-serif;}
+  .btn1{ width:500; font-size: 25; border-width: 3; border-color: #cccccc; padding: 5; border-style: solid;border-radius: 3; margin: 5; font-family: "Open Sans", sans-serif;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      appearTxt: '',
+      disappearTxt:'',
+      clickTxt:'',
+      directionTxt:'',
+      list: [
+          {itemId: '100',isShow:true, scopeValue:1, imgLeft:'https://gd3.alicdn.com/imgextra/i3/178271486/TB2Ljf8dVXXXXXDXXXXXXXXXXXX_!!178271486.jpg',priceLeft:'¥133.44',paynumLeft:'37人付款', discLeft:'翡冷翠现代欧式客厅玄关装饰画，三联画墙壁画卧室有框挂画'},
+          {itemId: '101',isShow:true, scopeValue:2, imgLeft:'https://gd2.alicdn.com/bao/uploaded/i2/TB1DG6DKFXXXXcmXVXXXXXXXXXX_!!0-item_pic.jpg',priceLeft:'¥185.50',paynumLeft:'49人付款', discLeft:'仟象映画梦之鹿美式装饰画现代简约客厅挂画北欧竖版墙画黑白壁画'},
+          {itemId: '102',isShow:true, scopeValue:3, imgLeft:'https://gd1.alicdn.com/bao/uploaded/i1/TB1R6evIFXXXXbRXVXXXXXXXXXX_!!0-item_pic.jpg',priceLeft:'¥4679.00',paynumLeft:'8人付款', discLeft:'PRADO普兰达家居极美家具合时尚现代日式宜家布沙发可拆洗沙发'},
+          {itemId: '103',isShow:true, scopeValue:4, imgLeft:'https://gd2.alicdn.com/bao/uploaded/i2/TB1viyLKFXXXXarXpXXXXXXXXXX_!!0-item_pic.jpg',priceLeft:'¥2180.00',paynumLeft:'72人付款', discLeft:'伊森家居实木欧式床双人床美式床高箱储物床'},
+      ]
+    },
+    methods: {
+      deleteCell: function (e) {
+        var itemId = e.target.attr.itemId;
+        for (var i = 0; i < this.list.length; i++) {
+          var itemData = this.list[i];
+          if(itemData.itemId==itemId){
+            //itemData.isShow = false;
+            break;
+          }
+        }
+        var message = "delete";
+        var okTitle = "OK";
+        var params = {
+          'message':e.target,
+          'okTitle':okTitle,
+        }
+        this.$call('modal','alert',params,function() {
+        });
+
+      },
+      tuijian:function (e) {
+        var message = "推荐成功！";
+        var okTitle = "OK";
+        var params = {
+          'message':message,
+          'okTitle':okTitle,
+        }
+        this.$call('modal','alert',params,function() {
+        });
+      },
+
+      loadmore:function (e) {
+        
+      },
+      onappear: function (e) {
+        this.appearTxt = e.target.attr.itemId + " appear~";
+        this.directionTxt=e.direction;
+      },
+      ondisappear:function(e){
+        this.disappearTxt = e.target.attr.itemId + " disappear~";
+      },
+    }
+    
+  }
+</script>

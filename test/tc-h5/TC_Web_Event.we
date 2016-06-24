@@ -1,0 +1,112 @@
+<template>
+  <scroller class="root">
+    <TC_Support_MainTitle title="TC_Web_Event"></TC_Support_MainTitle>
+    <div class="size row js-con solid">
+      <web id="webId" class="bg flex" src = "{{srcUrl}}"  onpagestart = "pagestartEvt" onpagefinish = "pagefinishEvt" onerror = "errorEvt"></web>
+    </div>
+    <div class="size row js-con b-height" >
+      <TC_Support_Button style="margin-left:20;margin-top:20;width:200;" title="Src变为淘宝" btn-touch="{{srcTaobaoEvt}}"></TC_Support_Button>
+      <TC_Support_Button style="margin-left:20;margin-top:20;width:200;" title="Src变为天猫" btn-touch="{{srcTmallEvt}}"></TC_Support_Button>
+      <TC_Support_Button style="margin-right:20;margin-top:20;width:200;" title="Src错误链接" btn-touch="{{srcErrEvt}}"></TC_Support_Button>
+    </div>
+    <div class="size row js-con b-height" >
+      <TC_Support_Button style="margin-left:20;margin-top:20;width:200;" title="reload" btn-touch="{{reloadEvt}}"></TC_Support_Button>
+      <TC_Support_Button style="margin-left:20;margin-top:20;width:200;" title="goBack" btn-touch="{{goBackEvt}}"></TC_Support_Button>
+      <TC_Support_Button style="margin-right:20;margin-top:20;width:200;" title="goForward" btn-touch="{{goForwardEvt}}"></TC_Support_Button>
+    </div>
+    <TC_Support_SubTitle title="OnPageStart"></TC_Support_SubTitle>
+    <div class="row js-con mrg">
+      <text class="txt desc">调用了{{startNum}}次</text><text class="txt">{{txtStart}}</text>
+    </div>
+    <TC_Support_SubTitle title="OnPageFinish"></TC_Support_SubTitle>
+    <div class="row js-con mrg">
+      <text class="txt desc">调用了{{finishNum}}次</text><text class="txt">{{txtFinish}}</text>
+    </div>
+    <TC_Support_SubTitle title="OnError"></TC_Support_SubTitle>
+    <div class="row js-con mrg">
+      <text class="txt desc">调用了{{errorNum}}次</text><text class="txt">{{txtError}}</text>
+    </div>
+  </scroller>
+</template>
+
+<style>
+  
+  .row{ flex-direction:row;}
+  .column{flex-direction:column;}
+  .size{width: 750;height: 300;}
+  .b-height{height: 80;}
+  .js-con{justify-content: space-between;}
+  .bg{background-color: #FFFFDF;}
+  .flex{flex:1;}
+  .solid{ border-style: solid;border-width: 5;border-color:#019858;border-radius:5;}
+  .mrg{margin: 5;}
+  .txt{font-size: 24;}
+  .txt{width:570;}
+  .desc{font-weight: bold;width: 180;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      srcUrl:'http://h5.m.taobao.com',
+      srcTaobao:'http://h5.m.taobao.com',
+      srcTmall:'http://www.tmall.com',
+      srcErr:"http://m.h5.taobao.com",
+      txtStart:'',
+      txtFinish:'',
+      txtError:'',
+      startNum:0,
+      finishNum:0,
+      errorNum:0
+    },
+    methods: {
+      srcTaobaoEvt:function(e){
+        this.clearEvt();
+        this.srcUrl=this.srcTaobao;
+      },
+      srcTmallEvt:function(e){
+        this.clearEvt();
+        this.srcUrl=this.srcTmall;
+      },
+      srcErrEvt:function(e){
+        this.clearEvt();
+        this.srcUrl=this.srcErr;
+      },
+      pagestartEvt:function(e){
+        this.startNum++;
+        nativeLog("pagestart-----:"+JSON.stringify(e))
+        this.txtStart=JSON.stringify(e)
+      },
+      pagefinishEvt:function(e){
+        this.finishNum++;
+        nativeLog("pagefinish-----"+JSON.stringify(e))
+        this.txtFinish=JSON.stringify(e)
+      },
+      errorEvt:function(e){
+        this.errorNum++;
+        nativeLog("error-----"+JSON.stringify(e))
+        this.txtError=JSON.stringify(e)
+      },
+
+      reloadEvt:function(e){
+        this.clearEvt();
+        var webElement = this.$el('webId'); 
+        this.$call('webview','reload',webElement.ref);
+      },
+      goBackEvt:function(e){
+        this.clearEvt();
+        var webElement = this.$el('webId'); 
+        this.$call('webview','goBack',webElement.ref);
+      },
+      goForwardEvt:function(e){
+        this.clearEvt();
+        var webElement = this.$el('webId'); 
+        this.$call('webview','goForward',webElement.ref);
+      },
+      clearEvt:function(){
+        this.txtStart=this.txtFinish=this.txtError='';        
+        this.startNum=this.finishNum=this.errorNum=0;
+      }
+    }
+  }
+</script>

@@ -1,0 +1,142 @@
+<template>
+  <scroller class="root">
+    <TC_Support_MainTitle title="TC_Switch_Style"></TC_Support_MainTitle>
+    <TC_Support_SubTitle title="01.No width and height"></TC_Support_SubTitle>
+    <div class="size column js-con">
+      <switch class="bg"></switch>
+    </div>
+    <TC_Support_SubTitle title="02.No width and height,but flex"></TC_Support_SubTitle>
+    <div class="size row js-con">
+      <switch class="bg flex"></switch>
+    </div>
+    <TC_Support_SubTitle title="03.checked：true，false"></TC_Support_SubTitle>
+    <div class="size row">
+      <div class="sub-size">
+        <switch class="origin solid" checked="true"></switch>
+      </div>
+      <div class="sub-size">
+        <switch class="origin solid" checked="false"></switch>
+      </div>
+    </div>
+    <TC_Support_SubTitle title="04.Margin：all，lt，rb"></TC_Support_SubTitle>
+    <div class="size row js-con">
+      <div class="sub-size">
+        <switch class="origin mg solid"></switch>
+      </div>
+      <div class="sub-size">
+        <switch class="origin mg-lt solid"></switch>
+      </div>
+      <div class="sub-size p-rb">
+        <switch class="origin mg-rb solid"></switch>
+      </div>
+    </div>
+    <TC_Support_SubTitle title="05.Padding：all，lt，rb"></TC_Support_SubTitle>
+    <div class="size row js-con">
+      <switch class="origin pd solid"></switch>
+      <switch class="origin pd-lt solid"></switch>
+      <switch class="origin pd-rb solid"></switch>
+    </div>
+    <TC_Support_SubTitle title="06.Border：solid，dotted，dashed"></TC_Support_SubTitle>
+    <div class="size row js-con">
+      <switch class="origin solid"></switch>
+      <switch class="origin dotted"></switch>
+      <switch class="origin dashed"></switch>
+    </div>
+    <TC_Support_SubTitle title="07.MaxWidth：less；none；more"></TC_Support_SubTitle>
+    <div class="size row js-con">
+       <div class="sub-size">
+          <switch class="origin max-w-less solid"></switch>
+       </div>
+       <div class="sub-size">
+        <switch class="origin solid"></switch>
+       </div>
+       <div class="sub-size">
+        <switch class="origin max-w-more solid"></switch>
+       </div>
+    </div>
+    <TC_Support_SubTitle title="08.MinWidth：less；none；more"></TC_Support_SubTitle>
+    <div class="size row js-con">
+      <div class="sub-size">
+          <switch class="origin min-w-less solid"></switch>
+       </div>
+       <div class="sub-size">
+        <switch class="origin solid"></switch>
+       </div>
+       <div class="sub-size">
+        <switch class="origin min-w-more solid"></switch>
+       </div>
+    </div>
+    <TC_Support_SubTitle title="09.MaxHeight：less；none；more"></TC_Support_SubTitle>
+    <div class="size row js-con">
+      <div class="sub-size">
+          <switch class="origin max-h-less solid"></switch>
+       </div>
+       <div class="sub-size">
+        <switch class="origin solid"></switch>
+       </div>
+       <div class="sub-size">
+        <switch class="origin max-h-more solid"></switch>
+       </div>
+    </div>
+    <TC_Support_SubTitle title="10.MinHeight：less；none；more"></TC_Support_SubTitle>
+    <div class="size row js-con">
+      <div class="sub-size">
+          <switch class="origin min-h-less solid"></switch>
+       </div>
+       <div class="sub-size">
+        <switch class="origin solid"></switch>
+       </div>
+       <div class="sub-size">
+        <switch class="origin min-h-more solid"></switch>
+       </div>
+    </div>
+  </scroller>
+</template>
+
+<style>
+  
+  .row{ flex-direction:row;}
+  .column{flex-direction:column;}
+  .size{width: 750;height: 70;}
+  .sub-size{width:250;height:70;background-color: #0000ff;border-width: 1;border-color: #ff0000;}
+  .js-con{justify-content: space-between;}
+
+  .origin{background-color: #FFFFDF;width: 200;height: 50;}
+  .bg{background-color: #FFFFDF;}
+  .flex{flex:1;}
+
+  .mg{ margin: 5;}
+  .mg-lt{margin-top: 5;margin-left: 10;}
+  .mg-rb{margin-bottom: 5;margin-right: 10;}
+  .p-rb{justify-content:flex-end;align-items:flex-end;}
+
+  .pd{padding: 5;}
+  .pd-lt{padding-top: 5;padding-left: 10;}
+  .pd-rb{padding-bottom: 5;padding-right: 10;}
+
+  .solid{ border-style: solid;border-width: 5;border-color:#019858;border-radius:5;}
+  .dotted{ border-style: dotted; border-width: 5;border-color:#019858;border-radius:5;}
+  .dashed{ border-style: dashed; border-width: 5;border-color:#019858;border-radius:5;}
+
+  .max-w-less{max-width: 150;}
+  .max-w-more{max-width: 250;}
+
+  .min-w-less{min-width: 150;}
+  .min-w-more{min-width: 250;}
+
+  .max-h-less{max-height: 20;}
+  .max-h-more{max-height: 70;}
+
+  .min-h-less{min-height: 20;}
+  .min-h-more{min-height: 70;}
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    methods: {
+    }
+  }
+</script>

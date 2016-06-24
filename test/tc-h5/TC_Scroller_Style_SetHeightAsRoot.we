@@ -1,0 +1,28 @@
+<template>
+  <scroller class="scroller" show-scrollbar="true">
+    <TC_Support_MainTitle title="TC_Scroller_Style_SetHeightAsRoot"></TC_Support_MainTitle> -->
+    <div>
+      <text style="font-size:30;">Scroller －－ width:750;height:300;</text>
+    </div>
+  </scroller>
+
+</template>
+
+
+<style>
+
+  .block {flex-direction: column;border-width:3;border-color:#ffff00;border-style:dotted;margin-bottom:5;overflow:hidden;}
+
+  .scroller{flex-direction:column;background-color:#ffff00;width:750;height:300;overflow:hidden;margin: 10}
+
+  .img {width: 200; height: 200;}
+
+  .leftTxt {width:200; font-size: 25; border-width: 3; padding: 5; margin: 5; font-family: "Open Sans", sans-serif;}
+
+  .btn{ width:500; font-size: 25; border-width: 3; border-color: #cccccc; padding: 5; border-style: solid;border-radius: 3; margin: 5; font-family: "Open Sans", sans-serif;}
+
+  .mr{margin-top: 50;}
+
+  .bg{background-color: #00ffff;}
+
+</style>

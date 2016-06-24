@@ -1,0 +1,801 @@
+<template>
+	
+  <TC_Support_Scroller>
+
+	<text class="title">Text: position group</text>
+	<div class="div">
+			<div class="div">
+					<text class="item-text"
+						item-id="{{itemId}}"
+						repeat="{{TextPositionGroupData}}"
+						style="width:500; 
+										height:50;
+										position: {{position}};
+										top: {{top}};
+										bottom: {{bottom}};
+										left: {{left}};
+										right: {{right}};
+										background-color: {{backgroundColor}};"
+
+						onclick="clickEvent"
+						event-name="{{eventName}}" 
+						parent-name="TextPositionGroupData">{{itemId}}{{caseDesc}}
+			</text>
+	</div>
+
+	<text class="title">Text: Base attribute</text>
+		<div class="div">
+					<text class="item-text"
+						item-id="{{itemId}}"
+						repeat="{{TextBaseAttrData}}"
+						style="width:500; 
+										height:50;
+										background-color: {{backgroundColor}};
+										lines: {{lines}};
+										color: {{color}};
+										opacity: {{opacity}};
+										font-size: {{fontSize}};
+										font-style: {{fontStyle}};
+										font-weight: {{fontWeight}};
+										text-decoration: {{textDecoration}};
+										text-align: {{textAlign}};"
+
+						onclick="clickEvent"
+						event-name="{{eventName}}" 
+						parent-name="TextBaseAttrData">{{itemId}}{{caseDesc}}
+			</text>
+		</div>
+
+		<text class="title">Text: box model group</text>
+		<div class="div">
+			<text class="item-text"
+						item-id="{{itemId}}"
+						repeat="{{TextBoxModelGroupData}}"
+						style="width:{{width}}; 
+										height:{{height}}; 
+										margin: {{margin}}; 
+										margin-left: {{marginLeft}};
+										margin-top: {{marginTop}};
+										margin-right: {{marginRight}};
+										margin-bottom: {{marginBottom}};
+										padding: {{padding}}; 
+										padding-left: {{paddingLeft}};
+										padding-top: {{paddingTop}};
+										padding-right: {{paddingRight}};
+										padding-bottom: {{paddingBottom}};
+										border-radius: {{borderRadius}}; 
+										border-top-left-radius: {{borderTopLeftRadius}};
+										border-top-right-radius: {{borderTopRightRadius}};
+										border-bottom-left-radius: {{borderBottomLeftRadius}};
+										border-bottom-right-radius: {{borderBottomRightRadius}};
+										border-width: {{borderWidth}};
+										border-top-width: {{borderTopWidth}};
+										border-left-width: {{borderLeftWidth}};
+										border-right-width: {{borderRightWidth}};
+										border-bottom-width: {{borderBottomWidth}};
+										border-color: {{borderColor}};
+										border-top-color: {{borderTopColor}};
+										border-left-color: {{borderLeftColor}};
+										border-right-color: {{borderRightColor}};
+										border-bottom-color: {{borderBottomColor}};
+										border-style: {{borderStyle}};
+										border-top-style: {{borderTopStyle}};
+										border-left-style: {{borderLeftStyle}};
+										border-right-style: {{borderRightStyle}};
+										border-bottom-style: {{borderBottomStyle}};"
+
+						onclick="clickEvent"
+						event-name="{{eventName}}" 
+						parent-name="TextBoxModelGroupData">{{itemId}}{{caseDesc}}
+			</text>
+		</div>
+
+
+		<text class="title">Text: flexbox group</text>
+		<div class="div">
+		</div>
+
+	    </TC_Support_Scroller>
+</template>
+
+<style>
+	.scroller {
+		background-color: #F4F3DE;
+		flex-direction: column;
+	}
+	.div {
+		width: 675px;
+		flex-direction: column;
+		margin-bottom: 5px;
+		padding: 40px;
+		border-style: solid;
+		border-color: #FF6666;
+		border-width: 1px;
+	}
+	.title {
+    background-color: #66CDAA;
+    height: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: "Open Sans", sans-serif;
+  }
+  .item-text {
+  	background-color: #FF7373;
+    margin: 10px;
+    font-size: 18px;
+    font-family: "Open Sans", sans-serif;
+  }
+	.item {
+		width: 650px;
+		height: 280px;
+		padding-left: 5px;
+		color: #eeeeee;
+		font-size: 30px;
+		background-color: #BEAD92;
+		font-family: "Open Sans", sans-serif;
+	}
+
+	
+
+
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    	TextBoxModelGroupData: [
+	    	{
+					itemId: 'case1:', 
+					caseDesc: '点击改变Text宽度，从200到600', 
+					width: 200,
+					backgroundColor: "#FF7373",
+					eventName: "setTextWidth"
+				},
+				{
+					itemId: 'case2:', 
+					caseDesc: '点击改变Text高度，从40到80', 
+					height: 40,
+					backgroundColor: "#FF7373",
+					eventName: "setTextHeight"
+				},
+				{
+					itemId: 'case3:', 
+					caseDesc: '点击设置Text-Margin，从5到15', 
+					margin: 5,
+					width:500,
+					height:50,
+					backgroundColor: "#FF7373",
+					eventName: "setTextMargin"
+				},
+				{
+					itemId: 'case4:', 
+					caseDesc: '点击设置Text-Margin-Left，从5到15', 
+					margin: 5,
+					marginLeft: 5,
+					width:500,
+					height:50,
+					backgroundColor: "#FF7373",
+					eventName: "setTextMarginLeft"
+				},
+				{
+					itemId: 'case5:', 
+					caseDesc: '点击设置Text-Margin-Top，从5到15',
+					width:500,
+					height:50, 
+					margin: 5,
+					marginTop: 5,
+					backgroundColor: "#FF7373",
+					eventName: "setTextMarginTop"
+				},
+				{
+					itemId: 'case6:', 
+					caseDesc: '点击设置Text-Margin-Right，从5到15',
+					width:500,
+					height:50, 
+					margin: 5,
+					marginRight: 5,
+					backgroundColor: "#FF7373",
+					eventName: "setTextMarginRight"
+				},
+				{
+					itemId: 'case7:', 
+					caseDesc: '点击设置Text-Margin-Bottom，从5到15',
+					width:500,
+					height:50, 
+					margin: 5,
+					marginBottom: 5,
+					backgroundColor: "#FF7373",
+					eventName: "setTextMarginBottom"
+				},
+				{
+					itemId: 'case8:', 
+					caseDesc: '点击设置Text-Padding，从5到15',
+					width:500,
+					height:50, 
+					margin: 5,
+					padding: 5,
+					backgroundColor: "#FF7373",
+					eventName: "setTextPadding"
+				},
+				{
+					itemId: 'case9:', 
+					caseDesc: '点击设置Text-Padding-Left，从5到15',
+					width:500,
+					height:50, 
+					margin: 5,
+					paddingLeft: 5,
+					backgroundColor: "#FF7373",
+					eventName: "setTextPaddingLeft"
+				},
+				{
+					itemId: 'case10:', 
+					caseDesc: '点击设置Text-Padding-Top，从5到15',
+					width:500,
+					height:50, 
+					margin: 5,
+					paddingTop: 5,
+					backgroundColor: "#FF7373",
+					eventName: "setTextPaddingTop"
+				},
+				{
+					itemId: 'case11:', 
+					caseDesc: '点击设置Text-Padding-Right，从5到15',
+					width:500,
+					height:50,
+					margin: 5, 
+					paddingRight: 5,
+					backgroundColor: "#FF7373",
+					eventName: "setTextPaddingRight"
+				},
+				{
+					itemId: 'case12:', 
+					caseDesc: '点击设置Text-Padding-Bottom，从5到15',
+					width:500,
+					height:50, 
+					margin: 5,
+					paddingBottom: 5,
+					backgroundColor: "#FF7373",
+					eventName: "setTextPaddingBottom"
+				},
+
+				{
+					itemId: 'case13:', 
+					caseDesc: '点击设置Text-BorderRadius，从5到50',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderRadius: 5,
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderRadius"
+				},
+				{
+					itemId: 'case14:', 
+					caseDesc: '点击设置Text-BorderTopLeftRadius，从5到50',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderTopLeftRadius: 5,
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderTopLeftRadius"
+				},
+				{
+					itemId: 'case15:', 
+					caseDesc: '点击设置Text-BorderTopRightRadius，从5到50',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderTopRightRadius: 5,
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderTopRightRadius"
+				},
+				{
+					itemId: 'case16:', 
+					caseDesc: '点击设置Text-BottomLeftRadius，从5到50',
+					width:500,
+					height:50,
+					margin: 5, 
+					borderBottomLeftRadius: 5,
+					backgroundColor: "#FF7373",
+					eventName: "setTextBottomLeftRadius"
+				},
+				{
+					itemId: 'case17:', 
+					caseDesc: '点击设置Text-BottomRightRadius，从5到50',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderBottomRightRadius: 5,
+					backgroundColor: "#FF7373",
+					eventName: "setTextBottomRightRadius"
+				},
+				{
+					itemId: 'case18:', 
+					caseDesc: '点击设置Text-BorderWidth，从2到8',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderColor: '#00FF00',
+					borderStyle: 'solid',
+					borderWidth: 2,
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderWidth"
+				},
+				{
+					itemId: 'case19:', 
+					caseDesc: '点击设置Text-BorderTopWidth，从2到8',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderTopColor: '#00FF00',
+					borderStyle: 'solid',
+					borderTopWidth: 2,
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderTopWidth"
+				},
+				{
+					itemId: 'case20:', 
+					caseDesc: '点击设置Text-BorderLeftWidth，从2到8',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderLeftColor: '#00FF00',
+					borderStyle: 'solid',
+					borderLeftWidth: 2,
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderLeftWidth"
+				},
+				{
+					itemId: 'case21:', 
+					caseDesc: '点击设置Text-BorderRigthWidth，从2到8',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderRightColor: '#00FF00',
+					borderStyle: 'solid',
+					borderRightWidth: 2,
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderRightWidth"
+				},
+				{
+					itemId: 'case22:', 
+					caseDesc: '点击设置Text-BorderBottomWidth，从2到8',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderBottomColor: '#00FF00',
+					borderStyle: 'solid',
+					borderBottomWidth: 2,
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderBottomWidth"
+				},
+				{
+					itemId: 'case23:', 
+					caseDesc: '点击设置Text-BorderColor，从White到Black',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderWidth: 2,
+					borderColor: "#FFFFFF",
+					borderStyle: 'solid',
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderColor"
+				},
+				{
+					itemId: 'case24:', 
+					caseDesc: '点击设置Text-BorderTopColor，从White到Black',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderTopWidth: 2,
+					borderTopColor: "#FFFFFF",
+					borderStyle: 'solid',
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderTopColor"
+				},
+				{
+					itemId: 'case23:', 
+					caseDesc: '点击设置Text-BorderLeftColor，从White到Black',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderLeftWidth: 2,
+					borderLeftColor: "#FFFFFF",
+					borderStyle: 'solid',
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderLeftColor"
+				},
+				{
+					itemId: 'case23:', 
+					caseDesc: '点击设置Text-BorderRightColor，从White到Black',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderRightWidth: 2,
+					borderRightColor: "#FFFFFF",
+					borderStyle: 'solid',
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderRightColor"
+				},
+				{
+					itemId: 'case24:', 
+					caseDesc: '点击设置Text-BorderBottomColor，从White到Black',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderBottomWidth: 2,
+					borderBottomColor: "#FFFFFF",
+					borderStyle: 'solid',
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderBottomColor"
+				},
+				{
+					itemId: 'case25:', 
+					caseDesc: '点击设置Text-BorderStyle，从solid到dotted',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderWidth: 2,
+					borderColor: "#0000FF",
+					borderStyle: 'solid',
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderStyle"
+				},
+				{
+					itemId: 'case26:', 
+					caseDesc: '点击设置Text-BorderTopStyle，从solid到dotted',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderTopWidth: 2,
+					borderTopColor: "#0000FF",
+					borderTopStyle: 'solid',
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderTopStyle"
+				},
+				{
+					itemId: 'case27:', 
+					caseDesc: '点击设置Text-BorderLeftStyle，从solid到dotted',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderLeftWidth: 2,
+					borderLeftColor: "#0000FF",
+					borderLeftStyle: 'solid',
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderLeftStyle"
+				},
+				{
+					itemId: 'case28:', 
+					caseDesc: '点击设置Text-BorderRightStyle，从solid到dotted',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderRightWidth: 2,
+					borderRightColor: "#0000FF",
+					borderRightStyle: 'solid',
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderRightStyle"
+				},
+				{
+					itemId: 'case29:', 
+					caseDesc: '点击设置Text-BorderBottomStyle，从solid到dotted',
+					width:500,
+					height:50, 
+					margin: 5,
+					borderBottomWidth: 2,
+					borderBottomColor: "#0000FF",
+					borderBottomStyle: 'solid',
+					backgroundColor: "#FF7373",
+					eventName: "setTextBorderBottomStyle"
+				}
+    	],
+    	TextBaseAttrData:[
+				{
+					itemId: 'case01:', 
+					caseDesc: '点击设置BackgroundColor，从Red到Yellow', 
+					fontSize: 14,
+					backgroundColor: "#ff0000",
+					eventName: "setTextBackgroundColor"
+				},
+				{
+					itemId: 'case02:', 
+					caseDesc: '点击设置lines，从1到3; 点击设置lines，从1到3; 点击设置lines，从1到3; 点击设置lines，从1到3; 点击设置lines，从1到3; 点击设置lines，从1到3; 点击设置lines，从1到3; 点击设置lines，从1到3; 点击设置lines，从1到3; 点击设置lines，从1到3; 点击设置lines，从1到3;', 
+					fontSize: 14,
+					lines: 1,
+					backgroundColor: "#FF7373",
+					eventName: "setTextLines"
+				},
+				{
+					itemId: 'case03:', 
+					caseDesc: '点击设置文本color，从Red到Yellow;', 
+					color: "#ff0000",
+					fontSize: 14,
+					backgroundColor: "#FF7373",
+					eventName: "setTextColor"
+				},
+				{
+					itemId: 'case04:', 
+					caseDesc: '点击设置文本opacity，从0.9到0.4;', 
+					opacity: 0.9,
+					fontSize: 14,
+					backgroundColor: "#FF7373",
+					eventName: "setTextOpacity"
+				},
+				{
+					itemId: 'case05:', 
+					caseDesc: '点击设置文本FontSize，从18到36;', 
+					fontSize: 18,
+					backgroundColor: "#FF7373",
+					eventName: "setTextFontSize"
+				},
+				{
+					itemId: 'case06:', 
+					caseDesc: '点击设置文本FontStyle，从normal到italic;', 
+					fontStyle: 'normal',
+					fontSize: 14,
+					backgroundColor: "#FF7373",
+					eventName: "setTextFontStyle"
+				},
+				{
+					itemId: 'case07:', 
+					caseDesc: '点击设置文本FontWeight，从normal到bold;', 
+					fontWeight: 'normal',
+					fontSize: 14,
+					backgroundColor: "#FF7373",
+					eventName: "setTextFontWeight"
+				},
+				{
+					itemId: 'case08:', 
+					caseDesc: '点击设置文本text-decoration，从underline到line-through;', 
+					textDecoration: 'underline',
+					fontSize: 14,
+					backgroundColor: "#FF7373",
+					eventName: "setTexTextDecoration"
+				},
+				{
+					itemId: 'case09:', 
+					caseDesc: '点击设置文本text-align，从left到right;', 
+					textAlign: 'left',
+					fontSize: 14,
+					backgroundColor: "#FF7373",
+					eventName: "setTexTextAlign"
+				}
+    	],
+			TextPositionGroupData:[
+				{
+					itemId: 'case01:', 
+					caseDesc: '点击设置PositionRelative top 从5到20', 
+					position: 'relative',
+					top: 5,
+					eventName: "setPositionRelativeTop"
+				},
+				{
+					itemId: 'case02:', 
+					caseDesc: '点击设置PositionRelative bottom 从5到200', 
+					position: 'relative',
+					bottom: 5,
+					eventName: "setPositionRelativeBottom"
+				},
+				{
+					itemId: 'case03:', 
+					caseDesc: '点击设置PositionRelative left 从5到200', 
+					position: 'relative',
+					left: 5,
+					eventName: "setPositionRelativeLeft"
+				},
+				{
+					itemId: 'case04:', 
+					caseDesc: '点击设置PositionRelative right 从5到200', 
+					position: 'relative',
+					right: 5,
+					eventName: "setPositionRelativeRight"
+				},
+				{
+					itemId: 'case05:', 
+					caseDesc: '点击设置PositionAbsolute top 从5到200', 
+					position: 'absolute',
+					backgroundColor: '#BFBB1E',
+					top: 5,
+					eventName: "setPositionAbsoluteTop"
+				},
+				{
+					itemId: 'case06:', 
+					caseDesc: '点击设置PositionAbsolute bottom 从5到200', 
+					position: 'absolute',
+					backgroundColor: '#BFBB1E',
+					bottom: 5,
+					eventName: "setPositionAbsoluteBottom"
+				},
+				{
+					itemId: 'case07:', 
+					caseDesc: '点击设置PositionAbsolute left 从5到200', 
+					position: 'absolute',
+					backgroundColor: '#BFBB1E',
+					left: 5,
+					eventName: "setPositionAbsoluteLeft"
+				},
+				{
+					itemId: 'case08:', 
+					caseDesc: '点击设置PositionAbsolute right 从5到200', 
+					position: 'absolute',
+					backgroundColor: '#BFBB1E',
+					right: 5,
+					eventName: "setPositionAbsoluteRight"
+				}
+    	]
+    },
+
+		methods: {
+			setTextWidth: function (item) {
+				item.width = 600;
+			},
+			setTextHeight: function (item) {
+				item.height = 80;
+			},
+			setTextMargin: function (item) {
+				item.margin = 15;
+			},
+			setTextMarginLeft: function (item) {
+				item.marginLeft = 15;
+			},
+			setTextMarginTop: function (item) {
+				item.marginTop = 15;
+			},
+			setTextMarginRight: function (item) {
+				item.marginRight = 15;
+			},
+			setTextMarginBottom: function (item) {
+				item.marginBottom = 15;
+			},
+			setTextPadding: function (item) {
+				item.padding = 15;
+			},
+			setTextPaddingLeft: function (item) {
+				item.paddingLeft = 15;
+			},
+			setTextPaddingTop: function (item) {
+				item.paddingTop = 15;
+			},
+			setTextPaddingRight: function (item) {
+				item.paddingRight = 15;
+			},
+			setTextPaddingBottom: function (item) {
+				item.paddingBottom = 15;
+			},
+			setTextBorderRadius: function (item) {
+				item.borderRadius = 50;
+			},
+			setTextBorderTopLeftRadius: function (item) {
+				item.borderTopLeftRadius = 50;
+			},
+			setTextBorderTopRightRadius: function (item) {
+				item.borderTopRightRadius = 50;
+			},
+			setTextBottomLeftRadius: function (item) {
+				item.borderBottomLeftRadius = 50;
+			},
+			setTextBottomRightRadius: function (item) {
+				item.borderBottomRightRadius = 50;
+			},
+			setTextBorderWidth: function(item) {
+				item.borderWidth = 8;
+			},
+			setTextBorderTopWidth: function(item) {
+				item.borderTopWidth = 8;
+			},
+			setTextBorderLeftWidth: function(item) {
+				item.borderLeftWidth = 8;
+			},
+			setTextBorderRightWidth: function(item) {
+				item.borderRightWidth = 8;
+			},
+			setTextBorderBottomWidth: function(item) {
+				item.borderBottomWidth = 8;
+			},
+			setTextBorderColor: function(item) {
+				item.borderColor = "#000000";
+			},
+			setTextBorderTopColor: function(item) {
+				item.borderTopColor = "#000000";
+			},
+			setTextBorderLeftColor: function(item) {
+				item.borderLeftColor = "#000000";
+			},
+			setTextBorderRightColor: function(item) {
+				item.borderRightColor = "#000000";
+			},
+			setTextBorderBottomColor: function(item) {
+				item.borderBottomColor = "#000000";
+			},
+			setTextBorderStyle: function(item) {
+				item.borderStyle = 'dotted';
+			},
+			setTextBorderTopStyle: function(item) {
+				item.borderTopStyle = 'dotted';
+			},
+			setTextBorderLeftStyle: function(item) {
+				item.borderLeftStyle = 'dotted';
+			},
+			setTextBorderRightStyle: function(item) {
+				item.borderRightStyle = 'dotted';
+			},
+			setTextBorderBottomStyle: function(item) {
+				item.borderBottomStyle = 'dotted';
+			},
+			setTextBackgroundColor: function(item) {
+				item.backgroundColor = '#ffff00';
+			},
+			setTextLines: function(item) {
+				item.lines = 3;
+			},
+			setTextColor: function(item) {
+				item.color = '#ffff00';
+			},
+			setTextOpacity: function(item) {
+				item.opacity = 0.4;
+			},
+			setTextFontSize: function(item) {
+				item.fontSize = 36;
+			},
+			setTextFontStyle: function(item) {
+				item.fontStyle = 'italic';
+			},
+			setTextFontWeight: function(item) {
+				item.fontWeight = 'bold';
+			},
+			setTexTextDecoration: function(item) {
+				item.textDecoration = 'line-through';
+			},
+			setTexTextAlign:function(item) {
+				item.textAlign = 'right';
+			},
+			setFlexBoxAlignItems: function(item) {
+				item.alignItems = 'flex-end';
+			},
+			setPositionRelativeTop: function(item) {
+				item.top = 20;
+			},
+			setPositionRelativeBottom: function(item) {
+				item.bottom = 200;
+			},
+			setPositionRelativeLeft: function(item) {
+				item.left = 200;
+			},
+			setPositionRelativeRight: function(item) {
+				item.right = 200;
+			},
+			setPositionAbsoluteTop: function(item) {
+				item.top = 200;
+			},
+			setPositionAbsoluteBottom: function(item) {
+				item.bottom = 200;
+			},
+			setPositionAbsoluteLeft: function(item) {
+				item.left = 200;
+			},
+			setPositionAbsoluteRight: function(item) {
+				item.right = 200;
+			},
+			clickEvent: function (e) {
+        var eventName = e.target.attr.eventName;
+        var parentName = e.target.attr.parentName;
+				var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if (itemData.itemId !== itemId) {
+          	continue;
+          }
+					var handler = eval("this." + eventName)
+					if (typeof(handler) === 'function') {
+						handler(itemData)
+						break;
+					}
+        }
+      }
+		}
+	}
+</script>

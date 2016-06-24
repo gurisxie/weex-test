@@ -1,0 +1,176 @@
+<template>
+ 
+<TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Text_Style_Row"></TC_Support_MainTitle>
+    
+    <div class="block">
+      <TC_Support_SubTitle title="01.Row，HasHW，Visible"></TC_Support_SubTitle>
+      <div style="flex-direction: row;" repeat="{{Row_HasHW_VisibleOF}}">
+        <text class="support font">left</text>
+        <text item-id="{{itemId}}" class="hasWH font" value="{{textValue}}" style="width:{{width}};font-size:{{fontSize}}" onclick="clickEvent" event-name="{{eventName}}" parent-name="{{parentName}}"></text>
+        <text class="support font">right</text>
+      </div> 
+    </div> 
+    <div class="block">
+      <TC_Support_SubTitle title="02.Row，NoHW，Visible"></TC_Support_SubTitle>
+      <div style="flex-direction: row;" repeat="{{Row_NoHW_VisibleOF}}">
+        <text class="support  font">left</text>
+        <text item-id="{{itemId}}" class="noWH  font" value="{{textValue}}" style="width:{{width}};font-size:{{fontSize}}" onclick="clickEvent" event-name="{{eventName}}" parent-name="{{parentName}}"></text>
+        <text class="support font">right</text>
+      </div> 
+    </div>
+  </TC_Support_Scroller>
+</template>
+
+<style>
+
+
+
+  .title{margin-top: 10;margin-left: 10;margin-bottom:10; font-size: 40; font-weight: bold;}
+  .div-split{height: 1; border-width: 1; border-style:dashed; border-color: #375830;}
+
+  .block {flex-direction: column;border-width:3;border-color:#ffff00;border-style:dotted;margin-bottom:5;overflow: visible;}
+  .sub_title {flex: 1; color: #000000;font-size:30; font-weight: bold; background-color: #ff0000;overflow: visible;}
+  .hasWH {width:400;background-color:#cccccc;font-size:25;margin-top:5;margin-left:10;margin-right:10;overflow: visible;}
+  .noWH {background-color:#cccccc;font-size:25;margin-top:5;margin-left:10;margin-right:10;overflow: visible;}
+  .support {background-color: #ffff00;font-size:25;overflow: visible;}
+  .font{font-family: Times New Roman;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      Row_HasHW_VisibleOF:[
+        {itemId: 'id0301', textValue: 'set long width', width: 400, height: 30 ,fontSize:30,eventName:'setLargeWidth',parentName:'Row_HasHW_VisibleOF'},
+        {itemId: 'id0302', textValue: 'set short width', width: 400, fontSize:30,eventName:'setSmallerWidth',parentName:'Row_HasHW_VisibleOF'},
+        {itemId: 'id0305', textValue: 'set more text', width: 400, fontSize:30,eventName:'setMoreText',parentName:'Row_HasHW_VisibleOF'},
+        {itemId: 'id0306', textValue: 'set less text', width: 400, fontSize:30,eventName:'setLessText',parentName:'Row_HasHW_VisibleOF'},
+        {itemId: 'id0307', textValue: 'set large font-size', width: 400, fontSize:30,eventName:'setLargeFont',parentName:'Row_HasHW_VisibleOF'},
+        {itemId: 'id0308', textValue: 'set less font-size', width: 400, fontSize:30,eventName:'setSmallerFont',parentName:'Row_HasHW_VisibleOF'},
+      ],
+      Row_NoHW_VisibleOF: [
+        {itemId: 'id0405', textValue: 'set more text', fontSize:30,eventName:'setMoreText',parentName:'Row_NoHW_VisibleOF'},
+        {itemId: 'id0406', textValue: 'set less text', fontSize:30,eventName:'setLessText',parentName:'Row_NoHW_VisibleOF'},
+        {itemId: 'id0407', textValue: 'set large font-size', fontSize:30,eventName:'setLargeFont',parentName:'Row_NoHW_VisibleOF'},
+        {itemId: 'id0408', textValue: 'set less font-size', fontSize:30,eventName:'setSmallerFont',parentName:'Row_NoHW_VisibleOF'}
+      ],
+    },
+    methods: {
+      setLargeWidth: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.width = 600;
+            break;
+          }
+        }
+      },
+      setSmallerWidth: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.width = 200;
+            break;
+          }
+        }
+      },
+      setLargeHeight: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.height = 50;
+            break;
+          }
+        }
+      },
+      setSmallerHeight: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.height = 10;
+            break;
+          }
+        }
+      },
+      setMoreText: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.textValue = "this is more more more more more more more text";
+            break;
+          }
+        }
+      },
+      setLessText: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.textValue="less";
+            break;
+          }
+        }
+      },
+      setLargeFont: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.fontSize=50;
+            break;
+          }
+        }
+      },
+      setSmallerFont: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.fontSize = 10;
+            break;
+          }
+        }
+      },
+      setNoWidth: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.width = "auto";
+            break;
+          }
+        }
+      },
+      setNoHeight: function (e,parentName) {
+        var itemId = e.target.attr.itemId;
+        var parentData = eval("this."+parentName);
+        for (var i = 0; i < parentData.length; i++) {
+          var itemData = parentData[i];
+          if(itemData.itemId==itemId){
+            itemData.height = "auto";
+            break;
+          }
+        }
+      },
+      clickEvent: function (e) {
+        var eventName = e.target.attr.eventName;
+        var parentName = "'"+e.target.attr.parentName+"'";
+        eval("this."+eventName+"(e,"+parentName+");");
+      },
+    }
+  }
+</script>

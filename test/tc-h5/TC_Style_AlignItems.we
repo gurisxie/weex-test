@@ -1,0 +1,185 @@
+<template>
+  
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Style_AlignFlex"></TC_Support_MainTitle>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="01.align-items-start;direct-column"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div align-items-start direct-column">
+          <text class="wh bg font">test</text>
+        </div>
+        <div class="parent2_div align-items-start direct-column">
+          <div class="wh bg"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div align-items-start direct-column">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div align-items-start direct-column">
+          <input class="wh bg font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="02.align-items-start;direct-row"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div align-items-start direct-row">
+          <text class="wh bg font">test</text>
+        </div>
+        <div class="parent2_div align-items-start direct-row">
+          <div class="wh bg"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div align-items-start direct-row">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div align-items-start direct-row">
+          <input class="wh bg font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="03.align-items-center;direct-column"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div align-items-center direct-column">
+          <text class="wh bg font">test</text>
+        </div>
+        <div class="parent2_div align-items-center direct-column">
+          <div class="wh bg"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div align-items-center direct-column">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div align-items-center direct-column">
+          <input class="wh bg font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="04.align-items-center;direct-row"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div align-items-center direct-row">
+          <text class="wh bg font">test</text>
+        </div>
+        <div class="parent2_div align-items-center direct-row">
+          <div class="wh bg"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div align-items-center direct-row">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div align-items-center direct-row">
+          <input class="wh bg font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="05.align-items-end;direct-column"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div align-items-end direct-column">
+          <text class="wh bg font">test</text>
+        </div>
+        <div class="parent2_div align-items-end direct-column">
+          <div class="wh bg"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div align-items-end direct-column">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div align-items-end direct-column">
+          <input class="wh bg font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="06.align-items-end;direct-row"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div align-items-end direct-row">
+          <text class="wh bg font">test</text>
+        </div>
+        <div class="parent2_div align-items-end direct-row">
+          <div class="wh bg"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div align-items-end direct-row">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div align-items-end direct-row">
+          <input class="wh bg font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="07.align-items-stretch;direct-column"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div align-items-stretch direct-column">
+          <text class="wh bg font">test</text>
+        </div>
+        <div class="parent2_div align-items-stretch direct-column">
+          <div class="wh bg"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div align-items-stretch direct-column">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div align-items-stretch direct-column">
+          <input class="wh bg font" value='test'></input>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 10;">
+      <TC_Support_SubTitle title="08.align-items-stretch;direct-row"></TC_Support_SubTitle>
+      <div class="row">
+        <div class="parent1_div align-items-stretch direct-row">
+          <text class="wh bg font">test</text>
+        </div>
+        <div class="parent2_div align-items-stretch direct-row">
+          <div class="wh bg"><div class="child"></div></div>
+        </div>
+        <div class="parent3_div align-items-stretch direct-row">
+          <image class="wh bg" src="https://gw.alicdn.com/tfscom/TB1OMfAJFXXXXbfXXXXqVMCNVXX-400-400.jpg"></image>
+        </div>
+        <div class="parent4_div align-items-stretch direct-row">
+          <input class="wh bg font" value='test'></input>
+        </div>
+      </div>
+    </div>
+     </TC_Support_Scroller>
+</template>
+
+<style>
+  .parent1_div{background-color: #ff0000;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 60;}
+  .parent2_div{background-color: #ffff00;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 60;}
+  .parent3_div{background-color: #ff00ff;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 60;}
+  .parent4_div{background-color: #00ffff;margin-top: 10;margin-left: 8;border-width: 3;width: 178;height: 60;}
+  
+  .font{font-family: Times New Roman;font-size: 20;}
+  .direct-row{flex-direction:row;}
+  .direct-column{flex-direction:column;}
+
+  .wh{width: 110;height:30; }
+  .child{width: 50;height: 20; background-color: #123456;}
+  .bg{background-color: #572977;}
+
+  .align-items-start {align-items: flex-start;}
+  .align-items-center {align-items: center;}
+  .align-items-end {align-items: flex-end;}
+  .align-items-stretch {align-items: stretch;}
+
+  .scroller {background-color: #F4F3DE;flex-direction: column;}
+  .row{flex-direction:row;}
+
+
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    methods: {
+    }
+  };
+</script>

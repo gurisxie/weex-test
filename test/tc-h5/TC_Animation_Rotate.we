@@ -1,0 +1,100 @@
+<template>
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Animation_Rotate"></TC_Support_MainTitle>
+    <div style = "flex-direction: column;width: 850;height: 1250;">
+        <div class="btns">
+            <text class="btn font" onclick="rotate">Click Me To Rotate</text>
+        </div>
+        <div id="block" class="block" style="transform-origin:{{transformOrigin}}">
+            <text id ="id_test_value" class="font" value = {{testValue}}></text>
+        </div>
+    </div>
+  </TC_Support_Scroller>
+</template>
+<style>
+  .font{font-family: Times New Roman;font-size: 30;}
+
+
+    .block {
+        position: absolute;
+        width: 250;
+        height: 250;
+        top: 250;
+        left: 250;
+        bottom:250;
+        background-color: #FF0000;
+    }
+    .btns {
+        width: 750;
+        height: 150;
+
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .btn {
+        font-weight: bold; font-size:30;
+        height: 50;
+        margin-left: 5;
+        margin-right: 5;
+        margin-top: 20;
+        background-color: #CCCCCC;
+        padding-top: 5;
+        padding-bottom: 5;
+        padding-left: 15;
+        padding-right: 5;
+
+    }
+</style>
+<script>
+    module.exports = {
+        data: {
+            transformOrigin: 'center center',
+            current_rotate: 0,
+            current_scale: 1,
+            current_color: '#FF0000',
+            current_opacity: 1,
+            current_translate: '',
+            current_translateX:'',
+            current_translateY:'',
+            current_transform: '',
+            isStop: true,
+            testValue:"test"
+        },
+        methods: {
+            anim: function (styles, timingFunction, duration, callback) {
+                this.$call('animation','transition', this._ids.block.el.ref, {
+                    styles: styles,
+                    timingFunction: timingFunction,
+                    duration: duration
+                }, callback);
+            },
+            rotate: function () {
+                var self = this;
+                self.current_rotate += 90;
+
+                var deg = self.current_rotate;
+
+                self.anim(
+                {/*style*/
+                    transform: 'rotate(' + self.current_rotate  + 'deg)'// 旋转角度
+                }, 
+                'linear', //timingFunction
+                500, //duration
+                function () //callback
+                {
+                    if (self.current_rotate === 360) 
+                    {
+                        self.current_rotate = -90;
+                    } 
+                    // else 
+                    // {
+                    //     self.rotate();
+                    // }
+                }
+                );
+                this.testValue = self.current_rotate;
+            },
+            
+        }
+    };
+</script>

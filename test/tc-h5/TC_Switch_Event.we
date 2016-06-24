@@ -1,0 +1,45 @@
+<template>
+  <scroller class="root">
+    <TC_Support_MainTitle title="TC_Switch_Event"></TC_Support_MainTitle>
+
+    <TC_Support_SubTitle title="01.Onclick event"></TC_Support_SubTitle>
+    <div class="size column js-con">
+      <switch class="origin solid" onclick="click"></switch>
+    </div>
+
+    <TC_Support_SubTitle title="02.Onchange event"></TC_Support_SubTitle>
+    <div class="size column js-con">
+      <switch class="origin solid" onchange="change"></switch>
+    </div>
+    
+    <TC_Support_SubTitle title="03.Event log"></TC_Support_SubTitle>
+    <div class="size column js-con">
+      <TC_Support_Button btn-touch="{{clearLog}}" title="清除log"></TC_Support_Button>
+      <text>{{log}}</text>
+    </div>
+  </scroller>
+</template>
+
+<style>
+  
+  .origin{background-color: #FFFFDF;width: 200;height: 50;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      log:''
+    },
+    methods: {
+      click:function() {
+        this.log += 'click event' + '\r\n'
+      },
+      change:function(e) {
+        this.log += 'change to ' + e.value + '\r\n'
+      },
+      clearLog:function() {
+        this.log = ''
+      }
+    }
+  }
+</script>

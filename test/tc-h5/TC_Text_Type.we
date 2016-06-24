@@ -1,0 +1,50 @@
+<template>
+  
+<TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Text_Type"></TC_Support_MainTitle>
+    <div class="block">
+      <div style="flex-direction: row;">
+        <text class="typeBase font">我是汉字</text>
+        <text class="typeCompare font">small english</text>
+      </div> 
+      <div style="flex-direction: row;">
+        <text class="typeBase font">我是汉字</text>
+        <text class="typeCompare font">Large English</text>
+      </div> 
+      <div style="flex-direction: row;">
+        <text class="typeBase font">我是汉字</text>
+        <text class="typeCompare font">汉字和English混排</text>
+      </div> 
+      <div style="flex-direction: row;">
+        <text class="typeBase font">我是汉字</text>
+        <text class="typeCompare font">中文标点：～！@＃¥％＊；，。？／</text>
+      </div> 
+      <div style="flex-direction: row;">
+        <text class="typeBase font">我是汉字</text>
+        <text class="typeCompare font">英文标点:~!@#$%^&*();"',.?/</text>
+      </div> 
+    </div> 
+  </TC_Support_Scroller>
+</template>
+
+<style>
+
+
+
+  .div-split{height: 1; border-width: 1; border-style:dashed; border-color: #375830;}
+  .block {flex-direction: column;border-width:3;border-color:#ffff00;border-style:dotted;margin-bottom:5;overflow: visible;}
+  .typeBase {width:200;background-color:#00ffff;font-size:30;margin:10;}
+  .typeCompare {width:500;background-color:#cccccc;font-size:30;margin:10;}
+  .font{font-family: Times New Roman;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      
+    },
+    methods: {
+      
+    }
+  }
+</script>

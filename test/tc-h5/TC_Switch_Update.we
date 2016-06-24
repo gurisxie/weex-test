@@ -1,0 +1,85 @@
+<template>
+  <scroller class="bgc">
+    <TC_Support_Button class="margin" btn-touch="{{changeSize}}" title="点击后更换宽高"></TC_Support_Button>
+    <TC_Support_Button class="margin" btn-touch="{{changeBgc}}" title="点击后更换背景色"></TC_Support_Button>
+    <TC_Support_Button class="margin" btn-touch="{{changeMargin}}" title="点击后更换margin"></TC_Support_Button>
+    <TC_Support_Button class="margin" btn-touch="{{changeBorder}}" title="点击后更换border"></TC_Support_Button>
+    <TC_Support_Button class="margin" btn-touch="{{changePadding}}" title="点击后更换padding"></TC_Support_Button>
+    
+    <div class="div margin">
+      <switch class="border" style="background-color:{{bgc}}; height:{{height}}; width:{{width}}; margin:{{margin}}; border-width:{{borderWidth}}; border-radius:{{borderRadius}}; padding-left: {{paddingLeft}};">
+      </switch>
+    </div>
+
+  </scroller>
+</template>
+
+
+<style>
+  .margin {
+    margin-left:10;
+    margin-top: 5;
+  }
+  .bgc{
+    background-color:#F4F3DE;
+  }
+  
+  .div {
+    background-color:#999999;
+    width:500;
+    height:500;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data:{
+      bgc: '#99FFCC',
+      height: 200,
+      width: 200,
+      margin: 0,
+      borderWidth: 0,
+      borderRadius: 0,
+      paddingLeft: 0
+    },
+    methods:{
+      changeSize:function(){
+        if(this.height === 200)
+        {
+          this.height = 400
+          this.width = 400
+        }
+        else
+        {
+          this.height = 200
+          this.width = 200
+        }
+      },
+      
+      changeBgc:function(){
+        this.bgc = this.bgc === '#99FFCC' ? '#CC99FF' : '#99FFCC'
+      },
+      
+      changeMargin:function(){
+        this.margin = this.margin === 20 ? 0 : 20
+      },
+      
+      changeBorder:function(){
+        if(this.borderRadius === 0)
+        {
+          this.borderWidth = 5
+          this.borderRadius = 50
+        }
+        else
+        {
+          this.borderWidth = 0
+          this.borderRadius = 0
+        }
+      },
+      
+      changePadding:function(){
+        this.paddingLeft = this.paddingLeft === 50 ? 0 : 50
+      },
+    }
+  }
+</script>

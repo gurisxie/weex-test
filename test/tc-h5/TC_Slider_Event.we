@@ -1,0 +1,60 @@
+<template>
+  
+  <TC_Support_Scroller>
+    <TC_Support_MainTitle title="TC_Slider_Event"></TC_Support_MainTitle>
+    
+    <TC_Support_SubTitle title="01.onchange event"></TC_Support_SubTitle>
+    <slider class="origin margin" interval="3000" auto-play="true" onChange="changeListenner">
+
+      <div repeat="{{itemList}}" >
+        <image class="origin" src="{{pictureUrl}}"></image>
+      </div>
+      
+      <indicator class="indicator" onsliderChange="change" ></indicator>
+    </slider>
+
+    <text class="font">{{log}}</text>
+    
+    </TC_Support_Scroller>
+</template>
+
+<style>
+
+  
+
+
+.font{font-family: Times New Roman;font-size:30}
+
+  .origin{background-color: #FFFFDF;width: 400;height: 400;}
+  .margin{margin: 20;}
+  .indicator {
+    width:400;
+    height:600;
+    position:absolute;
+    top:1;
+    left:1;
+    itemColor: #ff0000; 
+    itemSelectedColor: #0000ff; 
+    itemSize: 20;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      itemList: [
+        {pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg'},
+        {pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'},
+        {pictureUrl: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg'}
+      ],
+      log:''
+    },
+    methods: {
+      changeListenner: function (e) {
+        this.log = 'slider change to index:' + e.index + '\r\n'
+      },
+      clearLog:function() {
+        this.log = ''
+      }
+    }
+  }
+</script>

@@ -1,0 +1,168 @@
+<template>
+  <div style="flex-direction: column;">
+    <TC_Support_MainTitle title="TC_BizModule_Nav_Module"></TC_Support_MainTitle>
+    <TC_Tabbar tab-items = {{tabItems}}></TC_Tabbar>
+  </div>
+</template>
+
+<script>
+  module.exports = {
+    data:{
+        appConfig:'',
+        tabPage1:'TC_TabPage1',
+        tabPage2:'TC_TabPage2',
+        tabPage3:'TC_TabPage3',
+        tabPage4:'TC_TabPage4',
+
+        homepageTabUrl:'',
+        weitaoTabUrl:'',
+        shequ1TabUrl:'',
+        shequ2TabUrl:'',
+
+        tabItems: [
+          {
+            index: 0,
+            title: "首页",
+            titleColor: 0x0,
+            icon: "",
+            image: "http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png",
+            selectedImage: "http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png",
+            // src:'',
+            src: 'http://30.10.221.224:12580/test/build/TC_Tabpage4.js',
+            // src: "ui-tabitem-0.js",
+            visibility: "visible",
+          },
+          {
+            index: 1,
+            title: "微淘",
+            titleColor: 0x0,
+            icon:"",
+            image: "http://gtms03.alicdn.com/tps/i3/TB1LEn9MpXXXXaUXpXX9t7RGVXX-46-46.png",
+            selectedImage: "http://gtms02.alicdn.com/tps/i2/TB1qysbMpXXXXcnXXXX9t7RGVXX-46-46.png",
+            src: 'http://30.10.221.224:12580/test/build/TC_Tabpage4.js',
+            visibility: "hidden",
+          },
+          {
+            index: 2,
+            title: "社区1",
+            titleColor: 0x0,
+            icon:"",
+            image: "http://gtms01.alicdn.com/tps/i1/TB1B0v5MpXXXXcvXpXX9t7RGVXX-46-46.png",
+            selectedImage: "http://gtms04.alicdn.com/tps/i4/TB1NxY5MpXXXXcrXpXX9t7RGVXX-46-46.png",
+            src: '',
+            visibility: "hidden",
+          },
+          {
+            index: 3,
+            title: "社区2",
+            titleColor: 0x0,
+            icon:"",
+            image: "http://gtms01.alicdn.com/tps/i1/TB1B0v5MpXXXXcvXpXX9t7RGVXX-46-46.png",
+            selectedImage: "http://gtms04.alicdn.com/tps/i4/TB1NxY5MpXXXXcrXpXX9t7RGVXX-46-46.png",
+            src: this.homepageTabUrl,
+            visibility: "hidden",
+          },
+          {
+            index: 4,
+            title: "社区3",
+            titleColor: 0x0,
+            icon:"",
+            image: "http://gtms01.alicdn.com/tps/i1/TB1B0v5MpXXXXcvXpXX9t7RGVXX-46-46.png",
+            selectedImage: "http://gtms04.alicdn.com/tps/i4/TB1NxY5MpXXXXcrXpXX9t7RGVXX-46-46.png",
+            src: '',
+            visibility: "hidden",
+          },
+          {
+            index: 5,
+            title: "社区4",
+            titleColor: 0x0,
+            icon:"",
+            image: "http://gtms01.alicdn.com/tps/i1/TB1B0v5MpXXXXcvXpXX9t7RGVXX-46-46.png",
+            selectedImage: "http://gtms04.alicdn.com/tps/i4/TB1NxY5MpXXXXcrXpXX9t7RGVXX-46-46.png",
+            src: '',
+            visibility: "hidden",
+          },
+        ],
+    },
+    methods: {
+      ready: function (e) {
+        nativeLog("waimu1");
+        // config
+        this.$getConfig(function (config) {
+            this.appConfig = config;
+        }.bind(this));
+
+        var vm = this;
+        vm.$on('tabBar.onClick',function(e){
+          var detail= e.detail;
+          nativeLog('tabBar.onClick ' + detail.index);
+        });
+
+        vm.$on('gotoHomePage',function(e){
+          nativeLog('gotoHomePage !!!!! from= ');
+        });
+
+        var bundleUrl = this.appConfig.bundleUrl;
+        nativeLog("bundleUrl==" + bundleUrl);
+
+        // http://t.cn?_wx_tpl=http://30.10.221.249:12580/test/build/TC_Nav_Index.js
+        var tplIndex = bundleUrl.indexOf("_wx_tpl=");
+        nativeLog("bundleUrl==" + bundleUrl);
+        var navUrl="";
+        if(tplIndex>= 0){
+          navUrl = bundleUrl.substring(tplIndex + 8);
+          nativeLog("navUrl==" + navUrl);
+        }else{
+          navUrl = bundleUrl;
+        }
+
+        
+
+        var lastIndex = navUrl.lastIndexOf('build/');
+        var prifixUrl = navUrl.substring(0,lastIndex + 6);
+        nativeLog("prifixUrl==" + prifixUrl);
+        if(lastIndex<0){
+          nativeLog("waimu3");
+          var message = "链接无法识别～";
+          var okTitle = "确 定";
+          var params = {
+            'message':message,
+            'okTitle':okTitle,
+          }
+          this.$call('modal','alert',params);
+          return;
+        }
+
+
+        this.tabItems[0].src = prifixUrl+this.tabPage1+".js";
+        this.tabItems[1].src = prifixUrl+this.tabPage2+".js";
+        this.tabItems[2].src = prifixUrl+this.tabPage3+".js";
+        this.tabItems[3].src = prifixUrl+this.tabPage4+".js";
+        this.tabItems[4].src = prifixUrl+this.tabPage4+".js";
+        this.tabItems[5].src = prifixUrl+this.tabPage4+".js";
+
+        nativeLog("this.tabItems[0].src" + this.tabItems[0].src);
+        nativeLog("this.tabItems[1].src" + this.tabItems[1].src);
+        nativeLog("waimu3");
+      },
+
+      getTabUrl:function (tabName){
+        var bundleUrl = this.appConfig.bundleUrl;
+        var lastIndex = bundleUrl.lastIndexOf('build/');
+        if(lastIndex<0){
+          var message = "链接无法识别～";
+          var okTitle = "确 定";
+          var params = {
+            'message':message,
+            'okTitle':okTitle,
+          }
+          this.$call('modal','alert',params);
+          return;
+        }
+        var tabUrl = bundleUrl.substring(0,lastIndex + 6)+tabName+".js";
+        nativeLog("taburl==" + tabUrl);
+        return tabUrl;
+      }
+    }
+  }
+</script>

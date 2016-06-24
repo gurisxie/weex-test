@@ -1,0 +1,71 @@
+<template>
+  
+    <TC_Support_Scroller>
+      <TC_Support_MainTitle title="TC_Image_Resize"></TC_Support_MainTitle>
+      <TC_Support_SubTitle title="01.200*100 default;200*100 cover;200*100 contain;"></TC_Support_SubTitle>
+      <div style="flex-direction: row;">
+        <div class="cell">
+          <image class="wh200x100 border margin" src={{imgSrc}}></image>
+        </div>
+        <div class="cell">
+          <image class="wh200x100 border margin" resize="cover" src={{imgSrc}} ></image>
+        </div>
+        <div class="cell">
+          <image class="wh200x100 border margin" resize="contain"src={{imgSrc}}></image>
+        </div>
+      </div>
+
+       <TC_Support_SubTitle title="02.200*200 default;200*200 cover;200*200 contain;"></TC_Support_SubTitle>
+      <div style="flex-direction: row;">
+        <div class="cell">
+          <image class="wh200x200 border margin" src={{imgSrc}}></image>
+        </div>
+        <div class="cell">
+          <image class="wh200x200 border margin" resize="cover" src={{imgSrc}} ></image>
+        </div>
+        <div class="cell">
+          <image class="wh200x200 border margin" resize="contain"src={{imgSrc}}></image>
+        </div>
+      </div>
+
+       <TC_Support_SubTitle title="01.200*400 default;200*400 cover;200*400 contain;"></TC_Support_SubTitle>
+      <div style="flex-direction: row;">
+        <div class="cell">
+          <image class="wh200x400 border margin" src={{imgSrc}}></image>
+        </div>
+        <div class="cell">
+          <image class="wh200x400 border margin" resize="cover" src={{imgSrc}} ></image>
+        </div>
+        <div class="cell">
+          <image class="wh200x400 border margin" resize="contain"src={{imgSrc}}></image>
+        </div>
+      </div>
+
+      </TC_Support_Scroller>
+</template>
+
+<style>
+  .wh200x100{width:200;height:100}
+  .wh200x200{width:200;height:200}
+  .wh200x400{width:200;height:400}
+
+  .border{border-style: solid;border-color: #FF6666;border-width: 2;}
+  .margin{margin-left: 5;margin-top: 5;margin-bottom: 5}
+  
+  .cell{flex:1;background-color: #FFFAF0;}
+  
+  
+  .font{font-family: Times New Roman;}
+  .title{font-size:30;padding: 10; background-color:red;}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      // imgSrc:"https://gd2.alicdn.com/bao/uploaded/i2/2254825744/TB2x7hGnXXXXXaRXXXXXXXXXXXX_!!2254825744.jpg_400x400.jpg"
+      imgSrc:"http://gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_200x200.jpg"
+    },
+    methods: {
+    }
+  }
+</script>

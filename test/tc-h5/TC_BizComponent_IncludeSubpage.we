@@ -1,0 +1,49 @@
+<style>
+    .parentClass{
+        background-color: #537926;
+        font-size: 20;
+        width: 600;
+        height: 30;
+        color: #ff0000;
+    }
+
+  .mg{margin-top: 20; margin-bottom: 20;}
+  .title{margin-top: 10;margin-left: 10;margin-bottom:10; font-size: 40; font-weight: bold;}
+  .div-split{height: 1; border-width: 1; border-style:dashed; border-color: #375830;}
+  .list{width: 750; border-width: 1;border-color: #eeeeee;flex-direction: column;overflow: hidden;}
+  .list-cell-div{flex-direction: column;background-color:#ffffff;justify-content:center; }
+  .list-cell-link{ font-size: 20; margin-top:15; margin-left: 15; margin-bottom:15; margin-right:15; color: #33a3dc;width: 500;height: 30;}
+</style>
+
+<template>
+  <scroller style="flex-direction: column;background-color: #ffffff;">
+    <TC_Support_MainTitle title="TC_BizComponent_IncludeSubpage"></TC_Support_MainTitle>
+    <div class="div-split"></div>
+    <div style="flex-direction: column;">
+      <list class="list" style="height:900;">
+        <cell>
+          <div class="list-cell-div">
+            <text class="mg">测试使用父页面class是否生效</text>
+            <TC_BizComponent_Support_Subpage class="parentClass"></TC_BizComponent_Support_Subpage>
+          </div>
+          <div class="div-split"></div>
+        </cell>
+        <cell>
+          <div class="list-cell-div">
+            <text class="mg">测试使用子页面class是否生效</text>
+            <TC_BizComponent_Support_Subpage class="childClass"></TC_BizComponent_Support_Subpage>
+          </div>
+          <div class="div-split"></div>
+        </cell>
+        <cell>
+          <div class="list-cell-div">
+            <text class="mg">测试使用style是否生效</text>
+            <TC_BizComponent_Support_Subpage style="background-color: #537926;font-size: 20;width: 600;height: 30;color: #ff0000;" ></TC_BizComponent_Support_Subpage>
+          </div>
+          <div class="div-split"></div>
+        </cell>
+      </list>
+    </div>
+  </scroller>
+</template>
+
