@@ -3,8 +3,6 @@ language: objective-c
 before_script:
 
 script: 
-  - git clone git@github.com:gurisxie/weex-commit-ci.git
-  - cd weex-commit-ci
   - sh ci-commit-ios
 
 after_script: 

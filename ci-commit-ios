@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+echo "************************ ci-ios start ************************"
+
+weexPath=`pwd`
+echo "  tested root dir: " ${weexPath}
+
+echo "************************ build tested app ************************"
+cd ${weexPath}/ios/playground
+
+pod update
+
+xcodebuild -scheme WeexUITestDemo -destination "name=iPhone 6" -workspace WeexDemo.xcworkspace -configuration Debug clean build
+rc=$?
+if [[ $rc != 0 ]] ; then
+    echo "ios run build app: ios run build app failure,break ios running~ " >> ${resultPath}/run-result.log
+    exit $rc
+fi
