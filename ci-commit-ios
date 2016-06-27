@@ -16,59 +16,61 @@ sh ci-daily-envClear
 echo "----------------------------finish：run env clear----------------------------"
 
 
-npmCachePath=${HOME}/build/gurisxie/weex-npm
-#npmCachePath=${HOME}/Documents/weex-npm
-cd ${toolPath}
-src1=${weexPath}/package.json
-src2=${npmCachePath}/package.json
+# npmCachePath=${HOME}/build/gurisxie/weex-npm
+# #npmCachePath=${HOME}/Documents/weex-npm
+# cd ${toolPath}
+# src1=${weexPath}/package.json
+# src2=${npmCachePath}/package.json
 
-echo ${src2}
+# echo ${src2}
 
-isNoChange=True
-if [ ! -f "$src2" ]; then 
-	isNoChange=False
-	mkdir ${npmCachePath}
-	mkdir ${npmCachePath}/src
-	mkdir ${npmCachePath}/src/h5-render
-	mkdir ${npmCachePath}/src/js-framework
-	mkdir ${npmCachePath}/bin
-else
-	isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
-	if [[ $isNoChange != False ]] ; then
-	    src1=${weexPath}/src/js-framework/package.json
-	    src2=${npmCachePath}/src/js-framework/package.json
-	    isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
-	    if [[ $isNoChange != False ]] ; then
-	        src1=${weexPath}/src/h5-render/package.json
-	        src2=${npmCachePath}/src/h5-render/package.json
-	        isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
-	    fi
-	fi 
-fi
+# isNoChange=True
+# if [ ! -f "$src2" ]; then 
+# 	isNoChange=False
+# 	mkdir ${npmCachePath}
+# 	mkdir ${npmCachePath}/src
+# 	mkdir ${npmCachePath}/src/h5-render
+# 	mkdir ${npmCachePath}/src/js-framework
+# 	mkdir ${npmCachePath}/bin
+# else
+# 	isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
+# 	if [[ $isNoChange != False ]] ; then
+# 	    src1=${weexPath}/src/js-framework/package.json
+# 	    src2=${npmCachePath}/src/js-framework/package.json
+# 	    isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
+# 	    if [[ $isNoChange != False ]] ; then
+# 	        src1=${weexPath}/src/h5-render/package.json
+# 	        src2=${npmCachePath}/src/h5-render/package.json
+# 	        isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
+# 	    fi
+# 	fi 
+# fi
 
-cd ${weexPath}
-if [[ $isNoChange == False ]] ; then
-    echo "isNoChange:"${isNoChange}"，will npm install~"
-    cp package.json ${npmCachePath}/package.json
-    cp src/h5-render/package.json ${npmCachePath}/src/h5-render/package.json
-    cp src/js-framework/package.json ${npmCachePath}/src/js-framework/package.json
-    rm -rf ${npmCachePath}/bin
-    cp -r bin ${npmCachePath}/bin
-    cd ${npmCachePath}
-    npm install
-    rc=$?
-    if [[ $rc != 0 ]] ; then
-        echo "npm install:npm install failure,break flow running~ " >> ${resultPath}/run-result.log
-        exit $rc
-    fi 
-fi 
-echo "isNoChange:"${isNoChange}
+# cd ${weexPath}
+# if [[ $isNoChange == False ]] ; then
+#     echo "isNoChange:"${isNoChange}"，will npm install~"
+#     cp package.json ${npmCachePath}/package.json
+#     cp src/h5-render/package.json ${npmCachePath}/src/h5-render/package.json
+#     cp src/js-framework/package.json ${npmCachePath}/src/js-framework/package.json
+#     rm -rf ${npmCachePath}/bin
+#     cp -r bin ${npmCachePath}/bin
+#     cd ${npmCachePath}
+#     npm install
+#     rc=$?
+#     if [[ $rc != 0 ]] ; then
+#         echo "npm install:npm install failure,break flow running~ " >> ${resultPath}/run-result.log
+#         exit $rc
+#     fi 
+# fi 
+# echo "isNoChange:"${isNoChange}
 
-cd ${weexPath}
-ln -s ${npmCachePath}/node_modules ./node_modules
-ln -s ${npmCachePath}/src/js-framework/node_modules/ ./src/js-framework/node_modules
-ln -s ${npmCachePath}/src/h5-render/node_modules/ ./src/h5-render/node_modules
+# cd ${weexPath}
+# ln -s ${npmCachePath}/node_modules ./node_modules
+# ln -s ${npmCachePath}/src/js-framework/node_modules/ ./src/js-framework/node_modules
+# ln -s ${npmCachePath}/src/h5-render/node_modules/ ./src/h5-render/node_modules
 
+
+npm install
 npm run build
 rc=$?
 if [[ $rc != 0 ]] ; then
