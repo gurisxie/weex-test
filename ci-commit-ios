@@ -7,22 +7,14 @@ resultPath=${weexPath}/result
 mkdir ${resultPath}
 echo "  tested root dir: " ${weexPath}
 
+cd ${HOME}/Library/Developer/Xcode/DerivedData/
+rm -rf WeexDemo-*
+
 echo "----------------------------start：run env clear----------------------------"
 cd ${weexPath}
 sh ci-daily-envClear
 echo "----------------------------finish：run env clear----------------------------"
 
-echo "************************ build tested app ************************"
-cd ${weexPath}/ios/playground
-
-pod update
-
-xcodebuild -scheme WeexUITestDemo -destination "name=iPhone 6" -workspace WeexDemo.xcworkspace -configuration Debug clean build 
-rc=$?
-if [[ $rc != 0 ]] ; then
-    echo "ios run build app: ios run build app failure,break ios running~ " >> ${resultPath}/run-result.log
-    exit $rc
-fi
 
 npmCachePath=${HOME}/build/gurisxie/weex-npm
 cd ${toolPath}
@@ -94,9 +86,25 @@ fi
 
 (npm run serve & echo "start npm run serve")
 
+
+echo "************************ build tested app ************************"
+cd ${weexPath}/ios/playground
+
+pod update
+
+xcodebuild -scheme WeexUITestDemo -destination "name=iPhone 6" -workspace WeexDemo.xcworkspace -configuration Debug clean build 
+rc=$?
+if [[ $rc != 0 ]] ; then
+    echo "ios run build app: ios run build app failure,break ios running~ " >> ${resultPath}/run-result.log
+    exit $rc
+fi
+cd ${HOME}/Library/Developer/Xcode/DerivedData/
+tempPath=echo `ls | grep WeexDemo-*`
+
 echo "************************ prepare for uitest ************************"
 cd ${weexPath}
-appPath=${weexPath}"/ios/playground/DerivedData/WeexDemo/Build/Products/Debug-iphonesimulator/WeexUITestDemo.app"
+#appPath=${weexPath}"/ios/playground/DerivedData/WeexDemo/Build/Products/Debug-iphonesimulator/WeexUITestDemo.app"
+appPath=${HOME}/Library/Developer/Xcode/DerivedData/${tempPath}/Build/Products/Debug-iphonesimulator/WeexUITestDemo.app
 instruments -s devices > ./_temp.log
 PREFIX="iPhone 6s"
 cat ./_temp.log | while read line
