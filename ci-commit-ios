@@ -99,12 +99,14 @@ if [[ $rc != 0 ]] ; then
     exit $rc
 fi
 cd ${HOME}/Library/Developer/Xcode/DerivedData/
-tempPath=echo `ls | grep WeexDemo-*`
+tempPath=`ls | grep WeexDemo-*`
 
 echo "************************ prepare for uitest ************************"
 cd ${weexPath}
 #appPath=${weexPath}"/ios/playground/DerivedData/WeexDemo/Build/Products/Debug-iphonesimulator/WeexUITestDemo.app"
 appPath=${HOME}/Library/Developer/Xcode/DerivedData/${tempPath}/Build/Products/Debug-iphonesimulator/WeexUITestDemo.app
+echo "weexdemo build dir:${appPath}"
+
 instruments -s devices > ./_temp.log
 PREFIX="iPhone 6s"
 cat ./_temp.log | while read line
