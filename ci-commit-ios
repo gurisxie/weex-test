@@ -155,14 +155,14 @@ function mvnTest() {
         if [[ $rc == 0 ]] ; then
             if [[ $testResult != *"Errors: 0"* ]] ; then
                 echo "run $1#$2 error as runtime：$i" ;
-                if [[ $i == 2 ]] ; then
+                #if [[ $i == 2 ]] ; then
                     #concatReport $1
-                fi
+                #fi
             elif [[ $testResult != *"Failures: 0"* ]] ; then
                 echo "run $1#$2 failure as runtime：$i" ;
-                if [[ $i == 2 ]] ; then
+                #if [[ $i == 2 ]] ; then
                     #concatReport $1
-                fi
+                #fi
             else
                 echo "run $1#$2 success" ;
                 #concatReport $1
@@ -170,9 +170,9 @@ function mvnTest() {
             fi
         else
             echo "run $1#$2 failure as runtime：$i" ;
-            if [[ $i == 2 ]] ; then
+            #if [[ $i == 2 ]] ; then
                 #concatReport $1
-            fi  
+            #fi  
 
         fi
     done
