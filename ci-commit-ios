@@ -16,7 +16,8 @@ sh ci-daily-envClear
 echo "----------------------------finish：run env clear----------------------------"
 
 
-npmCachePath=${HOME}/build/gurisxie/weex-npm
+#npmCachePath=${HOME}/build/gurisxie/weex-npm
+npmCachePath=${HOME}/Documents/weex-npm
 cd ${toolPath}
 src1=${weexPath}/package.json
 src2=${npmCachePath}/package.json
@@ -130,9 +131,9 @@ echo "安装测试包"
 xcrun simctl install booted ${appPath}
 
 # echo "************************ Start Sword Server ************************"
-cd ${weexPath}/test/ios/sword.ios.server.start/bin/
-rm -rf instrument*.trace
-(sh start-server &) 
+# cd ${weexPath}/test/ios/sword.ios.server.start/bin/
+# rm -rf instrument*.trace
+# (sh start-server &) 
 
 echo "************************ start uitest ************************"
 cd ${weexPath}/test/ios/sword.ios.weex.test/
@@ -148,6 +149,10 @@ picSaveDir=${weexPath}/test/ios/pic-compare/
 mkdir ${picSaveDir}
 
 function mvnTest() {
+    cd ${weexPath}/test/ios/sword.ios.server.start/bin/
+    rm -rf instrument*.trace
+    (sh start-server &) 
+    cd ${weexPath}/test/ios/sword.ios.weex.test/
     for (( i=0; i<3; i++)); do
         testResult=`mvn test -Dtest=sword.ios.app.test.$1#$2 -DpicSaveDir=${picSaveDir} -DdeviceUuid=${deviceName} -DtestAppPath=${appPath}`
         echo $testResult
