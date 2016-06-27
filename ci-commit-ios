@@ -144,7 +144,8 @@ mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.server-0.1-SNAP
 
 
 mkdir ${weexPath}/test/ios/sword.ios.weex.test/target
-picSaveDir=${weexPath}"test/ios/pic-compare/"
+picSaveDir=${weexPath}/test/ios/pic-compare/
+mkdir ${picSaveDir}
 
 mvn test -Dtest=sword.ios.app.test.iOSWXAHrefTest#testScreen_TC_AHref_Event_Test -DpicSaveDir=${picSaveDir} -DdeviceUuid=${deviceName} -DtestAppPath=${appPath}
 
