@@ -147,7 +147,117 @@ mkdir ${weexPath}/test/ios/sword.ios.weex.test/target
 picSaveDir=${weexPath}/test/ios/pic-compare/
 mkdir ${picSaveDir}
 
-mvn test -Dtest=sword.ios.app.test.iOSWXAHrefTest#testScreen_TC_AHref_Event_Test -DpicSaveDir=${picSaveDir} -DdeviceUuid=${deviceName} -DtestAppPath=${appPath}
+function mvnTest() {
+    for (( i=0; i<3; i++)); do
+        testResult=`mvn test -Dtest=sword.ios.app.test.$1#$2 -DpicSaveDir=${picSaveDir} -DdeviceUuid=${deviceName} -DtestAppPath=${appPath}`
+        echo $testResult
+        rc=$?
+        if [[ $rc == 0 ]] ; then
+            if [[ $testResult != *"Errors: 0"* ]] ; then
+                echo "run $1#$2 error as runtime：$i" ;
+                if [[ $i == 2 ]] ; then
+                    #concatReport $1
+                fi
+            elif [[ $testResult != *"Failures: 0"* ]] ; then
+                echo "run $1#$2 failure as runtime：$i" ;
+                if [[ $i == 2 ]] ; then
+                    #concatReport $1
+                fi
+            else
+                echo "run $1#$2 success" ;
+                #concatReport $1
+                break
+            fi
+        else
+            echo "run $1#$2 failure as runtime：$i" ;
+            if [[ $i == 2 ]] ; then
+                #concatReport $1
+            fi  
 
+        fi
+    done
+}
+
+mvnTest iOSWXAHrefTest testScreen_TC_AHref_Event_Test   
+mvnTest iOSWXAHrefTest testScreen_TC_AHref_Style_Test
+mvnTest iOSWXAHrefTest testScreen_TC_AHref_Update_Test
+
+mvnTest iOSWXAnimationTest testScreen_TC_Animation_Rotate_Test
+mvnTest iOSWXAnimationTest testScreen_TC_Animation_Scale_Test
+mvnTest iOSWXAnimationTest testScreen_TC_Animation_Shadow_Test
+mvnTest iOSWXAnimationTest testScreen_TC_Animation_Transform_Test
+mvnTest iOSWXAnimationTest testScreen_TC_Animation_Translate_Test
+
+mvnTest iOSWXColorTest testScreen_TC_Color_Type_Test
+mvnTest iOSWXColorTest testScreen_TC_Color_Update_Test
+
+mvnTest iOSWXDataBindTest testScreen_TC_DataBind_AddComponent_Test
+mvnTest iOSWXDataBindTest testScreen_TC_DataBind_DotType_Test
+mvnTest iOSWXDataBindTest testScreen_TC_DataBind_FuncType_Test
+mvnTest iOSWXDataBindTest testScreen_TC_DataBind_If_Test
+mvnTest iOSWXDataBindTest testScreen_TC_DataBind_ListPushInAsync_Test
+mvnTest iOSWXDataBindTest testScreen_TC_DataBind_ListPushInSync_Test
+mvnTest iOSWXDataBindTest testScreen_TC_DataBind_RefreshInstance_Test
+mvnTest iOSWXDataBindTest testScreen_TC_DataBind_RemoveComponent_Test
+mvnTest iOSWXDataBindTest testScreen_TC_DataBind_Repeat_Test
+mvnTest iOSWXDataBindTest testScreen_TC_DataBind_UpdateClass_Test
+mvnTest iOSWXDataBindTest testScreen_TC_DataBind_UpdateStyle_Test
+
+mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_appV_False_Test
+mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_appV_True_Test
+mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_devM_False_Test
+mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_devM_True_Test
+mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_osV_False_Test
+mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_osV_True_Test
+mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_weexV_False_Test
+mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_weexV_True_Test
+
+mvnTest iOSWXGestureTest testScreen_TC_Gesture_Click_Test
+mvnTest iOSWXGestureTest testScreen_TC_Gesture_LongPress_Test
+
+mvnTest iOSWXImageTest testScreen_TC_Image_Update_Test
+mvnTest iOSWXImageTest testScreen_TC_Image_Resize_Test
+mvnTest iOSWXImageTest testScreen_TC_Image_Style_Test
+
+mvnTest iOSWXInputTest testScreen_TC_Input_Style_Test
+mvnTest iOSWXInputTest testScreen_TC_Input_Type_Test
+mvnTest iOSWXInputTest testScreen_TC_Input_Placeholder_Test
+mvnTest iOSWXInputTest testScreen_TC_Input_Event_Test
+
+mvnTest iOSWXPopBoxTest testScreen_TC_PopBox_Alert_Test
+mvnTest iOSWXPopBoxTest testScreen_TC_PopBox_Confirm_Test
+mvnTest iOSWXPopBoxTest testScreen_TC_PopBox_Prompt_Test
+mvnTest iOSWXPopBoxTest testScreen_TC_PopBox_Toast_Test
+
+mvnTest iOSWXScrollerTest testScreen_TC_Scroller_Event_AsChild_Test
+mvnTest iOSWXScrollerTest testScreen_TC_Scroller_Event_Horizontal_Test
+
+mvnTest iOSWXSliderTest testScreen_TC_Slider_Style_Test
+mvnTest iOSWXSliderTest testScreen_TC_Slider_Style_Indicator_Test
+
+mvnTest iOSWXStyleTest testScreen_TC_Style_AlignItems_Test
+mvnTest iOSWXStyleTest testScreen_TC_Style_Border_Test
+mvnTest iOSWXStyleTest testScreen_TC_Style_Border_Unilateral_Test
+mvnTest iOSWXStyleTest testScreen_TC_Style_Flex_Test
+mvnTest iOSWXStyleTest testScreen_TC_Style_JustifyContent_Test
+mvnTest iOSWXStyleTest testScreen_TC_Style_MarginPadding_Test
+mvnTest iOSWXStyleTest testScreen_TC_Style_MaxHeight_Test
+mvnTest iOSWXStyleTest testScreen_TC_Style_MaxWidth_Test
+mvnTest iOSWXStyleTest testScreen_TC_Style_MinHeight_Test
+mvnTest iOSWXStyleTest testScreen_TC_Style_MinWidth_Test
+mvnTest iOSWXStyleTest testScreen_TC_Style_Overflow_Test
+mvnTest iOSWXStyleTest testScreen_TC_Style_Update_Test
+
+mvnTest iOSWXSwitchTest testScreen_TC_Switch_Style_Test
+mvnTest iOSWXSwitchTest testScreen_TC_Switch_Style_Layout_Test
+
+mvnTest iOSWXTextTest testScreen_TC_Text_Style_Column_Test
+mvnTest iOSWXTextTest testScreen_TC_Text_Style_Row_Test
+mvnTest iOSWXTextTest testScreen_TC_Text_Type_Test
+
+mvnTest iOSWXVideoTest testScreen_TC_Video_Event_Test
+mvnTest iOSWXVideoTest testScreen_TC_Video_Style_Test
+
+mvnTest iOSWXWebTest testScreen_TC_Web_Style_Test
 
 
