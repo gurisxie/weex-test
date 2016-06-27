@@ -16,8 +16,8 @@ sh ci-daily-envClear
 echo "----------------------------finish：run env clear----------------------------"
 
 
-#npmCachePath=${HOME}/build/gurisxie/weex-npm
-npmCachePath=${HOME}/Documents/weex-npm
+npmCachePath=${HOME}/build/gurisxie/weex-npm
+#npmCachePath=${HOME}/Documents/weex-npm
 cd ${toolPath}
 src1=${weexPath}/package.json
 src2=${npmCachePath}/package.json
@@ -142,7 +142,6 @@ mvn install:install-file -Dfile=${weexPath}/test/tools/fastjson-1.1.23.jar -Dgro
 mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.client-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.client -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
 mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.common-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.common -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
 mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.server-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.server -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
-
 
 mkdir ${weexPath}/test/ios/sword.ios.weex.test/target
 picSaveDir=${weexPath}/test/ios/pic-compare/
