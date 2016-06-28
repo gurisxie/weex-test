@@ -5,7 +5,7 @@ cache:
   bundler:true
   cocoapods:true
   directories:
-  - node_modules # NPM packages
+    - node_modules
 
 branches:
   except:
