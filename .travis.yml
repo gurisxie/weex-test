@@ -2,22 +2,15 @@ language: objective-c
 osx_image: xcode7.3
 podfile: ios/playground/Podfile
 cache:
-  bundler:true
-  cocoapods:true
+  bundler: true
+  cocoapods: true
   directories:
     - node_modules
-
 branches:
   except:
     - doc
     - example
-
-before_script:
-
 script: 
   - sh ci-commit-ios
-
-after_script: 
-
 addons:
   artifacts: true
