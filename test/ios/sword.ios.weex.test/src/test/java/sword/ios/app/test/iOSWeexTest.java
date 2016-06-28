@@ -168,7 +168,7 @@ public class iOSWeexTest {
     }
 
     public void waitAfterTap(){
-        SleepUtils.sleep(500);
+        //SleepUtils.sleep(500);
     }
 
     public void screenshot(String first,String sec,String thd) throws Exception{
