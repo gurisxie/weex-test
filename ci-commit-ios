@@ -15,61 +15,6 @@ cd ${weexPath}
 sh ci-daily-envClear
 echo "----------------------------finish：run env clear----------------------------"
 
-
-# npmCachePath=${HOME}/build/gurisxie/weex-npm
-# #npmCachePath=${HOME}/Documents/weex-npm
-# cd ${toolPath}
-# src1=${weexPath}/package.json
-# src2=${npmCachePath}/package.json
-
-# echo ${src2}
-
-# isNoChange=True
-# if [ ! -f "$src2" ]; then 
-# 	isNoChange=False
-# 	mkdir ${npmCachePath}
-# 	mkdir ${npmCachePath}/src
-# 	mkdir ${npmCachePath}/src/h5-render
-# 	mkdir ${npmCachePath}/src/js-framework
-# 	mkdir ${npmCachePath}/bin
-# else
-# 	isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
-# 	if [[ $isNoChange != False ]] ; then
-# 	    src1=${weexPath}/src/js-framework/package.json
-# 	    src2=${npmCachePath}/src/js-framework/package.json
-# 	    isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
-# 	    if [[ $isNoChange != False ]] ; then
-# 	        src1=${weexPath}/src/h5-render/package.json
-# 	        src2=${npmCachePath}/src/h5-render/package.json
-# 	        isNoChange=`python packageJsonCompare.py -src1=${src1} -src2=${src2}`
-# 	    fi
-# 	fi 
-# fi
-
-# cd ${weexPath}
-# if [[ $isNoChange == False ]] ; then
-#     echo "isNoChange:"${isNoChange}"，will npm install~"
-#     cp package.json ${npmCachePath}/package.json
-#     cp src/h5-render/package.json ${npmCachePath}/src/h5-render/package.json
-#     cp src/js-framework/package.json ${npmCachePath}/src/js-framework/package.json
-#     rm -rf ${npmCachePath}/bin
-#     cp -r bin ${npmCachePath}/bin
-#     cd ${npmCachePath}
-#     npm install
-#     rc=$?
-#     if [[ $rc != 0 ]] ; then
-#         echo "npm install:npm install failure,break flow running~ " >> ${resultPath}/run-result.log
-#         exit $rc
-#     fi 
-# fi 
-# echo "isNoChange:"${isNoChange}
-
-# cd ${weexPath}
-# ln -s ${npmCachePath}/node_modules ./node_modules
-# ln -s ${npmCachePath}/src/js-framework/node_modules/ ./src/js-framework/node_modules
-# ln -s ${npmCachePath}/src/h5-render/node_modules/ ./src/h5-render/node_modules
-
-
 npm install
 npm run build
 rc=$?
@@ -104,166 +49,166 @@ fi
 cd ${HOME}/Library/Developer/Xcode/DerivedData/
 tempPath=`ls | grep WeexDemo-*`
 
-echo "************************ prepare for uitest ************************"
-cd ${weexPath}
-#appPath=${weexPath}"/ios/playground/DerivedData/WeexDemo/Build/Products/Debug-iphonesimulator/WeexUITestDemo.app"
-appPath=${HOME}/Library/Developer/Xcode/DerivedData/${tempPath}/Build/Products/Debug-iphonesimulator/WeexUITestDemo.app
-echo "weexdemo build dir:${appPath}"
+# echo "************************ prepare for uitest ************************"
+# cd ${weexPath}
+# #appPath=${weexPath}"/ios/playground/DerivedData/WeexDemo/Build/Products/Debug-iphonesimulator/WeexUITestDemo.app"
+# appPath=${HOME}/Library/Developer/Xcode/DerivedData/${tempPath}/Build/Products/Debug-iphonesimulator/WeexUITestDemo.app
+# echo "weexdemo build dir:${appPath}"
 
-instruments -s devices > ./_temp.log
-PREFIX="iPhone 6s"
-cat ./_temp.log | while read line
-do 
-    if [[ $line == $PREFIX* ]]
-    then
-    	echo $line | sed 's/\(.*\)\[\(.*\)\]\(.*\)/\2/g' > ./_temp.log
-        break
-    fi
-done
-deviceName=`cat ./_temp.log`
-rm -rf ./_temp.log
+# instruments -s devices > ./_temp.log
+# PREFIX="iPhone 6s"
+# cat ./_temp.log | while read line
+# do 
+#     if [[ $line == $PREFIX* ]]
+#     then
+#     	echo $line | sed 's/\(.*\)\[\(.*\)\]\(.*\)/\2/g' > ./_temp.log
+#         break
+#     fi
+# done
+# deviceName=`cat ./_temp.log`
+# rm -rf ./_temp.log
 
-echo "关闭模拟器"
-killall Simulator
-sleep 5
-echo "启动指定模拟器"
-xcrun instruments -w ${deviceName}
-sleep 5
-echo "安装测试包"
-xcrun simctl install booted ${appPath}
+# echo "关闭模拟器"
+# killall Simulator
+# sleep 5
+# echo "启动指定模拟器"
+# xcrun instruments -w ${deviceName}
+# sleep 5
+# echo "安装测试包"
+# xcrun simctl install booted ${appPath}
 
-# echo "************************ Start Sword Server ************************"
-# cd ${weexPath}/test/ios/sword.ios.server.start/bin/
-# rm -rf instrument*.trace
-# (sh start-server &) 
+# # echo "************************ Start Sword Server ************************"
+# # cd ${weexPath}/test/ios/sword.ios.server.start/bin/
+# # rm -rf instrument*.trace
+# # (sh start-server &) 
 
-echo "************************ start uitest ************************"
-cd ${weexPath}/test/ios/sword.ios.weex.test/
+# echo "************************ start uitest ************************"
+# cd ${weexPath}/test/ios/sword.ios.weex.test/
 
-mvn install:install-file -Dfile=${weexPath}/test/tools/fastjson-1.1.23.jar -DgroupId=com.alibaba -DartifactId=fastjson -Dversion=1.1.23 -Dpackaging=jar -DgeneratePom=true
-mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.client-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.client -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
-mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.common-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.common -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
-mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.server-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.server -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
+# mvn install:install-file -Dfile=${weexPath}/test/tools/fastjson-1.1.23.jar -DgroupId=com.alibaba -DartifactId=fastjson -Dversion=1.1.23 -Dpackaging=jar -DgeneratePom=true
+# mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.client-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.client -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
+# mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.common-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.common -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
+# mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.server-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.server -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
 
-mkdir ${weexPath}/test/ios/sword.ios.weex.test/target
-picSaveDir=${weexPath}/test/ios/pic-compare/
-mkdir ${picSaveDir}
+# mkdir ${weexPath}/test/ios/sword.ios.weex.test/target
+# picSaveDir=${weexPath}/test/ios/pic-compare/
+# mkdir ${picSaveDir}
 
-function mvnTest() {
-    cd ${weexPath}/test/ios/sword.ios.server.start/bin/
-    rm -rf instrument*.trace
-    (sh start-server &) 
-    cd ${weexPath}/test/ios/sword.ios.weex.test/
-    for (( i=0; i<3; i++)); do
-        testResult=`mvn test -Dtest=sword.ios.app.test.$1#$2 -DpicSaveDir=${picSaveDir} -DdeviceUuid=${deviceName} -DtestAppPath=${appPath}`
-        echo $testResult
-        rc=$?
-        if [[ $rc == 0 ]] ; then
-            if [[ $testResult != *"Errors: 0"* ]] ; then
-                echo "run $1#$2 error as runtime：$i" ;
-                #if [[ $i == 2 ]] ; then
-                    #concatReport $1
-                #fi
-            elif [[ $testResult != *"Failures: 0"* ]] ; then
-                echo "run $1#$2 failure as runtime：$i" ;
-                #if [[ $i == 2 ]] ; then
-                    #concatReport $1
-                #fi
-            else
-                echo "run $1#$2 success" ;
-                #concatReport $1
-                break
-            fi
-        else
-            echo "run $1#$2 failure as runtime：$i" ;
-            #if [[ $i == 2 ]] ; then
-                #concatReport $1
-            #fi  
+# function mvnTest() {
+#     cd ${weexPath}/test/ios/sword.ios.server.start/bin/
+#     rm -rf instrument*.trace
+#     (sh start-server &) 
+#     cd ${weexPath}/test/ios/sword.ios.weex.test/
+#     for (( i=0; i<3; i++)); do
+#         testResult=`mvn test -Dtest=sword.ios.app.test.$1#$2 -DpicSaveDir=${picSaveDir} -DdeviceUuid=${deviceName} -DtestAppPath=${appPath}`
+#         echo $testResult
+#         rc=$?
+#         if [[ $rc == 0 ]] ; then
+#             if [[ $testResult != *"Errors: 0"* ]] ; then
+#                 echo "run $1#$2 error as runtime：$i" ;
+#                 #if [[ $i == 2 ]] ; then
+#                     #concatReport $1
+#                 #fi
+#             elif [[ $testResult != *"Failures: 0"* ]] ; then
+#                 echo "run $1#$2 failure as runtime：$i" ;
+#                 #if [[ $i == 2 ]] ; then
+#                     #concatReport $1
+#                 #fi
+#             else
+#                 echo "run $1#$2 success" ;
+#                 #concatReport $1
+#                 break
+#             fi
+#         else
+#             echo "run $1#$2 failure as runtime：$i" ;
+#             #if [[ $i == 2 ]] ; then
+#                 #concatReport $1
+#             #fi  
 
-        fi
-    done
-}
+#         fi
+#     done
+# }
 
-mvnTest iOSWXAHrefTest testScreen_TC_AHref_Event_Test   
-mvnTest iOSWXAHrefTest testScreen_TC_AHref_Style_Test
-mvnTest iOSWXAHrefTest testScreen_TC_AHref_Update_Test
+# mvnTest iOSWXAHrefTest testScreen_TC_AHref_Event_Test   
+# mvnTest iOSWXAHrefTest testScreen_TC_AHref_Style_Test
+# mvnTest iOSWXAHrefTest testScreen_TC_AHref_Update_Test
 
-mvnTest iOSWXAnimationTest testScreen_TC_Animation_Rotate_Test
-mvnTest iOSWXAnimationTest testScreen_TC_Animation_Scale_Test
-mvnTest iOSWXAnimationTest testScreen_TC_Animation_Shadow_Test
-mvnTest iOSWXAnimationTest testScreen_TC_Animation_Transform_Test
-mvnTest iOSWXAnimationTest testScreen_TC_Animation_Translate_Test
+# mvnTest iOSWXAnimationTest testScreen_TC_Animation_Rotate_Test
+# mvnTest iOSWXAnimationTest testScreen_TC_Animation_Scale_Test
+# mvnTest iOSWXAnimationTest testScreen_TC_Animation_Shadow_Test
+# mvnTest iOSWXAnimationTest testScreen_TC_Animation_Transform_Test
+# mvnTest iOSWXAnimationTest testScreen_TC_Animation_Translate_Test
 
-mvnTest iOSWXColorTest testScreen_TC_Color_Type_Test
-mvnTest iOSWXColorTest testScreen_TC_Color_Update_Test
+# mvnTest iOSWXColorTest testScreen_TC_Color_Type_Test
+# mvnTest iOSWXColorTest testScreen_TC_Color_Update_Test
 
-mvnTest iOSWXDataBindTest testScreen_TC_DataBind_AddComponent_Test
-mvnTest iOSWXDataBindTest testScreen_TC_DataBind_DotType_Test
-mvnTest iOSWXDataBindTest testScreen_TC_DataBind_FuncType_Test
-mvnTest iOSWXDataBindTest testScreen_TC_DataBind_If_Test
-mvnTest iOSWXDataBindTest testScreen_TC_DataBind_ListPushInAsync_Test
-mvnTest iOSWXDataBindTest testScreen_TC_DataBind_ListPushInSync_Test
-mvnTest iOSWXDataBindTest testScreen_TC_DataBind_RefreshInstance_Test
-mvnTest iOSWXDataBindTest testScreen_TC_DataBind_RemoveComponent_Test
-mvnTest iOSWXDataBindTest testScreen_TC_DataBind_Repeat_Test
-mvnTest iOSWXDataBindTest testScreen_TC_DataBind_UpdateClass_Test
-mvnTest iOSWXDataBindTest testScreen_TC_DataBind_UpdateStyle_Test
+# mvnTest iOSWXDataBindTest testScreen_TC_DataBind_AddComponent_Test
+# mvnTest iOSWXDataBindTest testScreen_TC_DataBind_DotType_Test
+# mvnTest iOSWXDataBindTest testScreen_TC_DataBind_FuncType_Test
+# mvnTest iOSWXDataBindTest testScreen_TC_DataBind_If_Test
+# mvnTest iOSWXDataBindTest testScreen_TC_DataBind_ListPushInAsync_Test
+# mvnTest iOSWXDataBindTest testScreen_TC_DataBind_ListPushInSync_Test
+# mvnTest iOSWXDataBindTest testScreen_TC_DataBind_RefreshInstance_Test
+# mvnTest iOSWXDataBindTest testScreen_TC_DataBind_RemoveComponent_Test
+# mvnTest iOSWXDataBindTest testScreen_TC_DataBind_Repeat_Test
+# mvnTest iOSWXDataBindTest testScreen_TC_DataBind_UpdateClass_Test
+# mvnTest iOSWXDataBindTest testScreen_TC_DataBind_UpdateStyle_Test
 
-mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_appV_False_Test
-mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_appV_True_Test
-mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_devM_False_Test
-mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_devM_True_Test
-mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_osV_False_Test
-mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_osV_True_Test
-mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_weexV_False_Test
-mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_weexV_True_Test
+# mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_appV_False_Test
+# mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_appV_True_Test
+# mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_devM_False_Test
+# mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_devM_True_Test
+# mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_osV_False_Test
+# mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_osV_True_Test
+# mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_weexV_False_Test
+# mvnTest iOSWXDowngradeTest testScreen_TC_Downgrade_weexV_True_Test
 
-mvnTest iOSWXGestureTest testScreen_TC_Gesture_Click_Test
-mvnTest iOSWXGestureTest testScreen_TC_Gesture_LongPress_Test
+# mvnTest iOSWXGestureTest testScreen_TC_Gesture_Click_Test
+# mvnTest iOSWXGestureTest testScreen_TC_Gesture_LongPress_Test
 
-mvnTest iOSWXImageTest testScreen_TC_Image_Update_Test
-mvnTest iOSWXImageTest testScreen_TC_Image_Resize_Test
-mvnTest iOSWXImageTest testScreen_TC_Image_Style_Test
+# mvnTest iOSWXImageTest testScreen_TC_Image_Update_Test
+# mvnTest iOSWXImageTest testScreen_TC_Image_Resize_Test
+# mvnTest iOSWXImageTest testScreen_TC_Image_Style_Test
 
-mvnTest iOSWXInputTest testScreen_TC_Input_Style_Test
-mvnTest iOSWXInputTest testScreen_TC_Input_Type_Test
-mvnTest iOSWXInputTest testScreen_TC_Input_Placeholder_Test
-mvnTest iOSWXInputTest testScreen_TC_Input_Event_Test
+# mvnTest iOSWXInputTest testScreen_TC_Input_Style_Test
+# mvnTest iOSWXInputTest testScreen_TC_Input_Type_Test
+# mvnTest iOSWXInputTest testScreen_TC_Input_Placeholder_Test
+# mvnTest iOSWXInputTest testScreen_TC_Input_Event_Test
 
-mvnTest iOSWXPopBoxTest testScreen_TC_PopBox_Alert_Test
-mvnTest iOSWXPopBoxTest testScreen_TC_PopBox_Confirm_Test
-mvnTest iOSWXPopBoxTest testScreen_TC_PopBox_Prompt_Test
-mvnTest iOSWXPopBoxTest testScreen_TC_PopBox_Toast_Test
+# mvnTest iOSWXPopBoxTest testScreen_TC_PopBox_Alert_Test
+# mvnTest iOSWXPopBoxTest testScreen_TC_PopBox_Confirm_Test
+# mvnTest iOSWXPopBoxTest testScreen_TC_PopBox_Prompt_Test
+# mvnTest iOSWXPopBoxTest testScreen_TC_PopBox_Toast_Test
 
-mvnTest iOSWXScrollerTest testScreen_TC_Scroller_Event_AsChild_Test
-mvnTest iOSWXScrollerTest testScreen_TC_Scroller_Event_Horizontal_Test
+# mvnTest iOSWXScrollerTest testScreen_TC_Scroller_Event_AsChild_Test
+# mvnTest iOSWXScrollerTest testScreen_TC_Scroller_Event_Horizontal_Test
 
-mvnTest iOSWXSliderTest testScreen_TC_Slider_Style_Test
-mvnTest iOSWXSliderTest testScreen_TC_Slider_Style_Indicator_Test
+# mvnTest iOSWXSliderTest testScreen_TC_Slider_Style_Test
+# mvnTest iOSWXSliderTest testScreen_TC_Slider_Style_Indicator_Test
 
-mvnTest iOSWXStyleTest testScreen_TC_Style_AlignItems_Test
-mvnTest iOSWXStyleTest testScreen_TC_Style_Border_Test
-mvnTest iOSWXStyleTest testScreen_TC_Style_Border_Unilateral_Test
-mvnTest iOSWXStyleTest testScreen_TC_Style_Flex_Test
-mvnTest iOSWXStyleTest testScreen_TC_Style_JustifyContent_Test
-mvnTest iOSWXStyleTest testScreen_TC_Style_MarginPadding_Test
-mvnTest iOSWXStyleTest testScreen_TC_Style_MaxHeight_Test
-mvnTest iOSWXStyleTest testScreen_TC_Style_MaxWidth_Test
-mvnTest iOSWXStyleTest testScreen_TC_Style_MinHeight_Test
-mvnTest iOSWXStyleTest testScreen_TC_Style_MinWidth_Test
-mvnTest iOSWXStyleTest testScreen_TC_Style_Overflow_Test
-mvnTest iOSWXStyleTest testScreen_TC_Style_Update_Test
+# mvnTest iOSWXStyleTest testScreen_TC_Style_AlignItems_Test
+# mvnTest iOSWXStyleTest testScreen_TC_Style_Border_Test
+# mvnTest iOSWXStyleTest testScreen_TC_Style_Border_Unilateral_Test
+# mvnTest iOSWXStyleTest testScreen_TC_Style_Flex_Test
+# mvnTest iOSWXStyleTest testScreen_TC_Style_JustifyContent_Test
+# mvnTest iOSWXStyleTest testScreen_TC_Style_MarginPadding_Test
+# mvnTest iOSWXStyleTest testScreen_TC_Style_MaxHeight_Test
+# mvnTest iOSWXStyleTest testScreen_TC_Style_MaxWidth_Test
+# mvnTest iOSWXStyleTest testScreen_TC_Style_MinHeight_Test
+# mvnTest iOSWXStyleTest testScreen_TC_Style_MinWidth_Test
+# mvnTest iOSWXStyleTest testScreen_TC_Style_Overflow_Test
+# mvnTest iOSWXStyleTest testScreen_TC_Style_Update_Test
 
-mvnTest iOSWXSwitchTest testScreen_TC_Switch_Style_Test
-mvnTest iOSWXSwitchTest testScreen_TC_Switch_Style_Layout_Test
+# mvnTest iOSWXSwitchTest testScreen_TC_Switch_Style_Test
+# mvnTest iOSWXSwitchTest testScreen_TC_Switch_Style_Layout_Test
 
-mvnTest iOSWXTextTest testScreen_TC_Text_Style_Column_Test
-mvnTest iOSWXTextTest testScreen_TC_Text_Style_Row_Test
-mvnTest iOSWXTextTest testScreen_TC_Text_Type_Test
+# mvnTest iOSWXTextTest testScreen_TC_Text_Style_Column_Test
+# mvnTest iOSWXTextTest testScreen_TC_Text_Style_Row_Test
+# mvnTest iOSWXTextTest testScreen_TC_Text_Type_Test
 
-mvnTest iOSWXVideoTest testScreen_TC_Video_Event_Test
-mvnTest iOSWXVideoTest testScreen_TC_Video_Style_Test
+# mvnTest iOSWXVideoTest testScreen_TC_Video_Event_Test
+# mvnTest iOSWXVideoTest testScreen_TC_Video_Style_Test
 
-mvnTest iOSWXWebTest testScreen_TC_Web_Style_Test
+# mvnTest iOSWXWebTest testScreen_TC_Web_Style_Test
 
 
