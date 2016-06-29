@@ -49,50 +49,45 @@ fi
 cd ${HOME}/Library/Developer/Xcode/DerivedData/
 tempPath=`ls | grep WeexDemo-*`
 
-# echo "************************ prepare for uitest ************************"
-# cd ${weexPath}
-# #appPath=${weexPath}"/ios/playground/DerivedData/WeexDemo/Build/Products/Debug-iphonesimulator/WeexUITestDemo.app"
-# appPath=${HOME}/Library/Developer/Xcode/DerivedData/${tempPath}/Build/Products/Debug-iphonesimulator/WeexUITestDemo.app
-# echo "weexdemo build dir:${appPath}"
+echo "************************ prepare for uitest ************************"
+cd ${weexPath}
+#appPath=${weexPath}"/ios/playground/DerivedData/WeexDemo/Build/Products/Debug-iphonesimulator/WeexUITestDemo.app"
+appPath=${HOME}/Library/Developer/Xcode/DerivedData/${tempPath}/Build/Products/Debug-iphonesimulator/WeexUITestDemo.app
+echo "weexdemo build dir:${appPath}"
 
-# instruments -s devices > ./_temp.log
-# PREFIX="iPhone 6s"
-# cat ./_temp.log | while read line
-# do 
-#     if [[ $line == $PREFIX* ]]
-#     then
-#     	echo $line | sed 's/\(.*\)\[\(.*\)\]\(.*\)/\2/g' > ./_temp.log
-#         break
-#     fi
-# done
-# deviceName=`cat ./_temp.log`
-# rm -rf ./_temp.log
+instruments -s devices > ./_temp.log
+PREFIX="iPhone 6s"
+cat ./_temp.log | while read line
+do 
+    if [[ $line == $PREFIX* ]]
+    then
+    	echo $line | sed 's/\(.*\)\[\(.*\)\]\(.*\)/\2/g' > ./_temp.log
+        break
+    fi
+done
+deviceName=`cat ./_temp.log`
+rm -rf ./_temp.log
 
-# echo "关闭模拟器"
-# killall Simulator
-# sleep 5
-# echo "启动指定模拟器"
-# xcrun instruments -w ${deviceName}
-# sleep 5
-# echo "安装测试包"
-# xcrun simctl install booted ${appPath}
+echo "关闭模拟器"
+killall Simulator
+sleep 5
+echo "启动指定模拟器"
+xcrun instruments -w ${deviceName}
+sleep 5
+echo "安装测试包"
+xcrun simctl install booted ${appPath}
 
-# # echo "************************ Start Sword Server ************************"
-# # cd ${weexPath}/test/ios/sword.ios.server.start/bin/
-# # rm -rf instrument*.trace
-# # (sh start-server &) 
+echo "************************ start uitest ************************"
+cd ${weexPath}/test/ios/sword.ios.weex.test/
 
-# echo "************************ start uitest ************************"
-# cd ${weexPath}/test/ios/sword.ios.weex.test/
+mvn install:install-file -Dfile=${weexPath}/test/tools/fastjson-1.1.23.jar -DgroupId=com.alibaba -DartifactId=fastjson -Dversion=1.1.23 -Dpackaging=jar -DgeneratePom=true
+mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.client-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.client -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
+mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.common-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.common -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
+mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.server-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.server -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
 
-# mvn install:install-file -Dfile=${weexPath}/test/tools/fastjson-1.1.23.jar -DgroupId=com.alibaba -DartifactId=fastjson -Dversion=1.1.23 -Dpackaging=jar -DgeneratePom=true
-# mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.client-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.client -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
-# mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.common-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.common -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
-# mvn install:install-file -Dfile=${weexPath}/test/tools/sword.ios.server-0.1-SNAPSHOT.jar -DgroupId=com.taobao.test -DartifactId=sword.ios.server -Dversion=0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
-
-# mkdir ${weexPath}/test/ios/sword.ios.weex.test/target
-# picSaveDir=${weexPath}/test/ios/pic-compare/
-# mkdir ${picSaveDir}
+mkdir ${weexPath}/test/ios/sword.ios.weex.test/target
+picSaveDir=${weexPath}/test/ios/pic-compare/
+mkdir ${picSaveDir}
 
 # function mvnTest() {
 #     cd ${weexPath}/test/ios/sword.ios.server.start/bin/
