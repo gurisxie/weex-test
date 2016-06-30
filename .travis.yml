@@ -10,7 +10,9 @@ branches:
   except:
     - doc
     - example
+before_script:
+  - git clone https://github.com/gurisxie/weex-commit-ci.git
 script: 
-  - sh ci-commit-ios
+  #- sh ci-commit-ios
 addons:
   artifacts: true
